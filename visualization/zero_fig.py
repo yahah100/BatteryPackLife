@@ -171,7 +171,7 @@ def draw_CALB_sequence(fig):
         ax1.set_xlabel('Time(s)',  fontsize=15)
         ax1.set_ylabel('Voltage(V)', color=sns.color_palette()[0],  fontsize=15)
         ax1.tick_params('y', colors=sns.color_palette()[0])
-        ax1.legend()
+        # ax1.legend()
         set_ax_linewidth(ax1)
 
 
@@ -223,11 +223,12 @@ def draw_MATR_sequence(fig):
     min_cell = [k for k, v in MATR_label.items() if v == min_life]
     mean_cell = [k for k, v in MATR_label.items() if 995 < v <= 1000]
     max_cell = [k for k, v in MATR_label.items() if v == max_life]
-    cells = min_cell + mean_cell + max_cell
+    # cells = min_cell + mean_cell + max_cell
+    cells = min_cell + max_cell
 
     total_voltage = []
     total_time = []
-    for cell in cells:
+    for cell_index, cell in enumerate(cells):
         with open(f'/data/trf/python_works/Battery-LLM/dataset/MATR/{cell}', 'rb') as f:
             cell_data = pickle.load(f)
         
@@ -248,26 +249,29 @@ def draw_MATR_sequence(fig):
         time_100 = cycle_data['time_in_s']
 
         ax1 = plt.subplot(2, 2, 3)
-        color = sns.color_palette("ch:s=.25,rot=-.25")
+        color_palette = sns.color_palette("ch:s=.25,rot=-.25")
         if cell.endswith('b2c1.pkl'):
             marker = 'o'
+            color = 'blue'
             label_prefix = 'Low life cell'
         elif cell.endswith('b3c22.pkl'):
             marker = '^'
             label_prefix = 'Middle life cell'
         elif cell.endswith('b1c2.pkl'):
             marker = 's'
+            color = 'red'
             label_prefix = 'High life cell'
-        ax1.plot(time_1, voltage_1, '-', color=color[0], marker=marker, markevery=10, label=f'{label_prefix} 1st cycle')
-        ax1.plot(time_50, voltage_50, '-', color=color[2], marker=marker, markevery=10, label=f'{label_prefix} 50th cycle')
-        ax1.plot(time_100, voltage_100, '-', color=color[4], marker=marker, markevery=10, label=f'{label_prefix} 100th cycle')
+        
+        ax1.plot(time_1, voltage_1, '-', color=color, marker='o', markevery=30, label=f'{label_prefix} 1st cycle')
+        ax1.plot(time_50, voltage_50, '-', color=color, marker='^', markevery=30, label=f'{label_prefix} 50th cycle')
+        ax1.plot(time_100, voltage_100, '-', color=color, marker='s', markevery=30, label=f'{label_prefix} 100th cycle')
         ax1.set_xlabel('Time(s)',  fontsize=15)
         ax1.set_ylabel('Voltage(V)', color=sns.color_palette()[0],  fontsize=15)
         ax1.tick_params('y', colors=sns.color_palette()[0])
-        ax1.legend()
+        # ax1.legend()
         set_ax_linewidth(ax1)
 
-fig = plt.figure(figsize=(25, 10))  # set the size of the figure
+fig = plt.figure(figsize=(12, 6))  # set the size of the figure
 draw_MATR_sequence(fig)
 draw_CALB_sequence(fig)
 fig.tight_layout()
