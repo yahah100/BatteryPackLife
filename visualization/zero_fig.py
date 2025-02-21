@@ -19,6 +19,13 @@ matplotlib.rc('font', **font)
 matplotlib.rcParams['pdf.fonttype'] = 42  # make the text editable for Adobe Illustrator
 matplotlib.rcParams['ps.fonttype'] = 42
 
+def get_evenly_spaced_values(x, num_values=300):
+    if len(x) < num_values:
+        raise ValueError("The list has fewer than 300 elements.")
+    
+    step = len(x) / num_values
+    selected_values = [x[int(i * step)] for i in range(num_values)]
+    return selected_values
 
 # matplotlib.rc('font', **font0)
 def set_ax_linewidth(ax, bw=1.5):
@@ -100,6 +107,7 @@ def draw_CALB_sequence(fig):
     mean_cell = [k for k, v in CALB_label.items() if 995 < v <= 1000]
     max_cell = [k for k, v in CALB_label.items() if v == max_life]
     cells = min_cell + mean_cell + max_cell
+    #cells = min_cell + mean_cell
 
     total_voltage = []
     total_time = []
@@ -158,16 +166,20 @@ def draw_CALB_sequence(fig):
         color = sns.color_palette("flare")
         if cell.endswith('B183.pkl'):
             marker = 'o'
+            color = 'red'
             label_prefix = 'Low life cell'
         elif cell.endswith('B253.pkl'):
             marker = '^'
+            color = 'orange'
             label_prefix = 'Middle life cell'
         elif cell.endswith('B247.pkl'):
             marker = 's'
+            color = 'green'
             label_prefix = 'High life cell'
-        ax1.plot(time_1, voltage_1, '-', color=color[0], marker=marker, markevery=10, label=f'{label_prefix} 1st cycle')
-        ax1.plot(time_50, voltage_50, '-', color=color[2], marker=marker, markevery=10, label=f'{label_prefix} 50th cycle')
-        ax1.plot(time_100, voltage_100, '-', color=color[4], marker=marker, markevery=10, label=f'{label_prefix} 100th cycle')
+
+        ax1.plot(time_1, voltage_1, '-', color=color, linestyle='-', label=f'{label_prefix} 1st cycle')
+        ax1.plot(time_50, voltage_50, '-', color=color, linestyle='-.', label=f'{label_prefix} 50th cycle')
+        ax1.plot(time_100, voltage_100, '-', color=color, linestyle=':', label=f'{label_prefix} 100th cycle')
         ax1.set_xlabel('Time(s)',  fontsize=15)
         ax1.set_ylabel('Voltage(V)', color=sns.color_palette()[0],  fontsize=15)
         ax1.tick_params('y', colors=sns.color_palette()[0])
@@ -223,8 +235,8 @@ def draw_MATR_sequence(fig):
     min_cell = [k for k, v in MATR_label.items() if v == min_life]
     mean_cell = [k for k, v in MATR_label.items() if 995 < v <= 1000]
     max_cell = [k for k, v in MATR_label.items() if v == max_life]
-    # cells = min_cell + mean_cell + max_cell
-    cells = min_cell + max_cell
+    cells = min_cell + mean_cell + max_cell
+    #cells = min_cell + mean_cell
 
     total_voltage = []
     total_time = []
@@ -238,39 +250,46 @@ def draw_MATR_sequence(fig):
         voltage_1 = cycle_data['voltage_in_V']
         time_1 = cycle_data['time_in_s']
         time_1 = [(i * 60) for i in time_1]
+        time_1 = get_evenly_spaced_values(time_1)
+        voltage_1 = get_evenly_spaced_values(voltage_1)
 
         # 50th cycle
         cycle_data = cell_data['cycle_data'][49]
         voltage_50 = cycle_data['voltage_in_V']
         time_50 = cycle_data['time_in_s']
         time_50 = [(i * 60) for i in time_50]
+        time_50 = get_evenly_spaced_values(time_50)
+        voltage_50 = get_evenly_spaced_values(voltage_50)
 
         # 100th cycle
         cycle_data = cell_data['cycle_data'][99]
         voltage_100 = cycle_data['voltage_in_V']
         time_100 = cycle_data['time_in_s']
         time_100 = [(i * 60) for i in time_100]
+        time_100 = get_evenly_spaced_values(time_100)
+        voltage_100 = get_evenly_spaced_values(voltage_100)
 
         ax1 = plt.subplot(2, 2, 3)
         color_palette = sns.color_palette("ch:s=.25,rot=-.25")
         if cell.endswith('b2c1.pkl'):
             marker = 'o'
-            color = 'blue'
+            color = 'red'
             label_prefix = 'Low life cell'
         elif cell.endswith('b3c22.pkl'):
             marker = '^'
+            color = 'orange'
             label_prefix = 'Middle life cell'
         elif cell.endswith('b1c2.pkl'):
             marker = 's'
-            color = 'red'
+            color = 'green'
             label_prefix = 'High life cell'
         
-        ax1.plot(time_1, voltage_1, '-', color=color, marker='o', markevery=30, label=f'{label_prefix} 1st cycle')
-        ax1.plot(time_50, voltage_50, '-', color=color, marker='^', markevery=30, label=f'{label_prefix} 50th cycle')
-        ax1.plot(time_100, voltage_100, '-', color=color, marker='s', markevery=30, label=f'{label_prefix} 100th cycle')
+        ax1.plot(time_1, voltage_1, '-', color=color, linestyle='-', label=f'{label_prefix} 1st cycle')
+        ax1.plot(time_50, voltage_50, '-', color=color, linestyle='-.', label=f'{label_prefix} 50th cycle')
+        ax1.plot(time_100, voltage_100, '-', color=color, linestyle=':', label=f'{label_prefix} 100th cycle')
         ax1.set_xlabel('Time(s)',  fontsize=15)
-        ax1.set_ylabel('Voltage(V)', color=sns.color_palette()[0],  fontsize=15)
-        ax1.tick_params('y', colors=sns.color_palette()[0])
+        ax1.set_ylabel('Voltage(V)', color='black',  fontsize=15)
+        ax1.tick_params('y', colors='black')
         # ax1.legend()
         set_ax_linewidth(ax1)
 
