@@ -1,5 +1,5 @@
 # BatteryLife
-This is the official code for "BatteryLife: A Comprehensive Dataset and Benchmark for Battery Life Prediction".
+This is the official repository for "BatteryLife: A Comprehensive Dataset and Benchmark for Battery Life Prediction".
 
 ## Highlights
 
