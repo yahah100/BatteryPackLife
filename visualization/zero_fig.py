@@ -237,16 +237,19 @@ def draw_MATR_sequence(fig):
         cycle_data = cell_data['cycle_data'][0]
         voltage_1 = cycle_data['voltage_in_V']
         time_1 = cycle_data['time_in_s']
+        time_1 = [(i * 60) for i in time_1]
 
         # 50th cycle
         cycle_data = cell_data['cycle_data'][49]
         voltage_50 = cycle_data['voltage_in_V']
         time_50 = cycle_data['time_in_s']
+        time_50 = [(i * 60) for i in time_50]
 
         # 100th cycle
         cycle_data = cell_data['cycle_data'][99]
         voltage_100 = cycle_data['voltage_in_V']
         time_100 = cycle_data['time_in_s']
+        time_100 = [(i * 60) for i in time_100]
 
         ax1 = plt.subplot(2, 2, 3)
         color_palette = sns.color_palette("ch:s=.25,rot=-.25")
