@@ -103,9 +103,9 @@ def draw_CALB_sequence(fig):
         CALB_label = json.load(f)
     
     max_life = max(CALB_label.values())
-    min_cell = ['CALB_0_B183.pkl']
-    mean_cell = [k for k, v in CALB_label.items() if 995 < v <= 1000]
-    max_cell = [k for k, v in CALB_label.items() if v == max_life]
+    min_cell = ['CALB_35_B173.pkl']
+    mean_cell = ['CALB_35_B248.pkl']
+    max_cell = ['CALB_35_B247.pkl']
     cells = min_cell + mean_cell + max_cell
     #cells = min_cell + mean_cell
 
@@ -145,10 +145,7 @@ def draw_CALB_sequence(fig):
         time_50 = [i-new_times[0] for i in new_times]
 
         # 100th cycle
-        if cell.endswith('B247.pkl'):
-            cycle_data = cell_data['cycle_data'][98]
-        else:
-            cycle_data = cell_data['cycle_data'][99]
+        cycle_data = cell_data['cycle_data'][98]
         voltage_100 = cycle_data['voltage_in_V']
         time_100 = cycle_data['time_in_s']
         new_times = []
@@ -161,14 +158,13 @@ def draw_CALB_sequence(fig):
             new_times.append(seconds)
         time_100 = [i-new_times[0] for i in new_times]
 
-
         ax1 = plt.subplot(2, 2, 4)
         color = sns.color_palette("flare")
-        if cell.endswith('B183.pkl'):
+        if cell.endswith('B173.pkl'):
             marker = 'o'
             color = 'red'
             label_prefix = 'Low life cell'
-        elif cell.endswith('B253.pkl'):
+        elif cell.endswith('B248.pkl'):
             marker = '^'
             color = 'orange'
             label_prefix = 'Middle life cell'
@@ -188,11 +184,10 @@ def draw_CALB_sequence(fig):
 
 
 def draw_MATR_sequence(fig):
-    with open('/data/trf/python_works/Battery-LLM/dataset/MATR/MATR_b1c0.pkl', 'rb') as f:
-        MATR_data = pickle.load(f)
+    with open('/data/trf/python_works/Battery-LLM/dataset/Tongji/Tongji1_CY25-05_1-#1.pkl', 'rb') as f:
+            MATR_data = pickle.load(f)
 
     length = len(MATR_data['cycle_data'])
-    plus_time = 0
     total_current = []
     total_voltage = []
     total_time = []
@@ -201,9 +196,6 @@ def draw_MATR_sequence(fig):
         current = cycle_data['current_in_A']
         voltage = cycle_data['voltage_in_V']
         time = cycle_data['time_in_s']
-        time = [(i * 60) for i in time]
-        time = [time + plus_time for time in time]
-        plus_time = max(time)
 
         total_time = total_time + time
         total_current = total_current + current
@@ -226,22 +218,17 @@ def draw_MATR_sequence(fig):
     ax2.tick_params('y', colors=color)
     set_ax_linewidth(ax1)
     # plt.title('Voltage-Current vs time Profile')
-
-    with open('/data/trf/python_works/Battery-LLM/dataset/MATR_labels.json', 'rb') as f:
-        MATR_label = json.load(f)
     
-    min_life = min(MATR_label.values())
-    max_life = max(MATR_label.values())
-    min_cell = [k for k, v in MATR_label.items() if v == min_life]
-    mean_cell = [k for k, v in MATR_label.items() if 995 < v <= 1000]
-    max_cell = [k for k, v in MATR_label.items() if v == max_life]
+    min_cell = ['Tongji1_CY45-05_1-#17.pkl']
+    mean_cell = ['Tongji1_CY45-05_1-#18.pkl']
+    max_cell = ['Tongji1_CY45-05_1-#12.pkl']
     cells = min_cell + mean_cell + max_cell
     #cells = min_cell + mean_cell
 
     total_voltage = []
     total_time = []
     for cell_index, cell in enumerate(cells):
-        with open(f'/data/trf/python_works/Battery-LLM/dataset/MATR/{cell}', 'rb') as f:
+        with open(f'/data/trf/python_works/Battery-LLM/dataset/Tongji/{cell}', 'rb') as f:
             cell_data = pickle.load(f)
         
         length = len(cell_data['cycle_data'])
@@ -249,7 +236,7 @@ def draw_MATR_sequence(fig):
         cycle_data = cell_data['cycle_data'][0]
         voltage_1 = cycle_data['voltage_in_V']
         time_1 = cycle_data['time_in_s']
-        time_1 = [(i * 60) for i in time_1]
+        time_1 = [(i-time_1[0]) for i in time_1]
         time_1 = get_evenly_spaced_values(time_1)
         voltage_1 = get_evenly_spaced_values(voltage_1)
 
@@ -257,7 +244,7 @@ def draw_MATR_sequence(fig):
         cycle_data = cell_data['cycle_data'][49]
         voltage_50 = cycle_data['voltage_in_V']
         time_50 = cycle_data['time_in_s']
-        time_50 = [(i * 60) for i in time_50]
+        time_50 = [(i-time_50[0]) for i in time_50]
         time_50 = get_evenly_spaced_values(time_50)
         voltage_50 = get_evenly_spaced_values(voltage_50)
 
@@ -265,21 +252,21 @@ def draw_MATR_sequence(fig):
         cycle_data = cell_data['cycle_data'][99]
         voltage_100 = cycle_data['voltage_in_V']
         time_100 = cycle_data['time_in_s']
-        time_100 = [(i * 60) for i in time_100]
+        time_100 = [(i-time_100[0]) for i in time_100]
         time_100 = get_evenly_spaced_values(time_100)
         voltage_100 = get_evenly_spaced_values(voltage_100)
 
         ax1 = plt.subplot(2, 2, 3)
         color_palette = sns.color_palette("ch:s=.25,rot=-.25")
-        if cell.endswith('b2c1.pkl'):
+        if cell.endswith('CY45-05_1-#17.pkl'):
             marker = 'o'
             color = 'red'
             label_prefix = 'Low life cell'
-        elif cell.endswith('b3c22.pkl'):
+        elif cell.endswith('CY45-05_1-#18.pkl'):
             marker = '^'
             color = 'orange'
             label_prefix = 'Middle life cell'
-        elif cell.endswith('b1c2.pkl'):
+        elif cell.endswith('CY45-05_1-#12.pkl'):
             marker = 's'
             color = 'green'
             label_prefix = 'High life cell'
