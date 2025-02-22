@@ -12,6 +12,7 @@ This is the official repository for "BatteryLife: A Comprehensive Dataset and Be
 The processed datasets can be accessed via multiple ways:
 1. You can download the datasets from [Huggingface](https://huggingface.co/datasets/Hongwxx/BatteryLife_processed/tree/main) [[tutorial]](./assets/Data_download.md)
 2. You can download the datasets from [Zenodo](https://zenodo.org/records/14890219)
+Note that brief introduction to each dataset is available under the directory of each dataset.
 
 All the raw datasets are publicly available, interested users can download them from the following links:
 - Zn-ion, Na-ion, and CALB datasets: [Zenodo link](https://zenodo.org/records/14904364) [Huggingface link](https://huggingface.co/datasets/Hongwxx/BatteryLife_Raw/tree/main) [[tutorial]](./assets/Data_download.md#how-to-download-the-raw-data-from-huggingface)
