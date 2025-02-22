@@ -36,11 +36,12 @@ pip install -r requirements.txt
 
 ### Preprocessing [[tutorial](./assets/Preprocess.md)]
 
-After downloading all datasets provided in "Data availability" section, you can run the following script to obtain the processed datasets:
+After downloading all raw datasets provided in "Data availability" section, you can run the following script to obtain the processed datasets:
 
 ```
 python preprocess_scripts.py
 ```
+If you download the processed datasets, you can skip this step.
 
 ### Train the model
 
