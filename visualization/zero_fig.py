@@ -103,9 +103,9 @@ def draw_CALB_sequence(fig):
         CALB_label = json.load(f)
     
     max_life = max(CALB_label.values())
-    min_cell = ['CALB_35_B173.pkl']
-    mean_cell = ['CALB_35_B248.pkl']
-    max_cell = ['CALB_35_B247.pkl']
+    min_cell = ['CALB_0_B183.pkl']
+    mean_cell = ['CALB_0_B187.pkl']
+    max_cell = ['CALB_0_B188.pkl']
     cells = min_cell + mean_cell + max_cell
     #cells = min_cell + mean_cell
 
@@ -145,7 +145,7 @@ def draw_CALB_sequence(fig):
         time_50 = [i-new_times[0] for i in new_times]
 
         # 100th cycle
-        cycle_data = cell_data['cycle_data'][98]
+        cycle_data = cell_data['cycle_data'][99]
         voltage_100 = cycle_data['voltage_in_V']
         time_100 = cycle_data['time_in_s']
         new_times = []
@@ -160,15 +160,15 @@ def draw_CALB_sequence(fig):
 
         ax1 = plt.subplot(2, 2, 4)
         color = sns.color_palette("flare")
-        if cell.endswith('B173.pkl'):
+        if cell.endswith('B183.pkl'):
             marker = 'o'
             color = 'red'
             label_prefix = 'Low life cell'
-        elif cell.endswith('B248.pkl'):
+        elif cell.endswith('B187.pkl'):
             marker = '^'
             color = 'orange'
             label_prefix = 'Middle life cell'
-        elif cell.endswith('B247.pkl'):
+        elif cell.endswith('B188.pkl'):
             marker = 's'
             color = 'green'
             label_prefix = 'High life cell'
