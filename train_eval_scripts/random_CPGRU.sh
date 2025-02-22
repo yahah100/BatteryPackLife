@@ -26,7 +26,7 @@ seed=42
 
 checkpoints=/data/hwx/random # the save path of checkpoints
 data=Dataset_original
-root_path=/data/trf/python_works/Battery-LLM/dataset
+root_path=./dataset
 comment='CPGRU' 
 task_name=classification
 

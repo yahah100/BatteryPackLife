@@ -28,7 +28,7 @@ n_heads=8
 
 checkpoints=/data/hwx/mix_transfer # the save path of checkpoints
 data=Dataset_original
-root_path=/data/trf/python_works/Battery-LLM/dataset
+root_path=./dataset
 comment='CPMLP' 
 task_name=classification
 

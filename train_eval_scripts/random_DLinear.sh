@@ -24,7 +24,7 @@ seed=2021
 
 checkpoints=/data/hwx/na_checkpoints # the save path of checkpoints
 data=Dataset_original
-root_path=/data/trf/python_works/Battery-LLM/dataset
+root_path=./dataset
 comment='DLinear' 
 task_name=classification
 

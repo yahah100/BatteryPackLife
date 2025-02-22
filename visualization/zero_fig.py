@@ -168,7 +168,7 @@ def draw_CALB_sequence(fig):
             label_prefix = 'Low life cell'
         elif cell.endswith('B187.pkl'):
             marker = '^'
-            color = 'orange'
+            color = 'purple'
             lw=1
             label_prefix = 'Middle life cell'
             alpha=0.5
@@ -189,7 +189,7 @@ def draw_CALB_sequence(fig):
         set_ax_linewidth(ax1)
 
 
-def draw_MATR_sequence(fig):
+def draw_Tongji_sequence(fig):
     with open('/data/trf/python_works/Battery-LLM/dataset/Tongji/Tongji1_CY25-05_1-#1.pkl', 'rb') as f:
             MATR_data = pickle.load(f)
 
@@ -271,7 +271,7 @@ def draw_MATR_sequence(fig):
             label_prefix = 'Low life cell'
         elif cell.endswith('CY45-05_1-#18.pkl'):
             marker = '^'
-            color = 'orange'
+            color = 'purple'
             alpha=0.5
             label_prefix = 'Middle life cell'
         elif cell.endswith('CY45-05_1-#12.pkl'):
@@ -290,7 +290,7 @@ def draw_MATR_sequence(fig):
         set_ax_linewidth(ax1)
 
 fig = plt.figure(figsize=(6, 5))  # set the size of the figure
-draw_MATR_sequence(fig)
+draw_Tongji_sequence(fig)
 draw_CALB_sequence(fig)
 fig.tight_layout()
 # plt.show()

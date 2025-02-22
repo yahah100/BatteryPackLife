@@ -48,7 +48,7 @@ def resample_charge_discharge_curves(voltages, currents, capacity_in_battery):
     return interp_voltages, interp_currents, interp_capacity_in_battery
 
 
-data_path = '/data/trf/python_works/Battery-LLM/dataset/MICH/MICH_BLForm2_pouch_NMC_45C_0-100_1-1C_b.pkl'
+data_path = './dataset/MICH/MICH_BLForm2_pouch_NMC_45C_0-100_1-1C_b.pkl'
 data = pickle.load(open(data_path, 'rb'))
 is_discharge = False
 # data = pickle.load(open('../dataset/HUST/HUST_7-5.pkl', 'rb'))

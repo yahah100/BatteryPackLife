@@ -41,8 +41,8 @@ def set_ax_font_size(ax, fontsize=10):
                    )
     
 def draw_third_b():
-    path = '/data/trf/python_works/Battery-LLM/dataset/third_fig_plot_data/'
-    label_path = '/data/trf/python_works/Battery-LLM/dataset/'
+    path = './dataset/third_fig_plot_data/'
+    label_path = './dataset/'
     files_path = os.listdir(path)
     labels_path = os.listdir(label_path)
     files = [i for i in files_path if i.endswith('.csv')]
@@ -104,7 +104,7 @@ def draw_third_b():
     plt.savefig('./figures/SOH_trajectories.pdf')
 
 def draw_third_a():
-    path = '/data/trf/python_works/Battery-LLM/dataset/'
+    path = './dataset/'
     files_path = os.listdir(path)
     json_files = [i for i in files_path if i.endswith('labels.json')]
     cycles_length = []
