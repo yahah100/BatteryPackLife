@@ -37,7 +37,6 @@ class TongjiPreprocessor(BasePreprocessor):
                 elif filename == 'Dataset_3_NCM_NCA_battery':
                     cell = 'Tongji3_' + cell
 
-                cell = cell.replace('-#', '--')
                 # Step1: judge whether to skip the processed file
                 whether_to_skip = self.check_processed_file(cell)
                 if whether_to_skip == True:
