@@ -121,7 +121,19 @@ def clean_data(df):
     cleaned_df['Charge_capacity/Ah'] = df['充电容量(Ah)'].replace('-', 0).astype(float)
     cleaned_df['TestTime'] = df['总时间(hh:mm:ss)']
     cleaned_df = cleaned_df.loc[cleaned_df['Cycle'] < len(set(cleaned_df['Cycle'].values))]
+    time_in_s = convert_to_s(cleaned_df['TestTime'].values.tolist())
+    cleaned_df['TestTime'] = time_in_s
     return cleaned_df
+
+def convert_to_s(time_list):
+    time_in_s = []
+    for time in time_list:
+        h = float(str(time).split(':')[0])
+        m = float(str(time).split(':')[1])
+        s = float(str(time).split(':')[2])
+        seconds = h * 3600 + m * 60 + s
+        time_in_s.append(seconds)
+    return time_in_s
 
 # problematic cells
 FILES_TO_DROP = [

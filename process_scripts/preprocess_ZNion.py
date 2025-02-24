@@ -4,7 +4,7 @@
 import os
 import numpy as np
 import pandas as pd
-from sympy import pprint
+from datetime import datetime
 
 from tqdm import tqdm
 from typing import List
@@ -104,6 +104,7 @@ def organize_cell(timeseries_df, name, C, filename):
     cycle_data = []
     if filename == 'Batch-3':
         for cycle_index, df in timeseries_df.groupby('Cycle'):
+            time_in_s = convert_to_s(list(df['TestTime'].values))
             current = df['Current/mA'] / 1000
             capacity = df['Capacity/mAh'] / 1000
             cycle_data.append(CycleData(
@@ -113,13 +114,14 @@ def organize_cell(timeseries_df, name, C, filename):
                 temperature_in_C=None,
                 discharge_capacity_in_Ah=capacity.tolist(),
                 charge_capacity_in_Ah=capacity.tolist(),
-                time_in_s=df['TestTime'].tolist()
+                time_in_s=time_in_s
             ))
     else:
         for cycle_index, df in timeseries_df.groupby('循环序号'):
             current = df['电流/mA'] / 1000
             capacity = df['容量/mAh'] / 1000
             if filename == 'Batch-1':
+                time_in_s = convert_to_s(list(df['测试时间'].values))
                 cycle_data.append(CycleData(
                     cycle_number=int(cycle_index),
                     voltage_in_V=df['电压/V'].tolist(),
@@ -127,9 +129,15 @@ def organize_cell(timeseries_df, name, C, filename):
                     temperature_in_C=None,
                     discharge_capacity_in_Ah=capacity.tolist(),
                     charge_capacity_in_Ah=capacity.tolist(),
-                    time_in_s=df['测试时间'].tolist()
+                    time_in_s=time_in_s
                 ))
             elif filename == 'Batch-2':
+                time_list = df['系统时间'].values.tolist()
+                time_in_s = []
+                for time in time_list:
+                    time = datetime.strptime(time, '%Y-%m-%d %H:%M:%S.%f')
+                    time_in_seconds = int(time.timestamp())
+                    time_in_s.append(time_in_seconds)
                 cycle_data.append(CycleData(
                     cycle_number=int(cycle_index),
                     voltage_in_V=df['电压/V'].tolist(),
@@ -137,7 +145,7 @@ def organize_cell(timeseries_df, name, C, filename):
                     temperature_in_C=None,
                     discharge_capacity_in_Ah=capacity.tolist(),
                     charge_capacity_in_Ah=capacity.tolist(),
-                    time_in_s=df['系统时间'].tolist()
+                    time_in_s=time_in_s
                 ))
     # Charge Protocol is constant current
     charge_protocol = [CyclingProtocol(
@@ -178,6 +186,16 @@ def reset_cell(df, batch_name):
 def clean_Batch2(df, cycles):
     df = df[df['循环序号'] <= cycles]
     return df
+
+def convert_to_s(time_list):
+    time_in_s = []
+    for time in time_list:
+        h = float(str(time).split(':')[0])
+        m = float(str(time).split(':')[1])
+        s = float(str(time).split(':')[2])
+        seconds = h * 3600 + m * 60 + s
+        time_in_s.append(seconds)
+    return time_in_s
 
 # problematic cells
 FILES_TO_DROP = [

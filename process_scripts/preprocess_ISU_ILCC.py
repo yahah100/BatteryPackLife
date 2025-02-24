@@ -10,6 +10,7 @@ import pandas as pd
 from tqdm import tqdm
 from typing import List
 from pathlib import Path
+from datetime import datetime
 
 from batteryml import BatteryData, CycleData, CyclingProtocol
 from batteryml.builders import PREPROCESSORS
@@ -124,6 +125,17 @@ def organize_cell(timeseries_df, name):
     timeseries_df = timeseries_df.sort_values('t')
     cycle_data = []
     for cycle_index, df in timeseries_df.groupby('cycle_number'):
+        time_list = df['t'].values.tolist()
+        time_in_s = []
+        for time in time_list:
+            if is_valid_datetime(str(time)):
+                time = datetime.strptime(str(time), '%Y-%m-%d %H:%M:%S')
+                time_in_seconds = time.timestamp()
+                time_in_s.append(time_in_seconds)
+            else:
+                time_in_s.append(time)
+        df['t'] = time_in_s
+
         cycle_data.append(CycleData(
             cycle_number=int(cycle_index),
             voltage_in_V=df['V'].tolist(),
@@ -131,7 +143,7 @@ def organize_cell(timeseries_df, name):
             temperature_in_C=None,
             discharge_capacity_in_Ah=df['Q_discharge'].tolist(),
             charge_capacity_in_Ah=df['Q_charge'].tolist(),
-            time_in_s=df['t'].tolist()
+            time_in_s=time_in_s
         ))
     # Charge Protocol is constant current
     charge_start_soc, discharge_end_soc = calculate_soc_start_and_end(timeseries_df, name)
@@ -158,6 +170,13 @@ def organize_cell(timeseries_df, name):
         max_voltage_limit_in_V=4.2,
         SOC_interval=soc_interval
     )
+
+def is_valid_datetime(datetime_str):
+    try:
+        datetime.strptime(datetime_str, '%Y-%m-%d %H:%M:%S')
+        return True
+    except ValueError:
+        return False
 
 def clean_cell(df, zip_path, cell, subfolder):
     i = 0

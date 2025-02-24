@@ -90,7 +90,7 @@ def organize_cell(timeseries_df, name, path):
             temperature_in_C=None,
             discharge_capacity_in_Ah=df['capacity_Ah'].tolist(),
             charge_capacity_in_Ah=df['capacity_Ah'].tolist(),
-            time_in_s=df['relative_time_min'].tolist()
+            time_in_s=list(df['relative_time_min'].values * 60)
         ))
     # Charge Protocol is constant current
     if 'Batch-1' in str(path):
