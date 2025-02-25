@@ -32,7 +32,7 @@ def set_ax_linewidth(ax, bw=1.5):
     ax.spines['right'].set_linewidth(bw)
 
 
-def set_ax_font_size(ax, fontsize=10):
+def set_ax_font_size(ax, fontsize=11.7):
     ax.tick_params(axis='y',
                    labelsize=fontsize  # y轴字体大小设置
                    )
@@ -41,7 +41,7 @@ def set_ax_font_size(ax, fontsize=10):
                    )
     
 def draw_third_b():
-    path = './dataset/third_fig_plot_data/'
+    path = './dataset//third_fig_plot_data/'
     label_path = './dataset/'
     files_path = os.listdir(path)
     labels_path = os.listdir(label_path)
@@ -81,8 +81,8 @@ def draw_third_b():
 
     # Plot results
     fig = plt.figure(figsize=(6,3))
-    plt.xlabel('Cycle number', fontsize='15')
-    plt.ylabel('SOH', fontsize='15')
+    plt.xlabel('Cycle number', fontsize='20')
+    plt.ylabel('SOH', fontsize='20')
     plt.grid(alpha=.3)
 
     cycle_min = min(cycles)
@@ -99,6 +99,7 @@ def draw_third_b():
 
     set_ax_linewidth(plt.gca())
     set_ax_linewidth(plt.gca())
+    # ax.set_xticklabels(fontsize=15)
     fig.tight_layout()
     plt.savefig('./figures/SOH_trajectories.jpg', dpi=600)
     plt.savefig('./figures/SOH_trajectories.pdf')
@@ -152,8 +153,8 @@ def draw_third_a():
     # sns.histplot(data=df, x="cycles_length", hue="battery_type", multiple="stack", binwidth=100)
     sns.histplot(data=df, x="cycles_length", hue="Battery Type", binwidth=100,
                  hue_order=['Na-ion', 'CALB', 'Zn-ion', 'Li-ion'], palette=['#EA5C49', '#EB9401', '#785FE6', '#AAE9A0'])
-    plt.ylabel('Count', fontsize='15')
-    plt.xlabel('Life label', fontsize='15')
+    plt.ylabel('Count', fontsize='20')
+    plt.xlabel('Life label', fontsize='20')
     set_ax_linewidth(plt.gca())
     fig.tight_layout()
     plt.savefig('./figures/life_distribution.jpg', dpi=600)
@@ -163,7 +164,7 @@ def draw_third_a():
 
 # fig = plt.figure(figsize=(6,6))
 draw_third_a()
-# draw_third_b()
+draw_third_b()
 
 # plt.subplots_adjust(wspace =0, hspace =0.35)
 # plt.savefig('./figures/third_fig.jpg', dpi=600)
