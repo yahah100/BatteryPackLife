@@ -1,5 +1,5 @@
 # BatteryLife
-This is the official repository for "BatteryLife: A Comprehensive Dataset and Benchmark for Battery Life Prediction".
+This is the official repository for [BatteryLife: A Comprehensive Dataset and Benchmark for Battery Life Prediction](https://arxiv.org/abs/2502.18807)
 
 ## Highlights
 
@@ -13,6 +13,7 @@ The processed datasets can be accessed via multiple ways:
 1. You can download the datasets from [Huggingface](https://huggingface.co/datasets/Hongwxx/BatteryLife_processed/tree/main) [[tutorial]](./assets/Data_download.md)
 2. You can download the datasets from [Zenodo](https://zenodo.org/records/14890219)
    
+
 Note that brief introduction to each dataset is available under the directory of each dataset.
 
 All the raw datasets are publicly available, interested users can download them from the following links:
@@ -45,7 +46,7 @@ python preprocess_scripts.py
 ```
 If you download the processed datasets, you can skip this step.
 
-### Train the model
+### Train the model [[tutorial](./assets/Model_training.md)]
 
 After that, just feel free to run any benchmark method. For example:
 
@@ -68,7 +69,19 @@ To facilitate advances on battery life prediction, the community needs standardi
 If you are interested in contributing, please either submit a pull request or contact us via email at rtan474@connect.hkust-gz.edu.cn and whong719@connect.hkust-gz.edu.cn. Kindly include a list of contributors in your pull request or email. We will acknowledge all contributors in the acknowledgement section of this repository.
 
 ## Citation
-If you find this work useful, we would appreciate citations to the BatteryLife paper (Will be provided soon).
+If you find this work useful, we would appreciate citations to the BatteryLife paper:
+
+```
+@misc{tan2025batterylifecomprehensivedatasetbenchmark,
+      title={BatteryLife: A Comprehensive Dataset and Benchmark for Battery Life Prediction}, 
+      author={Ruifeng Tan and Weixiang Hong and Jiayue Tang and Xibin Lu and Ruijun Ma and Xiang Zheng and Jia Li and Jiaqiang Huang and Tong-Yi Zhang},
+      year={2025},
+      eprint={2502.18807},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2502.18807}, 
+}
+```
 
 Additionally, please cite the original papers that conducted experiments. Please cite [BatteryArchive](https://www.batteryarchive.org/index.html) as the data source for the HNEI, SNL, MICH, MICH_EXP, and UL_PUR datasets.
 
