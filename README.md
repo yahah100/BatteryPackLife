@@ -11,13 +11,13 @@ This is the official repository for [BatteryLife: A Comprehensive Dataset and Be
 
 The processed datasets can be accessed via multiple ways:
 1. You can download the datasets from [Huggingface](https://huggingface.co/datasets/Hongwxx/BatteryLife_processed/tree/main) [[tutorial]](./assets/Data_download.md)
-2. You can download the datasets from [Zenodo](https://zenodo.org/records/14890219)
+2. You can download the datasets from [Zenodo](https://zenodo.org/records/14936165)
    
 
 Note that brief introduction to each dataset is available under the directory of each dataset.
 
 All the raw datasets are publicly available, interested users can download them from the following links:
-- Zn-ion, Na-ion, and CALB datasets: [Zenodo link](https://zenodo.org/records/14904364) [Huggingface link](https://huggingface.co/datasets/Hongwxx/BatteryLife_Raw/tree/main) [[tutorial]](./assets/Data_download.md#how-to-download-the-raw-data-from-huggingface)
+- Zn-ion, Na-ion, and CALB datasets: [Zenodo link](https://zenodo.org/records/14916236) [Huggingface link](https://huggingface.co/datasets/Hongwxx/BatteryLife_Raw/tree/main) [[tutorial]](./assets/Data_download.md#how-to-download-the-raw-data-from-huggingface)
 - CALCE: [link](https://calce.umd.edu/battery-data)
 - MATR: [Three batches](https://data.matr.io/1/projects/5c48dd2bc625d700019f3204) and [Batch 9](https://data.matr.io/1/projects/5d80e633f405260001c0b60a/batches/5dcef1fe110002c7215b2c94)
 - HUST: [link](https://data.mendeley.com/datasets/nsc7hnsg4s/2)
