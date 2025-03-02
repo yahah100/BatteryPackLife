@@ -29,7 +29,6 @@ def list_of_ints(arg):
 # os.environ["CUDA_VISIBLE_DEVICES"] = '4,5,6,7'
 
 from utils.tools import del_files, EarlyStopping, adjust_learning_rate, vali_baseline, load_content
-# wandb.login(key="90b2c598dc4a58105fdcdd8c03ec271984ec7417")
 parser = argparse.ArgumentParser(description='BatteryLife')
 
 def set_seed(seed):
