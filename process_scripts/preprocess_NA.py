@@ -15,7 +15,7 @@ from batteryml.preprocess.base import BasePreprocessor
 
 
 @PREPROCESSORS.register()
-class NAionPreprocessor(BasePreprocessor):
+class NAPreprocessor(BasePreprocessor):
     def process(self, parent_dir, **kwargs) -> List[BatteryData]:
         path = Path(parent_dir)
         files_path = os.listdir(path)

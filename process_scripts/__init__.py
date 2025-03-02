@@ -18,12 +18,12 @@ from .preprocess_XJTU import XJTUPreprocessor
 from .preprocess_Tongji import TongjiPreprocessor
 from .preprocess_ZNion import ZNionPreprocessor
 from .preprocess_CALB import CALBPreprocessor
-from .preprocess_NAion import NAionPreprocessor
+from .preprocess_NA import NAPreprocessor
 
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s - %(levelname)s - %(message)s')
 
 SUPPORTED_SOURCES = {
-    'DATASETS': ['CALCE', 'HNEI', 'HUST', 'MATR', 'OX', 'RWTH', 'SNL', 'UL_PUR', 'MICH', 'MICH_EXP', 'ISU_ILCC', 'Stanford', 'ZNion', 'XJTU', 'Tongji', 'NAion', 'CALB'],
+    'DATASETS': ['CALCE', 'HNEI', 'HUST', 'MATR', 'OX', 'RWTH', 'SNL', 'UL_PUR', 'MICH', 'MICH_EXP', 'ISU_ILCC', 'Stanford', 'ZNion', 'XJTU', 'Tongji', 'NA', 'CALB'],
     'CYCLERS': ['ARBIN', 'BATTERYARCHIVE', "BIOLOGIC",  'INDIGO',  "LANDT", "MACCOR", 'NEWARE', 'NOVONIX', 'BATTERYARCHIVE', 'BATTERYARCHIVE', 'NEWARE', 'Unknown', 'ME', 'LISHEN', 'SAMSUNG', 'NEWARE', 'CALB']
 }
