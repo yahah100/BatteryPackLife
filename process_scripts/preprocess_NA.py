@@ -101,7 +101,7 @@ def organize_cell(timeseries_df, name, C):
     return BatteryData(
         cell_id=name,
         cycle_data=cycle_data,
-        form_factor='18650',
+        form_factor='cylindrical_18650',
         anode_material='Unknown',
         cathode_material='Unknown',
         discharge_protocol=discharge_protocol,

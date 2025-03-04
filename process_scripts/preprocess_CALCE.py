@@ -113,7 +113,7 @@ class CALCEPreprocessor(BasePreprocessor):
                 cell_id=f'CALCE_{cell}',
                 form_factor='prismatic',
                 anode_material='graphite',
-                cathode_material='LCO',
+                cathode_material='LiCoO2',
                 cycle_data=clean_cycles,
                 nominal_capacity_in_Ah=C,
                 max_voltage_limit_in_V=4.2,

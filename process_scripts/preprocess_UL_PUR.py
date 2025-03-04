@@ -85,7 +85,7 @@ def organize_cell(timeseries_df, name, C):
         cycle_data=cycle_data,
         form_factor='cylindrical_18650',
         anode_material='graphite',
-        cathode_material='LCO',
+        cathode_material='LiNi0.8Co0.15Al0.05O2',
         discharge_protocol=discharge_protocol,
         charge_protocol=charge_protocol,
         nominal_capacity_in_Ah=C,

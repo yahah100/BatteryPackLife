@@ -37,6 +37,7 @@ class TongjiPreprocessor(BasePreprocessor):
                 elif filename == 'Dataset_3_NCM_NCA_battery':
                     cell = 'Tongji3_' + cell
 
+                cell = cell.replace('-#', '--')
                 # Step1: judge whether to skip the processed file
                 whether_to_skip = self.check_processed_file(cell)
                 if whether_to_skip == True:
@@ -100,7 +101,7 @@ def organize_cell(timeseries_df, name, path):
     return BatteryData(
         cell_id=name,
         cycle_data=cycle_data,
-        form_factor='18650',
+        form_factor='cylindrical_18650',
         anode_material=anode_material,
         cathode_material=cathode_material,
         discharge_protocol=discharge_protocol,

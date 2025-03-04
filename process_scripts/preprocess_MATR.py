@@ -190,6 +190,8 @@ def organize_cell(data, name):
                 continue
             cur_data = data['cycles'][str(cycle + 1)]
 
+        time = cur_data['t'].tolist()
+        time_in_s = [i * 60 for i in time]
         cycle_data.append(CycleData(
             cycle_number=cycle,
             voltage_in_V=cur_data['V'].tolist(),
@@ -197,7 +199,7 @@ def organize_cell(data, name):
             temperature_in_C=cur_data['T'].tolist(),
             discharge_capacity_in_Ah=cur_data['Qd'].tolist(),
             charge_capacity_in_Ah=cur_data['Qc'].tolist(),
-            time_in_s=cur_data['t'].tolist(),
+            time_in_s=time_in_s,
             internal_resistance_in_ohm=data['summary']['IR'][cycle],
             Qdlin=cur_data['Qdlin'].tolist()
         ))
@@ -237,7 +239,7 @@ def organize_cell(data, name):
         cycle_data=cycle_data,
         form_factor='cylindrical_18650',
         anode_material='graphite',
-        cathode_material='LFP',
+        cathode_material='LiFePO4',
         discharge_protocol=discharge_protocol,
         charge_protocol=charge_protocol,
         nominal_capacity_in_Ah=1.1,

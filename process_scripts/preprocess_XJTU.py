@@ -112,9 +112,9 @@ def organize_cell(timeseries_df, name, path):
     return BatteryData(
         cell_id=name,
         cycle_data=cycle_data,
-        form_factor='pouch',
+        form_factor='cylindrical_18650',
         anode_material='graphite',
-        cathode_material='NMC',
+        cathode_material='LiNi0.5Co0.2Mn0.3O2',
         discharge_protocol=discharge_protocol,
         charge_protocol=charge_protocol,
         nominal_capacity_in_Ah=2.0,

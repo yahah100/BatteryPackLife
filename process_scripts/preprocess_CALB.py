@@ -103,6 +103,15 @@ def organize_cell(timeseries_df, name, C, temperature):
     else:
         cycle_data = []
         for cycle_index, df in timeseries_df.groupby('循环号'):
+            times = []
+            for time in list(df['绝对时间'].values):
+                time = time.split(' ')[1]
+                h = float(time.split(':')[0])
+                m = float(time.split(':')[1])
+                s = float(time.split(':')[2])
+                seconds = (h * 3600 + m * 60 + s)
+                times.append(seconds)
+
             cycle_data.append(CycleData(
                 cycle_number=int(cycle_index),
                 voltage_in_V=df['电压(V)'].tolist(),
@@ -110,7 +119,7 @@ def organize_cell(timeseries_df, name, C, temperature):
                 temperature_in_C=list([temperature_in_C_value] * len(df)),
                 discharge_capacity_in_Ah=df['放电容量(Ah)'].tolist(),
                 charge_capacity_in_Ah=df['容量(Ah)'].tolist(),
-                time_in_s=df['绝对时间'].tolist()
+                time_in_s=times
             ))
     # Charge Protocol is constant current
     charge_protocol = [CyclingProtocol(
@@ -126,7 +135,7 @@ def organize_cell(timeseries_df, name, C, temperature):
         cycle_data=cycle_data,
         form_factor='Prismatic',
         anode_material='graphite',
-        cathode_material='NCM',
+        cathode_material='NMC',
         discharge_protocol=discharge_protocol,
         charge_protocol=charge_protocol,
         nominal_capacity_in_Ah=C,

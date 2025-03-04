@@ -53,7 +53,7 @@ class ISU_ILCCPreprocessor(BasePreprocessor):
             if not self.silent:
                 tqdm.write('Skipping cycling files, already exists')
 
-        if not os.path.exists(rpt_zip_path.parent / 'PRT_json'):
+        if not os.path.exists(rpt_zip_path.parent / 'RPT_json'):
             with zipfile.ZipFile(rpt_zip_path, 'r') as zip_ref:
                 pbar = zip_ref.namelist()
                 if not self.silent:
@@ -74,6 +74,7 @@ class ISU_ILCCPreprocessor(BasePreprocessor):
         process_batteries_num = 0
         skip_batteries_num = 0
         for cell in tqdm(valid_cells, desc='Processing ISU_ILCC cells'):
+            print(f'processing cell {cell}')
             if cell == 'G42C4' or cell == 'G9C4' or cell == 'G25C4' or 'G26' in cell or 'G11' in cell:
                 continue
             # Step1: judge whether to skip the processed file
@@ -160,7 +161,7 @@ def organize_cell(timeseries_df, name):
     return BatteryData(
         cell_id=name,
         cycle_data=cycle_data,
-        form_factor='pouch',
+        form_factor=' 502030-size Li-polymer',
         anode_material='graphite',
         cathode_material='NMC',
         discharge_protocol=discharge_protocol,
