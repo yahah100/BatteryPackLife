@@ -31,7 +31,7 @@ preprocess_commands = [
     'batteryml preprocess ISU_ILCC ./datasets/raw/ISU_ILCC ./datasets/processed/ISU_ILCC/',
     'batteryml preprocess Tongji ./datasets/raw/Tongji ./datasets/processed/Tongji/',
     'batteryml preprocess CALB ./datasets/raw/CALB ./datasets/processed/CALB/',
-    'batteryml preprocess NAion ./datasets/raw/NAion ./datasets/processed/NA-ion/',
+    'batteryml preprocess NA ./datasets/raw/NAion ./datasets/processed/NA-ion/',
     'batteryml preprocess ZNion ./datasets/raw/ZNion ./datasets/processed/ZN-ion/',
 ]
 
