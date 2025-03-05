@@ -10,8 +10,8 @@ This is the official repository for [BatteryLife: A Comprehensive Dataset and Be
 ## Data availability
 
 The processed datasets can be accessed via multiple ways:
-1. You can download the datasets from [Huggingface](https://huggingface.co/datasets/Hongwxx/BatteryLife_processed/tree/main) [[tutorial]](./assets/Data_download.md)
-2. You can download the datasets from [Zenodo](https://zenodo.org/records/14969822)
+1. You can download the datasets from [Huggingface](https://huggingface.co/datasets/Hongwxx/BatteryLife_processed/tree/main) [[tutorial]](./assets/Data_download.md).
+2. You can download the datasets from [Zenodo](https://zenodo.org/records/14969822) (Please download the data of version v4).
    
 
 Note that brief introduction to each dataset is available under the directory of each dataset.
