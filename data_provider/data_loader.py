@@ -2,6 +2,7 @@ import os
 import random
 import re
 import numpy as np
+import shutil
 import pandas as pd
 from torch.utils.data import Dataset
 from tqdm import tqdm
@@ -489,6 +490,8 @@ class Dataset_original(Dataset):
         elif prefix.startswith('HNEI'):
             data =  pickle.load(open(f'{self.root_path}/HNEI/{file_name}', 'rb'))
         elif prefix.startswith('MICH'):
+            if not os.path.isdir(f'{self.root_path}/total_MICH/'):
+                self.merge_MICH(f'{self.root_path}/total_MICH/')
             data =  pickle.load(open(f'{self.root_path}/total_MICH/{file_name}', 'rb'))
         elif prefix.startswith('OX'):
             data =  pickle.load(open(f'{self.root_path}/OX/{file_name}', 'rb'))
@@ -790,4 +793,17 @@ class Dataset_original(Dataset):
                 elif RPT_mask == 1:
                     tmp_normal_cycles.append(cycle_numbers[index])
             prompt = f'Describned operating condition is used in {tmp_normal_cycles} cycles, wheras cycles {tmp_RPT_cycles} are conducted using other operating conditions. '       
-        return prompt 
+        return prompt
+    
+    def merge_MICH(self, merge_path):
+        os.makedirs(merge_path)
+        source_path1 = f'{self.root_path}/MICH/'
+        source_path2 = f'{self.root_path}/MICH_EXP/'
+        source1_files = [i for i in os.listdir(source_path1) if i.endswith('.md')]
+        source2_files = [i for i in os.listdir(source_path2) if i.endswith('.py')]
+        target_path = f'{self.root_path}/total_MICH/'
+
+        for file in source1_files:
+            shutil.copy(source_path1 + file, target_path)
+        for file in source2_files:
+            shutil.copy(source_path2 + file, target_path)
