@@ -9,17 +9,17 @@ Note: For the Li-ion dataset, we obtain the best hyperparameters using 2021 as t
 First, you should run the following script:
 
 ```shell
-sh ./train_eval_scripts/CPTransformer.sh # set "seed" as 2021 in the script. set "dataset" as MIX.
+sh ./train_eval_scripts/CPTransformer.sh # set "seed" as 2021 in the script. set "dataset" as MIX_large.
 ```
 
 You can tune the hyperparameters like d_ff and d_model until you obtain a satisfactory set of hyperparameters that perform the best on the validation set. After that, you use the same hyperparameters and evaluate the model performance using 42 and 2024 as the random seed.
 
 ```shell
-sh ./train_eval_scripts/CPTransformer.sh # set seed as 42 in the script. Train the model using the best hyperparameters. set "dataset" as MIX.
+sh ./train_eval_scripts/CPTransformer.sh # set seed as 42 in the script. Train the model using the best hyperparameters. set "dataset" as MIX_large.
 ```
 
 ```shell
-sh ./train_eval_scripts/CPTransformer.sh # set seed as 2024 in the script. Train the model using the best hyperparameters. set "dataset" as MIX.
+sh ./train_eval_scripts/CPTransformer.sh # set seed as 2024 in the script. Train the model using the best hyperparameters. set "dataset" as MIX_large.
 ```
 
 You will see the model performance at the end of model training. After that you can report the mean$\pm$standard deviation of MAPE and 15%-Acc.
