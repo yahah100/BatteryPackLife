@@ -799,8 +799,8 @@ class Dataset_original(Dataset):
         os.makedirs(merge_path)
         source_path1 = f'{self.root_path}/MICH/'
         source_path2 = f'{self.root_path}/MICH_EXP/'
-        source1_files = [i for i in os.listdir(source_path1) if i.endswith('.md')]
-        source2_files = [i for i in os.listdir(source_path2) if i.endswith('.py')]
+        source1_files = [i for i in os.listdir(source_path1) if i.endswith('.pkl')]
+        source2_files = [i for i in os.listdir(source_path2) if i.endswith('.pkl')]
         target_path = f'{self.root_path}/total_MICH/'
 
         for file in source1_files:
