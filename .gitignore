@@ -76,15 +76,7 @@ output_path/
 rerun_HCM/
 
 
-cal_for_test.json
-cal_for_test2.json
-cal_for_test3.json
-cal_for_test4.json
-cal_for_test5.json
-cal_for_test_ZN42.json
-cal_for_test_ZN2024.json
-cal_for_test_CALB42.json
-cal_for_test_CALB2024.json
+
 
 evals/
 rerun_PatchTST/
@@ -95,11 +87,7 @@ Zn_baseline_checkpoints/
 
 f2_outs/
 evals/
-cal_for_test.json
-cal_for_test2.json
-cal_for_test3.json
-cal_for_test4.json
-cal_for_test5.json
+
 
 baseline_checkpoints/
 scripts/
