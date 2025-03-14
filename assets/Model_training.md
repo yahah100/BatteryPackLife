@@ -89,3 +89,15 @@ sh ./train_eval_scripts/CPTransformer.sh # set seed as 2024 in the script. Train
 You can tune the hyperparameters like d_ff and d_model until you obtain a satisfactory set of hyperparameters that perform the best on the validation sets. It should be noted that the hyperparameters that lead to the best average model performance using the three random seeds are selected.
 
 You will see the model performance at the end of model training. After that you can report the mean$\pm$standard deviation of MAPE and 15%-Acc.
+
+
+
+## Special announcement for Dummy model usage
+
+Due to the Dummy model simply calculates the average life for every dataset during training, the usage of Dummy model is different from other models. The usage is shown below:
+
+```shell
+python ./models/Dummy.py [dataset] [random_seed]
+# example for CALB dataset with random seed 2021: python ./models/Dummy.py CALB 2021
+```
+
