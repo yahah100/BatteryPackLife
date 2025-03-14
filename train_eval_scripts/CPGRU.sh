@@ -1,5 +1,5 @@
 model_name=CPGRU
-dataset=MICH
+dataset=CALB
 train_epochs=100
 early_cycle_threshold=100
 learning_rate=0.001
@@ -26,7 +26,7 @@ seed=42
 
 checkpoints=/data/hwx/random # the save path of checkpoints
 data=Dataset_original
-root_path=/data/trf/python_works/Battery-LLM/dataset
+root_path=./dataset
 comment='CPGRU' 
 task_name=classification
 

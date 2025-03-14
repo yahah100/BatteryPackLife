@@ -16,6 +16,7 @@ baseline_checkpoints/
 calb_checkpoints/
 Li_baseline_checkpoints/
 Zn_baseline_checkpoints/
+redundant/
 DA/
 baseline_scripts1/
 zn_re/
@@ -38,6 +39,7 @@ data_simple_scripts/
 zn_re/
 best_li/
 best_calb/
+
 best_zn/
 best_na/
 calb_re/

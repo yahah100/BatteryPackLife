@@ -49,15 +49,6 @@ datasetName2ids = {
     'NA-ion':27,
     'NA-ion42':28,
     'NA-ion2024':29,
-    'MIX_CALB': 30,
-    'MIX_CALB42': 31,
-    'MIX_CALB2024': 32,
-    'MIX_ZN': 33,
-    'MIX_ZN42': 34,
-    'MIX_ZN2024': 35,
-    'MIX_NA': 36,
-    'MIX_NA42': 37,
-    'MIX_NA2024': 38,
 }
 def my_collate_fn_withId(samples):
     cycle_curve_data = torch.vstack([i['cycle_curve_data'].unsqueeze(0) for i in samples])
@@ -143,10 +134,6 @@ class Dataset_original(Dataset):
             self.train_files = split_recorder.RWTH_train_files
             self.val_files = split_recorder.RWTH_val_files
             self.test_files = split_recorder.RWTH_test_files
-        elif self.dataset == 'MIX':
-            self.train_files = split_recorder.MIX_train_files
-            self.val_files = split_recorder.MIX_val_files 
-            self.test_files = split_recorder.MIX_test_files
         elif self.dataset == 'HNEI':
             self.train_files = split_recorder.HNEI_train_files
             self.val_files = split_recorder.HNEI_val_files
@@ -167,30 +154,14 @@ class Dataset_original(Dataset):
             self.train_files = split_recorder.XJTU_train_files
             self.val_files = split_recorder.XJTU_val_files
             self.test_files = split_recorder.XJTU_test_files
-        elif self.dataset == 'MIX_small':
-            self.train_files = split_recorder.MIX_small_train_files
-            self.val_files = split_recorder.MIX_small_val_files 
-            self.test_files = split_recorder.MIX_small_test_files
         elif self.dataset == 'MIX_large':
             self.train_files = split_recorder.MIX_large_train_files
             self.val_files = split_recorder.MIX_large_val_files 
             self.test_files = split_recorder.MIX_large_test_files
-        elif self.dataset == 'MIX_c':
-            self.train_files = split_recorder.MIX_train_files_complete
-            self.val_files = split_recorder.MIX_val_files_complete 
-            self.test_files = split_recorder.MIX_test_files_complete  
-        elif self.dataset == 'MIX_c_woISU':
-            self.train_files = split_recorder.MIX_train_files_complete_woISU
-            self.val_files = split_recorder.MIX_val_files_complete_woISU 
-            self.test_files = split_recorder.MIX_test_files_complete_woISU  
         elif self.dataset == 'ZN-coin':
             self.train_files = split_recorder.ZNcoin_train_files
             self.val_files = split_recorder.ZNcoin_val_files 
             self.test_files = split_recorder.ZNcoin_test_files  
-        elif self.dataset == 'NA-coin':
-            self.train_files = split_recorder.NAcoin_train_files
-            self.val_files = split_recorder.NAcoin_val_files 
-            self.test_files = split_recorder.NAcoin_test_files  
         elif self.dataset == 'CALB':
             self.train_files = split_recorder.CALB_train_files
             self.val_files = split_recorder.CALB_val_files 
@@ -223,43 +194,6 @@ class Dataset_original(Dataset):
             self.train_files = split_recorder.NAion_2024_train_files
             self.val_files = split_recorder.NAion_2024_val_files
             self.test_files = split_recorder.NAion_2024_test_files
-        elif self.dataset == 'MIX_CALB':
-            self.train_files = split_recorder.MIX_CALB_train_files
-            self.val_files = split_recorder.MIX_CALB_val_files
-            self.test_files = split_recorder.MIX_CALB_test_files
-        elif self.dataset == 'MIX_CALB42':
-            self.train_files = split_recorder.MIX_CALB42_train_files
-            self.val_files = split_recorder.MIX_CALB42_val_files
-            self.test_files = split_recorder.MIX_CALB42_test_files
-        elif self.dataset == 'MIX_CALB2024':
-            self.train_files = split_recorder.MIX_CALB2024_train_files
-            self.val_files = split_recorder.MIX_CALB2024_val_files
-            self.test_files = split_recorder.MIX_CALB2024_test_files
-        elif self.dataset == 'MIX_ZN':
-            self.train_files = split_recorder.MIX_ZN_train_files
-            self.val_files = split_recorder.MIX_ZN_val_files
-            self.test_files = split_recorder.MIX_ZN_test_files
-        elif self.dataset == 'MIX_ZN42':
-            self.train_files = split_recorder.MIX_ZN42_train_files
-            self.val_files = split_recorder.MIX_ZN42_val_files
-            self.test_files = split_recorder.MIX_ZN42_test_files
-        elif self.dataset == 'MIX_ZN2024':
-            self.train_files = split_recorder.MIX_ZN2024_train_files
-            self.val_files = split_recorder.MIX_ZN2024_val_files
-            self.test_files = split_recorder.MIX_ZN2024_test_files
-        elif self.dataset == 'MIX_NA':
-            self.train_files = split_recorder.MIX_NA_train_files
-            self.val_files = split_recorder.MIX_NA_val_files
-            self.test_files = split_recorder.MIX_NA_test_files
-        elif self.dataset == 'MIX_NA42':
-            self.train_files = split_recorder.MIX_NA42_train_files
-            self.val_files = split_recorder.MIX_NA42_val_files
-            self.test_files = split_recorder.MIX_NA42_test_files
-        elif self.dataset == 'MIX_NA2024':
-            self.train_files = split_recorder.MIX_NA2024_train_files
-            self.val_files = split_recorder.MIX_NA2024_val_files
-            self.test_files = split_recorder.MIX_NA2024_test_files
-
         
         if flag == 'train':
             self.files = [i for i in self.train_files]
@@ -267,65 +201,22 @@ class Dataset_original(Dataset):
             self.files = [i for i in self.val_files]
         elif flag == 'test':
             self.files = [i for i in self.test_files]
-            if self.dataset == 'CALB2':
-                self.unseen_seen_record = json.load(open(f'{self.root_path}/cal_for_test2.json'))
-            elif self.dataset == 'CALB3':
-                self.unseen_seen_record = json.load(open(f'{self.root_path}/cal_for_test3.json'))
-            elif self.dataset == 'CALB4':
-                self.unseen_seen_record = json.load(open(f'{self.root_path}/cal_for_test4.json'))
-            elif self.dataset == 'CALB5':
-                self.unseen_seen_record = json.load(open(f'{self.root_path}/cal_for_test5.json'))
-            elif self.dataset == 'ZN-coin42':
-                self.unseen_seen_record = json.load(open(f'{self.root_path}/cal_for_test_ZN42.json'))
+            if self.dataset == 'ZN-coin42':
+                self.unseen_seen_record = json.load(open(f'{self.root_path}/seen_unseen_labels/cal_for_test_ZN42.json'))
             elif self.dataset == 'ZN-coin2024':
-                self.unseen_seen_record = json.load(open(f'{self.root_path}/cal_for_test_ZN2024.json'))
+                self.unseen_seen_record = json.load(open(f'{self.root_path}/seen_unseen_labels/cal_for_test_ZN2024.json'))
             elif self.dataset == 'CALB42':
-                self.unseen_seen_record = json.load(open(f'{self.root_path}/cal_for_test_CALB422.json'))
+                self.unseen_seen_record = json.load(open(f'{self.root_path}/seen_unseen_labels/cal_for_test_CALB422.json'))
             elif self.dataset == 'CALB2024':
-                self.unseen_seen_record = json.load(open(f'{self.root_path}/cal_for_test_CALB2024.json'))
+                self.unseen_seen_record = json.load(open(f'{self.root_path}/seen_unseen_labels/cal_for_test_CALB2024.json'))
             elif self.dataset == 'NAion':
-                self.unseen_seen_record = json.load(open(f'{self.root_path}/cal_for_test_NA2021.json'))
+                self.unseen_seen_record = json.load(open(f'{self.root_path}/seen_unseen_labels/cal_for_test_NA2021.json'))
             elif self.dataset == 'NAion42':
-                self.unseen_seen_record = json.load(open(f'{self.root_path}/cal_for_test_NA42.json'))
+                self.unseen_seen_record = json.load(open(f'{self.root_path}/seen_unseen_labels/cal_for_test_NA42.json'))
             elif self.dataset == 'NAion2024':
-                self.unseen_seen_record = json.load(open(f'{self.root_path}/cal_for_test_NA2024.json'))
-            elif self.dataset == 'MIX_CALB42':
-                label1 = json.load(open(f'{self.root_path}/cal_for_test_CALB422.json'))
-                label2 = json.load(open(f'{self.root_path}/cal_for_test.json'))
-                label1.update(label2)
-                self.unseen_seen_record = label1
-            elif self.dataset == 'MIX_CALB2024':
-                label1 = json.load(open(f'{self.root_path}/cal_for_test_CALB2024.json'))
-                label2 = json.load(open(f'{self.root_path}/cal_for_test.json'))
-                label1.update(label2)
-                self.unseen_seen_record = label1
-            elif self.dataset == 'MIX_ZN42':
-                label1 = json.load(open(f'{self.root_path}/cal_for_test_ZN42.json'))
-                label2 = json.load(open(f'{self.root_path}/cal_for_test.json'))
-                label1.update(label2)
-                self.unseen_seen_record = label1
-            elif self.dataset == 'MIX_ZN2024':
-                label1 = json.load(open(f'{self.root_path}/cal_for_test_ZN2024.json'))
-                label2 = json.load(open(f'{self.root_path}/cal_for_test.json'))
-                label1.update(label2)
-                self.unseen_seen_record = label1
-            elif self.dataset == 'MIX_NA':
-                label1 = json.load(open(f'{self.root_path}/cal_for_test_NA2021.json'))
-                label2 = json.load(open(f'{self.root_path}/cal_for_test.json'))
-                label1.update(label2)
-                self.unseen_seen_record = label1
-            elif self.dataset == 'MIX_NA42':
-                label1 = json.load(open(f'{self.root_path}/cal_for_test_NA42.json'))
-                label2 = json.load(open(f'{self.root_path}/cal_for_test.json'))
-                label1.update(label2)
-                self.unseen_seen_record = label1
-            elif self.dataset == 'MIX_NA2024':
-                label1 = json.load(open(f'{self.root_path}/cal_for_test_NA2024.json'))
-                label2 = json.load(open(f'{self.root_path}/cal_for_test.json'))
-                label1.update(label2)
-                self.unseen_seen_record = label1
+                self.unseen_seen_record = json.load(open(f'{self.root_path}/seen_unseen_labels/cal_for_test_NA2024.json'))
             else:
-                self.unseen_seen_record = json.load(open(f'{self.root_path}/cal_for_test.json'))
+                self.unseen_seen_record = json.load(open(f'{self.root_path}/seen_unseen_labels/cal_for_test.json'))
             # self.unseen_seen_record = json.load(open(f'{self.root_path}/cal_for_test.json'))
         
         self.total_charge_discharge_curves, self.total_curve_attn_masks, self.total_labels, self.unique_labels, self.class_labels, self.total_dataset_ids, self.total_cj_aug_charge_discharge_curves, self.total_seen_unseen_IDs = self.read_data()
@@ -513,21 +404,19 @@ class Dataset_original(Dataset):
             data =  pickle.load(open(f'{self.root_path}/XJTU/{file_name}', 'rb'))
         elif prefix.startswith('ZN-coin'):
             data =  pickle.load(open(f'{self.root_path}/ZN-coin/{file_name}', 'rb'))
-        elif prefix.startswith('NA-coin'):
-            data =  pickle.load(open(f'{self.root_path}/NA-coin/{file_name}', 'rb'))
         elif prefix.startswith('CALB'):
             data =  pickle.load(open(f'{self.root_path}/CALB/{file_name}', 'rb'))
         elif prefix.startswith('NA-ion'):
             data =  pickle.load(open(f'{self.root_path}/NA-ion/{file_name}', 'rb'))
         
         if prefix == 'MICH':
-            with open(f'{self.root_path}/total_MICH_labels.json') as f:
+            with open(f'{self.root_path}/Life labels/total_MICH_labels.json') as f:
                 life_labels = json.load(f)
         elif prefix.startswith('Tongji'):
-            with open(f'{self.root_path}/Tongji_labels.json') as f:
+            with open(f'{self.root_path}/Life labels/Tongji_labels.json') as f:
                 life_labels = json.load(f)
         else:
-            with open(f'{self.root_path}/{prefix}_labels.json') as f:
+            with open(f'{self.root_path}/Life labels/{prefix}_labels.json') as f:
                 life_labels = json.load(f)
         if file_name in life_labels:
             eol = life_labels[file_name]

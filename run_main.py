@@ -103,7 +103,7 @@ parser.add_argument('--output_num', type=int, default=1, help='The number of pre
 parser.add_argument('--class_num', type=int, default=8, help='The number of life classes')
 
 # optimization
-parser.add_argument('--weighted_loss', action='store_true', default=True, help='use weighted loss')
+parser.add_argument('--weighted_loss', action='store_true', default=False, help='use weighted loss')
 parser.add_argument('--weighted_sampling', action='store_true', default=False, help='use weighted sampling')
 parser.add_argument('--num_workers', type=int, default=1, help='data loader num workers')
 parser.add_argument('--itr', type=int, default=1, help='experiments times')

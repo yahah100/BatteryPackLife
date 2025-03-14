@@ -1,4 +1,5 @@
 import os
+import sys
 import math
 import pandas as pd
 import numpy as np
@@ -175,6 +176,9 @@ NAion_2024_test_files = ['NA-ion_270040-8-5-16.pkl', 'NA-ion_270040-3-4-53.pkl',
 
 
 def find_dataset(dataset_name, random_seed, type):
+    dataset_name = str(dataset_name)
+    random_seed = int(random_seed)
+
     if dataset_name == 'CALCE' and type == 'train':
         return CALCE_train
     elif dataset_name == 'CALCE' and type == 'vali':
@@ -303,6 +307,9 @@ def find_dataset(dataset_name, random_seed, type):
         return NAion_42_test_files
 
 def cal_loss(dataset_name, random_seed):
+    dataset_name = str(dataset_name)
+    random_seed = int(random_seed)
+
     vali_loss = 0
     test_loss = 0
     vali_sample = 0
@@ -317,27 +324,26 @@ def cal_loss(dataset_name, random_seed):
         elif 'UL-PUR' in dataset_name:
             dataset_name = 'UL_PUR'
 
-        print(dataset_name)
         train_data_names = [i for i in find_dataset(dataset_name, random_seed, type='train')]
         vali_data_names = [i for i in find_dataset(dataset_name, random_seed, type='vali')]
         test_data_names = [i for i in find_dataset(dataset_name, random_seed, type='test')]
         label_data = pd.read_json(os.path.join(path, file), lines=True)
         if random_seed == 42 and dataset_name == 'ZN-coin':
-            seen_unseen_label = pd.read_json('./datasets/Prompts/cal_for_test_ZN42.json', lines=True)
+            seen_unseen_label = pd.read_json('./dataset/seen_unseen_labels/cal_for_test_ZN42.json', lines=True)
         elif random_seed == 2024 and dataset_name == 'ZN-coin':
-            seen_unseen_label = pd.read_json('./datasets/Prompts/cal_for_test_ZN2024.json', lines=True)
+            seen_unseen_label = pd.read_json('./dataset/seen_unseen_labels/cal_for_test_ZN2024.json', lines=True)
         elif random_seed == 42 and dataset_name == 'CALB':
-            seen_unseen_label = pd.read_json('./datasets/Prompts/cal_for_test_CALB422.json', lines=True)
+            seen_unseen_label = pd.read_json('./dataset/seen_unseen_labels/cal_for_test_CALB422.json', lines=True)
         elif random_seed == 2024 and dataset_name == 'CALB':
-            seen_unseen_label = pd.read_json('./datasets/Prompts/cal_for_test_CALB2024.json', lines=True)
+            seen_unseen_label = pd.read_json('./dataset/seen_unseen_labels/cal_for_test_CALB2024.json', lines=True)
         elif random_seed == 42 and dataset_name == 'NA-ion':
-            seen_unseen_label = pd.read_json('./datasets/Prompts/cal_for_test_NA42.json', lines=True)
+            seen_unseen_label = pd.read_json('./dataset/seen_unseen_labels/cal_for_test_NA42.json', lines=True)
         elif random_seed == 2021 and dataset_name == 'NA-ion':
-            seen_unseen_label = pd.read_json('./datasets/Prompts/cal_for_test_NA2021.json', lines=True)
+            seen_unseen_label = pd.read_json('./dataset/seen_unseen_labels/cal_for_test_NA2021.json', lines=True)
         elif random_seed == 2024 and dataset_name == 'NA-ion':
-            seen_unseen_label = pd.read_json('./datasets/Prompts/cal_for_test_NA2024.json', lines=True)
+            seen_unseen_label = pd.read_json('./dataset/seen_unseen_labels/cal_for_test_NA2024.json', lines=True)
         else:
-            seen_unseen_label = pd.read_json('./datasets/Prompts/cal_for_test.json', lines=True)
+            seen_unseen_label = pd.read_json('./dataset/seen_unseen_labels/cal_for_test.json', lines=True)
 
         train_data = []
         total_seen_unseen_label = []
@@ -355,6 +361,7 @@ def cal_loss(dataset_name, random_seed):
             if test_name not in label_data:
                 # print('Missing label for test file: ', test_name)
                 continue
+
             label = seen_unseen_label[test_name].values
             if label == 'seen':
                 total_seen_unseen_label.append(1)
@@ -362,7 +369,6 @@ def cal_loss(dataset_name, random_seed):
                 total_seen_unseen_label.append(0)
             test_data.append(label_data[test_name].values[0])
 
-        print(total_seen_unseen_label)
         train_avg = np.average(train_data, axis=0)
         train_vali_avg_list = [train_avg] * len(vali_data)
         train_test_avg_list = [train_avg] * len(test_data)
@@ -378,7 +384,7 @@ def cal_loss(dataset_name, random_seed):
 
 
 if __name__ == '__main__' :
-    path = './Life labels/'
+    path = './dataset/Life labels/'
     files_path = os.listdir(path)
     files = [i for i in files_path if i.endswith('.json')]
 
@@ -395,23 +401,14 @@ if __name__ == '__main__' :
     seen_alpha_acc2 = 0
     unseen_alpha_acc1 = 0
     unseen_alpha_acc2 = 0
-    random_seed = 2024
+    target_dataset = sys.argv[1]
+    random_seed = sys.argv[2]
+
     for file in tqdm(files):
-        if 'ZN-coin' in file:
-            continue
-            # dataset_name = file.split('_')[0]
-        elif 'total' in file:
-            continue
-            # dataset_name = 'total_MICH'
-        elif 'CALB' in file:
-            # dataset_name = file.split('_')[0]
-            continue
-        elif 'NA-ion' in file:
+        if target_dataset in file:
             dataset_name = file.split('_')[0]
-            # continue
         else:
             continue
-            # dataset_name = file.split('_')[0]
 
         vali_loss, test_loss, vali_sample, test_sample, vali_data, test_data, train_vali_avg_list, train_test_avg_list, total_seen_unseen_label = cal_loss(dataset_name, random_seed)
         total_test_loss = total_test_loss + test_loss
