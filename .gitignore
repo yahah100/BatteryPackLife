@@ -6,8 +6,6 @@ __pycache__/
 
 # Dataset and checkpoints
 plot_scripts/
-
-dataset/
 dataset_cp/
 checkpoints/
 mix_transfer
