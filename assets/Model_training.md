@@ -92,9 +92,9 @@ You will see the model performance at the end of model training. After that you 
 
 
 
-## Special announcement for Dummy model usage
+## Note for Dummy model usage
 
-Due to the Dummy model simply calculates the average life for every dataset during training, the usage of Dummy model is different from other models. The usage is shown below:
+Because the Dummy model simply uses the average life of the training data as the prediction, the usage of the Dummy model is different from other models. An example is shown below:
 
 ```shell
 python ./models/Dummy.py [dataset] [random_seed]
