@@ -264,7 +264,7 @@ def vali_baseline(args, accelerator, model, vali_data, vali_loader, criterion, c
         if len(unseen_preds) > 0:
             unseen_mape = mean_absolute_percentage_error(unseen_references, unseen_preds)
         else:
-            unseen_mape = 0
+            unseen_mape = -10000
 
         # alpha-acc1 
         relative_error = abs(seen_preds - seen_references) / seen_references
@@ -286,7 +286,7 @@ def vali_baseline(args, accelerator, model, vali_data, vali_loader, criterion, c
             hit_num = sum(relative_error<=args.alpha2)
             unseen_alpha_acc2 = hit_num / len(unseen_references) * 100
         else:
-            unseen_alpha_acc2 = 0
+            unseen_alpha_acc2 = -10000
 
         model.train()
         return  rmse, mae, mape, alpha_acc1, alpha_acc2, unseen_mape, seen_mape, unseen_alpha_acc1, seen_alpha_acc1, unseen_alpha_acc2, seen_alpha_acc2
