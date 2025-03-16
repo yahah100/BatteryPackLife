@@ -28,7 +28,7 @@ All the raw datasets are publicly available, interested users can download them 
 - Stanford: [link](https://data.matr.io/8/)
 - HNEI, SNL, MICH, MICH_EXP and UL_PUR datasets: [BatteryArchive](https://www.batteryarchive.org/index.html).
 
-## Benchmark result of Battery Life Prediction(BLP) task
+## Benchmark results of Battery Life Prediction(BLP) task
 
 The benchmark result for battery life prediction. The comparison methods are split into five types, including
 
@@ -47,7 +47,7 @@ The benchmark result for battery life prediction. The comparison methods are spl
 |     CPMLP     |  0.179±0.003  | 0.620±0.004 | 0.558±0.034 | 0.297±0.084 | 0.274±0.026 | 0.337±0.038 | 0.140±0.009 | 0.704±0.053 |
 |   PatchTST    |  0.288±0.042  | 0.430±0.053 | 0.716±0.024 | 0.133±0.001 | 0.396±0.094 | 0.258±0.070 | 0.347±0.045 | 0.511±0.139 |
 |  Autoformer   |  0.437±0.093  | 0.287±0.067 | 0.987±0.243 | 0.106±0.039 | 0.372±0.047 | 0.177±0.128 | 0.761±0.061 | 0.329±0.121 |
-| iTransformer  | 0.209~±0.015~ | 0.516±0.028 | 0.690±0.110 | 0.188±0.037 | 0.321±0.087 | 0.249±0.178 | 0.164±0.020 | 0.649±0.044 |
+| iTransformer  | 0.209±0.015   | 0.516±0.028 | 0.690±0.110 | 0.188±0.037 | 0.321±0.087 | 0.249±0.178 | 0.164±0.020 | 0.649±0.044 |
 |  Transformer  |       -       |      -      |      -      |      -      |      -      |      -      |      -      |      -      |
 | CPTransformer |  0.184±0.003  | 0.573±0.016 | 0.515±0.067 | 0.202±0.084 | 0.255±0.036 | 0.406±0.084 | 0.149±0.005 | 0.672±0.107 |
 |      CNN      |  0.337±0.068  | 0.371±0.050 | 0.928±0.093 | 0.115±0.029 | 0.307±0.047 | 0.273±0.027 | 0.278±0.011 | 0.582±0.032 |
