@@ -32,11 +32,11 @@ All the raw datasets are publicly available, interested users can download them 
 
 The benchmark result for battery life prediction. The comparison methods are split into five types, including
 
-1. Dummy, a baseline that uses the mean of training label as predictions
-2. MLPs, a series of multilayer perceptron models including DLinear, MLP, and CPMLP
-3. Transformers, a series of transformer models including PatchTST, Autoformer, iTransformer, Transformer, and CPTransformer
-4. CNNs, a series of convolutional neural network models including CNN and MICN
-5. RNNs, a series of recurrent neural network models including CPGRU, CPBiGRU, CPLSTM, CPBiLSTM, GRU, BiGRU, LSTM, and BiLSTM
+1. Dummy, a baseline that uses the mean of training labels as the prediction.
+2. MLPs, a series of multilayer perceptron models including DLinear, MLP, and CPMLP.
+3. Transformers, a series of transformer models including PatchTST, Autoformer, iTransformer, Transformer, and CPTransformer.
+4. CNNs, a series of convolutional neural network models including CNN and MICN.
+5. RNNs, a series of recurrent neural network models including CPGRU, CPBiGRU, CPLSTM, CPBiLSTM, GRU, BiGRU, LSTM, and BiLSTM.
 
 |   Datasets    |    Li-ion     |   Li-ion    |   Zn-ion    |   Zn-ion    |   Na-ion    |   Na-ion    |    CALB     |    CALB     |
 | :-----------: | :-----------: | :---------: | :---------: | :---------: | :---------: | :---------: | :---------: | :---------: |
