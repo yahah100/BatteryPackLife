@@ -97,7 +97,7 @@ sh ./train_eval_scripts/evaluate.sh
 
 ## Data Structure
 
-The data structure of the standardized data is described in [Data_structure_description.md](./assets/Data_structure_description).
+The data structure of the standardized data is described in [Data_structure_description.md](./assets/Data_structure_description.md).
 
 ## Welcome contributions
 
