@@ -106,7 +106,7 @@ To facilitate advances in battery life prediction, the community needs standardi
 If you are interested in contributing, please either submit a pull request or contact us via email at rtan474@connect.hkust-gz.edu.cn and whong719@connect.hkust-gz.edu.cn. Kindly include a list of contributors in your pull request or email. We will acknowledge all contributors in the acknowledgement section of this repository.
 
 ## Citation
-If you find this work useful, we would appreciate citations to the BatteryLife paper:
+If you use the processed datasets or the raw datasets produced by this work, you should cite the BatteryLife paper:
 
 ```
 @misc{tan2025batterylifecomprehensivedatasetbenchmark,
