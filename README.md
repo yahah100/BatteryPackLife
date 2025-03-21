@@ -79,7 +79,7 @@ If you download the processed datasets, you can skip this step.
 
 ### Train the model [[tutorial](./assets/Model_training.md)]
 
-Before you start training, please move all **processed datasets (such as, HUST, MATR, et al.)**, **Life labels folder** (downloaded from Hugginface or Zenodo websites), and **seen_unseen_labels** into `./dataset` path under the root folder.
+Before you start training, please move all **processed datasets (such as, HUST, MATR, et al.)** folders and **Life labels** folder (downloaded from Hugginface or Zenodo websites) into `./dataset` folder under the root folder.
 
 After that, just feel free to run any benchmark method. For example:
 
