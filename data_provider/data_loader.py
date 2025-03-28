@@ -413,6 +413,7 @@ class Dataset_original(Dataset):
             with open(f'{self.root_path}/Life labels/total_MICH_labels.json') as f:
                 life_labels = json.load(f)
         elif prefix.startswith('Tongji'):
+            file_name = file_name.replace('--', '-#')
             with open(f'{self.root_path}/Life labels/Tongji_labels.json') as f:
                 life_labels = json.load(f)
         else:
