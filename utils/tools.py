@@ -272,9 +272,12 @@ def vali_baseline(args, accelerator, model, vali_data, vali_loader, criterion, c
         seen_alpha_acc1 = hit_num / len(seen_references) * 100
 
         
-        relative_error = abs(unseen_preds - unseen_references) / unseen_references
-        hit_num = sum(relative_error<=args.alpha1)
-        unseen_alpha_acc1 = hit_num / len(unseen_references) * 100
+        if len(unseen_preds) > 0:
+            relative_error = abs(unseen_preds - unseen_references) / unseen_references
+            hit_num = sum(relative_error<=args.alpha1)
+            unseen_alpha_acc1 = hit_num / len(unseen_references) * 100
+        else:
+            unseen_alpha_acc1 = -10000
 
         # alpha-acc2
         relative_error = abs(seen_preds - seen_references) / seen_references
