@@ -10,6 +10,8 @@ dataset/
 checkpoints/
 mix_transfer
 ablation/
+baseline_scripts/
+outs/
 baseline_checkpoints/
 calb_checkpoints/
 Li_baseline_checkpoints/
