@@ -34,6 +34,20 @@ def data_provider_baseline_DA(args, flag, tokenizer=None, label_scaler=None, eva
                 life_class_scaler=life_class_scaler,
                 use_target_dataset=True
             )
+    else:
+        data_set = Data(args=args,
+                flag=flag,
+                tokenizer=tokenizer,
+                label_scaler=label_scaler,
+                eval_cycle_min=eval_cycle_min,
+                eval_cycle_max=eval_cycle_max,
+                total_prompts=total_prompts, 
+                total_charge_discharge_curves=total_charge_discharge_curves, 
+                total_curve_attn_masks=total_curve_attn_masks, total_labels=total_labels, unique_labels=unique_labels,
+                class_labels=class_labels,
+                life_class_scaler=life_class_scaler,
+                use_target_dataset=False
+            )
 
     data_loader = DataLoader(
                 data_set,
