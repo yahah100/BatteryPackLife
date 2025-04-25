@@ -175,9 +175,9 @@ class Dataset_original(Dataset):
             self.val_files = split_recorder.ZN_2024_val_files
             self.test_files = split_recorder.ZN_2024_test_files
         elif self.dataset == 'CALB42':
-            self.train_files = split_recorder.CALB_422_train_files
-            self.val_files = split_recorder.CALB_422_val_files
-            self.test_files = split_recorder.CALB_422_test_files
+            self.train_files = split_recorder.CALB_42_train_files
+            self.val_files = split_recorder.CALB_42_val_files
+            self.test_files = split_recorder.CALB_42_test_files
         elif self.dataset == 'CALB2024':
             self.train_files = split_recorder.CALB_2024_train_files
             self.val_files = split_recorder.CALB_2024_val_files
@@ -206,7 +206,7 @@ class Dataset_original(Dataset):
             elif self.dataset == 'ZN-coin2024':
                 self.unseen_seen_record = json.load(open(f'{self.root_path}/seen_unseen_labels/cal_for_test_ZN2024.json'))
             elif self.dataset == 'CALB42':
-                self.unseen_seen_record = json.load(open(f'{self.root_path}/seen_unseen_labels/cal_for_test_CALB422.json'))
+                self.unseen_seen_record = json.load(open(f'{self.root_path}/seen_unseen_labels/cal_for_test_CALB42.json'))
             elif self.dataset == 'CALB2024':
                 self.unseen_seen_record = json.load(open(f'{self.root_path}/seen_unseen_labels/cal_for_test_CALB2024.json'))
             elif self.dataset == 'NAion':

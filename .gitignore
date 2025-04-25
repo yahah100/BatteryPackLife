@@ -6,10 +6,12 @@ __pycache__/
 
 # Dataset and checkpoints
 plot_scripts/
-dataset_cp/
+dataset/
 checkpoints/
 mix_transfer
 ablation/
+baseline_scripts/
+outs/
 baseline_checkpoints/
 calb_checkpoints/
 Li_baseline_checkpoints/
