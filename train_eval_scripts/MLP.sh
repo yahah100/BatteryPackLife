@@ -1,5 +1,5 @@
 model_name=MLP
-dataset=CALB
+dataset=MIX_large
 train_epochs=100
 early_cycle_threshold=100
 learning_rate=0.00005
