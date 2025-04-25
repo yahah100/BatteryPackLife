@@ -3,7 +3,7 @@ batch_size=16
 num_process=2
 master_port=26949
 eval_cycle_min=1 # set eval_cycle_min as 1 and eval_cycle_max as 100 to evaluate all samples
-eval_cycle_max=-1
+eval_cycle_max=100
 eval_dataset=ISU_ILCC
 model=CPMLP
 
