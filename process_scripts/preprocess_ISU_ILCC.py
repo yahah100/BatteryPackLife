@@ -260,7 +260,7 @@ def calculate_soc_start_and_end(df, name, nominal_capacity=0.25):
     charge_capacity = df.loc[df['cycle_number'] == 1, 'Q_charge'].max()
     soc_charge_interval = charge_capacity / nominal_capacity
     if soc_charge_interval > 1:
-        soc_charge_interval = 0
+        soc_charge_interval = 1
     charge_start_soc[name] = 1 - soc_charge_interval
 
     discharge_capacity = df.loc[df['cycle_number'] == 1, 'Q_discharge'].max()
