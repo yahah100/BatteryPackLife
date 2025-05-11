@@ -1,5 +1,5 @@
 model_name=CPLSTM
-dataset=NAion # MIX_small
+dataset=MIX_large # MIX_small
 train_epochs=100
 early_cycle_threshold=100
 learning_rate=0.00005

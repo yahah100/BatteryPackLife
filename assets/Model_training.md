@@ -53,15 +53,15 @@ You will see the model performance at the end of model training. After that you 
 First, you should run the following script:
 
 ```shell
-sh ./train_eval_scripts/CPTransformer.sh # set "seed" as 2021 in the script. set "dataset" as NA-ion.
+sh ./train_eval_scripts/CPTransformer.sh # set "seed" as 2021 in the script. set "dataset" as NAion.
 ```
 
 ```shell
-sh ./train_eval_scripts/CPTransformer.sh # set seed as 42 in the script. Train the model using the best hyperparameters. set "dataset" as NA-ion42.
+sh ./train_eval_scripts/CPTransformer.sh # set seed as 42 in the script. Train the model using the best hyperparameters. set "dataset" as NAion42.
 ```
 
 ```shell
-sh ./train_eval_scripts/CPTransformer.sh # set seed as 2024 in the script. Train the model using the best hyperparameters. set "dataset" as NA-ion2024.
+sh ./train_eval_scripts/CPTransformer.sh # set seed as 2024 in the script. Train the model using the best hyperparameters. set "dataset" as NAion2024.
 ```
 
 You can tune the hyperparameters like d_ff and d_model until you obtain a satisfactory set of hyperparameters that perform the best on the validation sets. It should be noted that the hyperparameters that lead to the best average model performance using the three random seeds are selected.

@@ -63,7 +63,7 @@ class Model(nn.Module):
         idx = (torch.as_tensor(lengths, device=x_enc.device, dtype=torch.long) - 1).view(-1, 1).expand(
             len(lengths), x_enc.size(2))
         idx = idx.unsqueeze(1)
-        x_enc = x_enc.gather(1, idx).squeeze(1) # [B*L, 2*d_ff]
+        x_enc = x_enc.gather(1, idx).squeeze(1) # [B, 2*d_ff]
 
         output = self.projection(x_enc)
         if return_embedding:
