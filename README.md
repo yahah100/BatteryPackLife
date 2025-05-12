@@ -103,9 +103,9 @@ If you want to fine-tune the pretrained model to another dataset. We have provid
 sh ./train_eval_scripts/finetune_script.sh
 ```
 
-### Domain adaptation [[tutorial](./assets/Transfer_learning.md#Domain adaptation)]
+### Domain adaptation [[tutorial](./assets/Transfer_learning.md#domain-adaptation)]
 
-If you want to do the domain adaptation to another dataset. We have provided the domain adaptation script and the [tutorial](./assets/Transfer_learning.md#Domain adaptation). You can use it as follows:
+If you want to do the domain adaptation to another dataset. We have provided the domain adaptation script and the [tutorial](./assets/Transfer_learning.md#domain-adaptation). You can use it as follows:
 
 ```shell
 sh ./train_eval_scripts/domain_adaptation_script.sh
