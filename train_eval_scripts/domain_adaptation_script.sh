@@ -1,5 +1,5 @@
 model_name=CPMLP
-dataset=MIX_large # MIX_large
+dataset=MIX_large # source_dataset
 train_epochs=100
 early_cycle_threshold=100
 learning_rate=0.00005

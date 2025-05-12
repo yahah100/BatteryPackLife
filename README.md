@@ -95,6 +95,22 @@ If you want to evaluate a model in detail. We have provided the evaluation scrip
 sh ./train_eval_scripts/evaluate.sh
 ```
 
+### Fine-tuning [[tutorial](./assets/Transfer_learning.md#Fine-tuning)]
+
+If you want to fine-tune the pretrained model to another dataset. We have provided the fine-tuning script and the [tutorial](./assets/Transfer_learning.md#Fine-tuning). You can use it as follows:
+
+```shell
+sh ./train_eval_scripts/finetune_script.sh
+```
+
+### Domain adaptation [[tutorial](./assets/Transfer_learning.md#Domain adaptation)]
+
+If you want to do the domain adaptation to another dataset. We have provided the domain adaptation script and the [tutorial](./assets/Transfer_learning.md#Domain adaptation). You can use it as follows:
+
+```shell
+sh ./train_eval_scripts/domain_adaptation_script.sh
+```
+
 ## Data Structure
 
 The data structure of the standardized data is described in [Data_structure_description.md](./assets/Data_structure_description.md).
