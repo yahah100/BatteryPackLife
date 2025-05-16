@@ -1,8 +1,7 @@
-# BatteryLife
+# (KDD 2025) BatteryLife
 This is the official repository for [BatteryLife: A Comprehensive Dataset and Benchmark for Battery Life Prediction](https://arxiv.org/abs/2502.18807)
 
 ## Highlights
-
 - **The largest battery life dataset:** BatteryLife is created by integrating 16 datasets, providing more than ninety thousand samples from 998 batteries with life labels. This is 2.4 times the size of BatteryML, which is the previous largest battery life resource.
 - **The most diverse battery life dataset:** BatteryLife contains 8 battery formats, 80 chemical systems, 12 operation temperatures, and 646 charge/discharge protocols. Compared with the previous largest battery life resource (BatteryML), BatteryLife furnishes 4 times formats, 16 times chemical systems, 2.4 times operating temperature, and 3.4 times charge/discharge protocols.
 - **A comprehensive benchmark for battery life prediction:** BatteryLife provides 18 benchmark methods with open-source codes in this repository. The 18 benchmark methods include popular methods for battery life prediction, popular baselines in time series analysis, and a series of baselines proposed by this work.
