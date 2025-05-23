@@ -1,5 +1,5 @@
 model_name=CPMLP
-dataset=MIX_large
+dataset=CALB
 train_epochs=100
 early_cycle_threshold=100
 learning_rate=0.00005
@@ -28,7 +28,7 @@ n_heads=8
 
 checkpoints=/data/hwx/mix_transfer # the save path of checkpoints
 data=Dataset_original
-root_path=./dataset
+root_path=/data/trf/python_works/BatteryLife/dataset
 comment='CPMLP' 
 task_name=classification
 

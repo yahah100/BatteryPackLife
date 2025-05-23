@@ -11,7 +11,7 @@ from transformers import AutoConfig, LlamaModel, LlamaTokenizer, LlamaForCausalL
 from sklearn.metrics import root_mean_squared_error, mean_absolute_percentage_error, mean_absolute_error
 from models import CPGRU, CPLSTM, CPMLP, CPBiGRU, CPBiLSTM, CPTransformer, PatchTST, iTransformer, Transformer, \
     DLinear, Autoformer, MLP, MICN, CNN, \
-    BiLSTM, BiGRU, GRU, LSTM
+    BiLSTM, BiGRU, GRU, LSTM, Toto, YingLong
 import wandb
 from peft import LoraConfig, PeftModel, get_peft_model, prepare_model_for_kbit_training
 from data_provider.data_factory import data_provider_evaluate
@@ -28,6 +28,9 @@ from data_provider.data_factory import data_provider_baseline
 # os.environ["CUDA_VISIBLE_DEVICES"] = '2,3,4,5'
 import joblib
 from utils.tools import del_files, EarlyStopping, adjust_learning_rate, load_content
+from utils.dataset import MaskedTimeseries
+from utils.forecaster import TotoForecaster
+
 parser = argparse.ArgumentParser(description='Time-LLM')
 def calculate_metrics_based_on_seen_number_of_cycles(total_preds, total_references, total_seen_number_of_cycles, alpha1, alpha2, model, dataset, seed, finetune_dataset, start=1, end=100):
     number_MAPE = {}
@@ -82,7 +85,7 @@ parser.add_argument('--seed', type=int, default=2021, help='random seed')
 
 # data loader
 parser.add_argument('--dataset', type=str, default='HUST', help='dataset description')
-parser.add_argument('--data', type=str, required=False, default='BatteryLifeLLM', help='dataset type')
+parser.add_argument('--data', type=str, required=False, default='Dataset_original', help='dataset type')
 parser.add_argument('--root_path', type=str, default='./dataset/HUST_dataset/', help='root path of the data file')
 parser.add_argument('--data_path', type=str, default='ETTh1.csv', help='data file')
 parser.add_argument('--features', type=str, default='M',
@@ -169,10 +172,23 @@ parser.add_argument('--args_path', type=str, help='the path to the pretrained mo
 parser.add_argument('--eval_dataset', type=str, help='the target dataset')
 parser.add_argument('--eval_cycle_min', type=int, default=10, help='The lower bound for evaluation')
 parser.add_argument('--eval_cycle_max', type=int, default=10, help='The upper bound for evaluation')
+parser.add_argument('--pretrained', type=bool, default=False, help='The flag for pretrained model')
+parser.add_argument('--wd', type=float, default=0.0, help='weight decay')
+parser.add_argument('--weighted_loss', action='store_true', default=False, help='use weighted loss')
+
+# pretrained
+parser.add_argument('--embed_dim', type=int, default=128, help='embed dimension of Toto')
+parser.add_argument('--num_layers', type=int, default=4, help='layers number of Toto')
+parser.add_argument('--num_heads', type=int, default=4, help='heads number of Toto')
+parser.add_argument('--mlp_hidden_dim', type=int, default=64, help='mlp hidden dimension of Toto')
+parser.add_argument('--spacewise_every_n_layers', type=int, default=0, help='Toto')
+parser.add_argument('--scaler_cls', type=str, default=None, help='Toto')
+parser.add_argument('--output_distribution_classes', type=str, default=None, help='Toto')
+parser.add_argument('--patch_size', type=int, default=64, help='Toto')
+
 args = parser.parse_args()
 eval_cycle_min = args.eval_cycle_min
 eval_cycle_max = args.eval_cycle_max
-batch_size = args.batch_size
 if eval_cycle_min < 0 or eval_cycle_max <0:
     eval_cycle_min = None
     eval_cycle_max = None
@@ -183,17 +199,23 @@ deepspeed_plugin = DeepSpeedPlugin(hf_ds_config='./ds_config_zero2_baseline.json
 accelerator = Accelerator(kwargs_handlers=[ddp_kwargs], deepspeed_plugin=deepspeed_plugin)
 
 # load from the saved path
-args_path = args.args_path
-dataset = args.eval_dataset
 alpha = args.alpha
 alpha2 = args.alpha2
-args_json = json.load(open(f'{args_path}args.json'))
-trained_dataset = args_json['dataset']
-args_json['dataset'] = dataset
-args_json['batch_size'] = batch_size
-args_json['model'] = args.model
-args.__dict__ = args_json
-finetune_dataset = args.finetune_dataset if 'finetune_dataset' in args_json else 'None'
+is_pretrained = args.pretrained
+if is_pretrained:
+    args_path = args.args_path
+    args.dataset = args.eval_dataset
+else:
+    args_path = args.args_path
+    args_json = json.load(open(f'{args_path}args.json'))
+    args_json['dataset'] = args.eval_dataset
+    args_json['batch_size'] = args.batch_size
+    args_json['model'] = args.model
+    args.__dict__ = args_json
+    finetune_dataset = args.finetune_dataset if 'finetune_dataset' in args_json else 'None'
+
+trained_dataset = args.dataset
+
 for ii in range(args.itr):
     # setting record of experiments
     setting = '{}_sl{}_lr{}_dm{}_nh{}_el{}_dl{}_df{}_lradj{}_dataset{}_loss{}_wd{}_wl{}'.format(
@@ -252,6 +274,8 @@ for ii in range(args.itr):
         model = CNN.Model(args).float()
     elif args.model == 'CPTransformer':
         model = CPTransformer.Model(args).float()
+    elif args.model == 'Toto':
+        accelerator.print('This is a pretrained model: Toto!')
     else:
         raise Exception(f'The {args.model} is not an implemented baseline!')
     
@@ -266,28 +290,20 @@ for ii in range(args.itr):
     else:
         tokenizer.add_special_tokens({'pad_token': '[PAD]'})
 
-    label_scaler = joblib.load(f'{args_path}/label_scaler')
-    std, mean_value = np.sqrt(label_scaler.var_[-1]), label_scaler.mean_[-1]
-    life_class_scaler = joblib.load(f'{args_path}/life_class_scaler')
-    accelerator.print("Loading training samples......")
-    # accelerator.print("Loading vali samples......")
-    # vali_data, vali_loader = data_provider_func(args, 'val', tokenizer, label_scaler)
-    accelerator.print("Loading test samples......")
-    test_data, test_loader = data_provider_func(args, 'test', tokenizer, label_scaler=label_scaler, eval_cycle_min=eval_cycle_min, eval_cycle_max=eval_cycle_max, life_class_scaler=life_class_scaler)
-
+    if args.model != 'Toto':
+        label_scaler = joblib.load(f'{args_path}/label_scaler')
+        std, mean_value = np.sqrt(label_scaler.var_[-1]), label_scaler.mean_[-1]
+        life_class_scaler = joblib.load(f'{args_path}/life_class_scaler')
+        accelerator.print("Loading test samples......")
+        test_data, test_loader = data_provider_func(args, 'test', tokenizer, label_scaler=label_scaler, eval_cycle_min=eval_cycle_min, eval_cycle_max=eval_cycle_max, life_class_scaler=life_class_scaler)
+    else:
+        accelerator.print("Loading test samples......")
+        test_data, test_loader = data_provider_func(args, 'test', tokenizer, label_scaler=0, eval_cycle_min=eval_cycle_min, eval_cycle_max=eval_cycle_max, life_class_scaler=0)
 
     # load LoRA
     # print the module name
-    for name, module in model._modules.items():
-        print (name," : ",module)
-        
-        
-    trained_parameters = []
-    for p in model.parameters():
-        if p.requires_grad is True:
-            trained_parameters.append(p)
-            
-    model_optim = optim.Adam(trained_parameters, lr=args.learning_rate)
+    # for name, module in model._modules.items():
+    #     print (name," : ",module)
     
     time_now = time.time()
 
@@ -295,7 +311,22 @@ for ii in range(args.itr):
 
     criterion = nn.MSELoss()
     accumulation_steps = args.accumulation_steps
-    load_checkpoint_in_model(model, args_path) # load the saved parameters into model
+    if is_pretrained:
+        if args.model == 'Toto':
+            toto = Toto.Toto.from_pretrained('Datadog/Toto-Open-Base-1.0').to(accelerator.device)
+            toto.compile()
+            forecaster = TotoForecaster(toto.model)
+            model = toto.model
+    else:
+        load_checkpoint_in_model(model, args_path) # load the saved parameters into model
+    
+    trained_parameters = []
+    for p in model.parameters():
+        if p.requires_grad is True:
+            trained_parameters.append(p)
+            
+    model_optim = optim.Adam(trained_parameters, lr=args.learning_rate)
+
     test_loader, model, model_optim = accelerator.prepare(test_loader, model, model_optim)
     accelerator.print(f'The model is {args.model}')
     accelerator.print(f'The sample size of testing set is {len(test_data)}')
@@ -313,13 +344,32 @@ for ii in range(args.itr):
     model.eval() # set the model to evaluation mode
     with torch.no_grad():
         for i, (cycle_curve_data, curve_attn_mask, labels, life_class, scaled_life_class, weights, dataset_ids, seen_unseen_ids) in tqdm(enumerate(test_loader)):
+            
             cycle_curve_data = cycle_curve_data.float().to(accelerator.device)# [B, S, N]
             curve_attn_mask = curve_attn_mask.float().to(accelerator.device)
             labels = labels.float().to(accelerator.device)
             seen_number_of_cycles = torch.sum(curve_attn_mask, dim=1) # [B]
 
-            # encoder - decoder
-            outputs = model(cycle_curve_data, curve_attn_mask)
+            if args.model == 'Toto':
+                inputs = MaskedTimeseries(
+                    series=cycle_curve_data,
+                    padding_mask=torch.full_like(cycle_curve_data, True, dtype=torch.bool),
+                    id_mask=torch.zeros_like(curve_attn_mask),
+                    timestamp_seconds=torch.zeros(args.batch_size, 4096),
+                    time_interval_seconds=torch.zeros(args.batch_size, 4096),
+                )
+
+                outputs = model.forecast(
+                    inputs,
+                    prediction_length=args.charge_discharge_length,
+                    num_samples=len(test_data),
+                    samples_per_batch=args.batch_size,
+                )
+                outputs = outputs.mean
+            else:
+                # encoder - decoder
+                outputs = model(cycle_curve_data, curve_attn_mask)
+
             # self.accelerator.wait_for_everyone()
             transformed_preds = outputs * std + mean_value
             transformed_labels = labels * std + mean_value
