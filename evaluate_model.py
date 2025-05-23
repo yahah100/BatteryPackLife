@@ -7,11 +7,10 @@ from torch.optim import lr_scheduler
 from tqdm import tqdm
 import evaluate
 from transformers import AutoTokenizer
-from transformers import AutoConfig, LlamaModel, LlamaTokenizer, LlamaForCausalLM
 from sklearn.metrics import root_mean_squared_error, mean_absolute_percentage_error, mean_absolute_error
 from models import CPGRU, CPLSTM, CPMLP, CPBiGRU, CPBiLSTM, CPTransformer, PatchTST, iTransformer, Transformer, \
     DLinear, Autoformer, MLP, MICN, CNN, \
-    BiLSTM, BiGRU, GRU, LSTM, Toto, YingLong
+    BiLSTM, BiGRU, GRU, LSTM
 import wandb
 from peft import LoraConfig, PeftModel, get_peft_model, prepare_model_for_kbit_training
 from data_provider.data_factory import data_provider_evaluate
@@ -29,7 +28,7 @@ from data_provider.data_factory import data_provider_baseline
 import joblib
 from utils.tools import del_files, EarlyStopping, adjust_learning_rate, load_content
 from utils.dataset import MaskedTimeseries
-from utils.forecaster import TotoForecaster
+# from utils.forecaster import TotoForecaster
 
 parser = argparse.ArgumentParser(description='Time-LLM')
 def calculate_metrics_based_on_seen_number_of_cycles(total_preds, total_references, total_seen_number_of_cycles, alpha1, alpha2, model, dataset, seed, finetune_dataset, start=1, end=100):
@@ -172,11 +171,11 @@ parser.add_argument('--args_path', type=str, help='the path to the pretrained mo
 parser.add_argument('--eval_dataset', type=str, help='the target dataset')
 parser.add_argument('--eval_cycle_min', type=int, default=10, help='The lower bound for evaluation')
 parser.add_argument('--eval_cycle_max', type=int, default=10, help='The upper bound for evaluation')
-parser.add_argument('--pretrained', type=bool, default=False, help='The flag for pretrained model')
 parser.add_argument('--wd', type=float, default=0.0, help='weight decay')
 parser.add_argument('--weighted_loss', action='store_true', default=False, help='use weighted loss')
 
 # pretrained
+parser.add_argument('--pretrained', type=bool, default=False, help='The flag for pretrained model')
 parser.add_argument('--embed_dim', type=int, default=128, help='embed dimension of Toto')
 parser.add_argument('--num_layers', type=int, default=4, help='layers number of Toto')
 parser.add_argument('--num_heads', type=int, default=4, help='heads number of Toto')

@@ -25,10 +25,10 @@ from utils.backbone import TotoBackbone
 
 @dataclass(frozen=True)
 class Forecast:
-    mean: Float[torch.Tensor, "batch variate future_time_steps"]
-    samples: Union[Float[torch.Tensor, "batch variate future_time_steps samples"]] = None
+    mean: torch.Tensor
+    samples: Union[torch.Tensor] = None
 
-    def quantile(self, q: Union[float, torch.Tensor]) -> Float[torch.Tensor, "batch variate future_time_steps"]:
+    def quantile(self, q: Union[float, torch.Tensor]) -> torch.Tensor:
         """
         Compute the quantile of the forecast samples.
         """
@@ -39,14 +39,14 @@ class Forecast:
         return self.samples.quantile(q, dim=-1)
 
     @property
-    def median(self) -> Float[torch.Tensor, "batch variate future_time_steps"]:
+    def median(self) -> torch.Tensor:
         """
         The median of the forecast samples.
         """
         return self.quantile(0.5)
 
     @property
-    def std(self) -> Float[torch.Tensor, "batch variate future_time_steps"]:
+    def std(self) -> torch.Tensor:
         """
         Compute the standard deviation of the forecast samples.
         """
@@ -151,7 +151,7 @@ class TotoForecaster:
         if id_mask is not None:
             id_mask = pad_id_mask(batch.id_mask, self.model.patch_embed.stride)
         timestamp_seconds = pad_array(batch.timestamp_seconds, self.model.patch_embed.stride)
-        time_interval_seconds: Int[torch.Tensor, "batch variate series_len"] = torch.as_tensor(
+        time_interval_seconds: torch.Tensor = torch.as_tensor(
             batch.time_interval_seconds, device=series.device, dtype=torch.int
         )
 
@@ -185,14 +185,14 @@ class TotoForecaster:
     @torch.no_grad()
     def generate_mean(
         self,
-        inputs: Float[torch.Tensor, "batch variate time_steps"],
+        inputs: torch.Tensor,
         prediction_length: int,
-        timestamp_seconds: Int[torch.Tensor, "batch variate time_steps"],
-        time_interval_seconds: Int[torch.Tensor, "batch variate"],
-        input_padding_mask: Optional[Bool[torch.Tensor, "batch variate time_steps"]] = None,
-        id_mask: Optional[Float[torch.Tensor, "batch #variate time_steps"]] = None,
+        timestamp_seconds: torch.Tensor,
+        time_interval_seconds: torch.Tensor,
+        input_padding_mask: Optional[torch.Tensor] = None,
+        id_mask: Optional[torch.Tensor] = None,
         use_kv_cache: bool = False,
-    ) -> Float[torch.Tensor, "batch variate time_steps"]:
+    ) -> torch.Tensor:
         """
         Generate a point prediction by taking the mean of the output distribution at each step.
         This method works autoregressively, i.e. it feeds the model's predictions back into itself
@@ -251,7 +251,7 @@ class TotoForecaster:
             id_mask = torch.cat([id_mask, dummy_id_mask], dim=-1)
             input_padding_mask = torch.cat([input_padding_mask, dummy_padding], dim=-1)
             for _ in range(patch_size):
-                next_timestamp: Int[torch.Tensor, "batch variate"] = timestamp_seconds[:, :, -1] + time_interval_seconds
+                next_timestamp: torch.Tensor = timestamp_seconds[:, :, -1] + time_interval_seconds
                 timestamp_seconds = torch.cat([timestamp_seconds, next_timestamp.unsqueeze(-1)], dim=-1)
 
         return inputs.detach()[:, :, start_index:end_index]
@@ -259,16 +259,16 @@ class TotoForecaster:
     @torch.no_grad()
     def generate_samples(
         self,
-        inputs: Float[torch.Tensor, "batch variate time_steps"],
+        inputs: torch.Tensor,
         prediction_length: int,
         num_samples: int,
-        timestamp_seconds: Int[torch.Tensor, "batch variate time_steps"],
-        time_interval_seconds: Int[torch.Tensor, "batch variate"],
-        input_padding_mask: Optional[Bool[torch.Tensor, "batch variate time_steps"]] = None,
-        id_mask: Optional[Float[torch.Tensor, "batch #variate time_steps"]] = None,
+        timestamp_seconds: torch.Tensor,
+        time_interval_seconds: torch.Tensor,
+        input_padding_mask: Optional[torch.Tensor] = None,
+        id_mask: Optional[torch.Tensor] = None,
         sampling_batch_size: int = 10,
         use_kv_cache: bool = False,
-    ) -> Float[torch.Tensor, "batch variate time_steps samples"]:
+    ) -> torch.Tensor:
         """
         Generate samples from the output distribution.
         This method works autorregressively, i.e. it feeds the model's predictions back into itself.

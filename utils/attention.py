@@ -71,8 +71,8 @@ class BaseMultiheadAttention(torch.nn.Module):
             raise ValueError("Child class must define attention_axis as AttentionAxis.TIME or AttentionAxis.SPACE.")
 
     def rearrange_inputs(
-        self, inputs: Float[torch.Tensor, "batch variate seq_len embed_dim"]
-    ) -> Float[torch.Tensor, "... embed_dim"]:
+        self, inputs: torch.Tensor
+    ) -> torch.Tensor:
 
         pattern = (
             "batch variate seq_len embed_dim -> (batch variate) seq_len embed_dim"
@@ -128,7 +128,7 @@ class BaseMultiheadAttention(torch.nn.Module):
 
     def rearrange_output(
         self, output: torch.Tensor, batch: int, variate: int, seq_len: int
-    ) -> Float[torch.Tensor, "batch variate seq_len embed_dim"]:
+    ) -> torch.Tensor:
         if self.attention_axis == AttentionAxis.TIME and self.use_memory_efficient_attention:
             pattern = "(batch variate) seq_len n_heads head_dim -> batch variate seq_len (n_heads head_dim)"
         elif self.attention_axis == AttentionAxis.TIME and not self.use_memory_efficient_attention:
@@ -186,15 +186,15 @@ class BaseMultiheadAttention(torch.nn.Module):
     def forward(
         self,
         layer_idx: int,
-        inputs: Float[torch.Tensor, "batch variate seq_len embed_dim"],
+        inputs: torch.Tensor,
         attention_mask: Optional[
             Union[
-                Bool[torch.Tensor, "batch_X_variate n_heads seq_len seq_len"],  # Time-wise mask
-                Bool[torch.Tensor, "batch_X_seq_len n_heads variate variate"],  # Space-wise mask
+                torch.Tensor,  # Time-wise mask
+                torch.Tensor,  # Space-wise mask
             ]
         ] = None,
         kv_cache: Optional["KVCache"] = None,
-    ) -> Float[torch.Tensor, "batch variate seq_len embed_dim"]:
+    ) -> torch.Tensor:
         batch_size, variate, seq_len, _ = inputs.shape
         dropout = self.dropout if self.training else 0.0
 

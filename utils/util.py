@@ -103,17 +103,17 @@ class KVCache:
     use_memory_efficient_attention: bool = True
 
     _keys: Union[
-        Float[torch.Tensor, "time_layer_count batch_size_X_num_variates max_seq_len num_heads head_dim"],
-        Float[torch.Tensor, "time_layer_count batch_size_X_num_variates num_heads max_seq_len head_dim"],
+        torch.Tensor,
+        torch.Tensor,
     ] = field(init=False)
 
     _values: Union[
-        Float[torch.Tensor, "time_layer_count batch_size_X_num_variates max_seq_len num_heads head_dim"],
-        Float[torch.Tensor, "time_layer_count batch_size_X_num_variates num_heads max_seq_len head_dim"],
+        torch.Tensor,
+        torch.Tensor,
     ] = field(init=False)
 
-    _current_idx: Int[torch.Tensor, "time_layer_count"] = field(init=False)
-    _layer_cache_map: Int[torch.Tensor, "num_layers"] = field(init=False)
+    _current_idx: torch.Tensor = field(init=False)
+    _layer_cache_map: torch.Tensor = field(init=False)
 
     def __post_init__(self):
         """

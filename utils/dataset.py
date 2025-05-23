@@ -14,9 +14,9 @@ from jaxtyping import Bool, Float, Int, Shaped
 
 
 def pad_array(
-    values: Shaped[torch.Tensor, "*batch variates series_len"],  # noqa: F722
+    values: torch.Tensor,  # noqa: F722
     patch_stride: int,
-) -> Shaped[torch.Tensor, "*batch variates padded_length"]:  # noqa: F722
+) -> torch.Tensor:  # noqa: F722
     """
     Makes sure that the series length is divisible by the patch_stride
     by adding left-padding.
@@ -42,9 +42,9 @@ def pad_array(
 
 
 def pad_id_mask(
-    id_mask: Int[torch.Tensor, "*batch variates series_len"],  # noqa: F722
+    id_mask: torch.Tensor,  # noqa: F722
     patch_stride: int,
-) -> Int[torch.Tensor, "*batch variates padded_length"]:  # noqa: F722
+) -> torch.Tensor:  # noqa: F722
     """
     Makes sure that the series length is divisible by the patch_stride
     by adding left-padding to the id mask. It does this by repeating
@@ -54,7 +54,7 @@ def pad_id_mask(
     # left-pad the time series to make sure we can divide it into patches.
     padded_length = int(np.ceil(series_len / patch_stride) * patch_stride)
     padding_amount = padded_length - series_len
-    left_edge: Int[torch.Tensor, "*batch variates"] = id_mask[..., 0]  # noqa: F722
+    left_edge: torch.Tensor = id_mask[..., 0]  # noqa: F722
     if id_mask.ndim == 2:  # variates series_len
         # repeat the left edge of the id mask for padding_amount
         padding = repeat(
@@ -79,18 +79,18 @@ def pad_id_mask(
 
 class MaskedTimeseries(NamedTuple):
     # Note: "*batch" indicates the batch dimension is optional.
-    series: Float[torch.Tensor, "*batch variates series_len"]  # noqa: F722
+    series: torch.Tensor  # noqa: F722
     """
     The time series data.
     """
 
-    padding_mask: Bool[torch.Tensor, "*batch variates series_len"]  # noqa: F722
+    padding_mask: torch.Tensor  # noqa: F722
     """
     A mask that indicates which values are padding. If padding_mask[..., i] is True,
     then series[..., i] is _NOT_ padding; i.e., it's a valid value in the time series.
     """
 
-    id_mask: Int[torch.Tensor, "*batch variates #series_len"]  # noqa: F722
+    id_mask: torch.Tensor  # noqa: F722
     """
     A mask that indicates the group ID of each variate. Any
     variates with the same ID are considered to be part of the same multivariate
@@ -100,12 +100,12 @@ class MaskedTimeseries(NamedTuple):
     be broadcast across the time dimension.
     """
 
-    timestamp_seconds: Int[torch.Tensor, "*batch variates series_len"]  # noqa: F722
+    timestamp_seconds: torch.Tensor  # noqa: F722
     """
     A POSIX timestamp in seconds for each time step in the series.
     """
 
-    time_interval_seconds: Int[torch.Tensor, "*batch variates"]  # noqa: F722
+    time_interval_seconds: torch.Tensor  # noqa: F722
     """
     The time frequency of each variate in seconds
     """

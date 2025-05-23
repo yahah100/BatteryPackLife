@@ -10,8 +10,8 @@ from jaxtyping import Float, Int, Num
 
 
 def patchify_id_mask(
-    id_mask: Int[torch.Tensor, "batch variate time_steps"], patch_size: int
-) -> Int[torch.Tensor, "batch variate seq_len patch_size"]:
+    id_mask: torch.Tensor, patch_size: int
+) -> torch.Tensor:
     patched_id_mask = id_mask.unfold(dimension=-1, size=patch_size, step=patch_size)
     patched_id_mask_min = patched_id_mask.min(-1).values
     patched_id_mask_max = patched_id_mask.max(-1).values
@@ -33,23 +33,23 @@ class PatchEmbedding(torch.nn.Module):
         self.projection = torch.nn.Linear(self.patch_size, self.embed_dim)
 
     def _patchify(
-        self, x: Num[torch.Tensor, "batch variate time_steps"]
-    ) -> Num[torch.Tensor, "batch variate seq_len patch_size"]:
+        self, x: torch.Tensor
+    ) -> torch.Tensor:
         return x.unfold(dimension=-1, size=self.patch_size, step=self.stride)
 
     def forward(
         self,
-        x: Float[torch.Tensor, "batch #variate time_steps"],
-        id_mask: Float[torch.Tensor, "batch time_steps"],
+        x: torch.Tensor,
+        id_mask: torch.Tensor,
     ) -> tuple[
-        Float[torch.Tensor, "batch variate seq_len embed_dim"],
-        Int[torch.Tensor, "batch seq_len"],
+        torch.Tensor,
+        torch.Tensor,
     ]:
         assert (
             x.shape[-1] % self.patch_size == 0
         ), f"Series length ({x.shape=}) must be divisible by ({self.patch_size=})"
-        x_patched: Float[torch.Tensor, "batch variate seq_len patch_size"] = self._patchify(x)
-        id_mask_patched: Int[torch.Tensor, "batch variate seq_len patch_size"] = self._patchify(id_mask)
+        x_patched: torch.Tensor = self._patchify(x)
+        id_mask_patched: torch.Tensor = self._patchify(id_mask)
 
         assert torch.eq(
             id_mask_patched.min(-1).values, id_mask_patched.max(-1).values

@@ -114,15 +114,15 @@ class TransformerLayer(torch.nn.Module):
     def forward(
         self,
         layer_idx: int,
-        inputs: Float[torch.Tensor, "batch variate seq_len embed_dim"],
+        inputs: torch.Tensor,
         attention_mask: Optional[
             Union[
-                Bool[torch.Tensor, "batch seq_len variate variate"],
-                Bool[torch.Tensor, "batch #variate seq_len seq_len"],
+                torch.Tensor,
+                torch.Tensor,
             ]
         ] = None,
         kv_cache: KVCache = None,
-    ) -> Float[torch.Tensor, "batch variate seq_len embed_dim"]:
+    ) -> torch.Tensor:
         pre_norm_1 = self.norm1(inputs)
         hidden_state = inputs + self.attention(layer_idx, pre_norm_1, attention_mask, kv_cache).contiguous()
 
@@ -205,10 +205,10 @@ class Transformer(torch.nn.Module):
         dtype: torch.dtype,
         id_mask: Optional[torch.Tensor] = None,
     ) -> Union[
-        Bool[torch.Tensor, "batch num_heads seq_len seq_len"],
-        Float[torch.Tensor, "batch num_heads seq_len seq_len"],
-        Bool[torch.Tensor, "batch num_heads variate variate"],
-        Float[torch.Tensor, "batch num_heads variate variate"],
+        torch.Tensor,
+        torch.Tensor,
+        torch.Tensor,
+        torch.Tensor,
     ]:
         """
         Unified method to create and process space-wise masks.
@@ -287,10 +287,10 @@ class Transformer(torch.nn.Module):
 
     def forward(
         self,
-        inputs: Float[torch.Tensor, "batch variate seq_len embed_dim"],
-        id_mask: Float[torch.Tensor, "batch #variate seq_len"],
+        inputs: torch.Tensor,
+        id_mask: torch.Tensor,
         kv_cache: KVCache = None,
-    ) -> Float[torch.Tensor, "batch variate seq_len embed_dim"]:
+    ) -> torch.Tensor:
 
         batch, _, seq_len, _ = inputs.shape
         # Get the sequence length by looking up a timewise layer in the kv cache.

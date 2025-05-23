@@ -1,4 +1,4 @@
-args_path=/home/hwx/python_project/Publish/BatteryLife/test/HiMLP_sl1_lr5e-05_dm128_nh8_el4_dl2_df256_lradjconstant_datasetMIX_large_lossMSE_wd0.0_wlFalse_bs4-HiMLP/
+args_path=/data/hwx/finetune_checkpoints/CPMLP_sl1_lr5e-05_dm128_nh4_el12_dl12_df256_lradjconstant_datasetMIX_large_lossMSE_wd0.0_wlFalse_bs16-CPMLP/
 batch_size=16
 num_process=2
 master_port=26949

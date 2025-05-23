@@ -25,8 +25,8 @@ class TotoOutput(NamedTuple):
     """
 
     distribution: torch.distributions.Distribution
-    loc: Float[torch.Tensor, "batch variate"]
-    scale: Float[torch.Tensor, "batch variate"]
+    loc: torch.Tensor
+    scale: torch.Tensor
 
 
 class TotoBackbone(torch.nn.Module):
@@ -151,19 +151,19 @@ class TotoBackbone(torch.nn.Module):
 
     def backbone(
         self,
-        inputs: Float[torch.Tensor, "batch variate time_steps"],
-        input_padding_mask: Bool[torch.Tensor, "batch variate time_steps"],
-        id_mask: Float[torch.Tensor, "batch #variate time_steps"],
+        inputs: torch.Tensor,
+        input_padding_mask: torch.Tensor,
+        id_mask: torch.Tensor,
         kv_cache: Optional[KVCache] = None,
         scaling_prefix_length: Optional[int] = None,
     ) -> tuple[
-        Float[torch.Tensor, "batch variates time_steps embed_dim"],
-        Float[torch.Tensor, "batch variates time_steps"],
-        Float[torch.Tensor, "batch variates time_steps"],
+        torch.Tensor,
+        torch.Tensor,
+        torch.Tensor,
     ]:
-        scaled_inputs: Float[torch.Tensor, "batch variate time_steps"]
-        loc: Float[torch.Tensor, "batch variate time_steps"]
-        scale: Float[torch.Tensor, "batch variate time_steps"]
+        scaled_inputs: torch.Tensor
+        loc: torch.Tensor
+        scale: torch.Tensor
 
         # Standard scaling operation, same API but without ID mask.
         scaled_inputs, loc, scale = self.scaler(
@@ -191,18 +191,18 @@ class TotoBackbone(torch.nn.Module):
             input_padding_mask = input_padding_mask[:, :, prefix_len:]
             id_mask = id_mask[:, :, prefix_len:]
 
-        embeddings: Float[torch.Tensor, "batch variate seq_len embed_dim"]
-        reduced_id_mask: Float[torch.Tensor, "batch variate seq_len"]
+        embeddings: torch.Tensor
+        reduced_id_mask: torch.Tensor
 
         embeddings, reduced_id_mask = self.patch_embed(scaled_inputs, id_mask)
 
         # Apply the transformer on the embeddings
-        transformed: Float[torch.Tensor, "batch variates seq_len embed_dim"] = self.transformer(
+        transformed: torch.Tensor = self.transformer(
             embeddings, reduced_id_mask, kv_cache
         )
 
         # Unembed and flatten the sequence
-        flattened: Float[torch.Tensor, "batch variates new_seq_len embed_dim"] = rearrange(
+        flattened: torch.Tensor = rearrange(
             self.unembed(transformed),
             "batch variates seq_len (patch_size embed_dim) -> batch variates (seq_len patch_size) embed_dim",
             embed_dim=self.embed_dim,
@@ -211,9 +211,9 @@ class TotoBackbone(torch.nn.Module):
 
     def forward(
         self,
-        inputs: Float[torch.Tensor, "batch variate time_steps"],
-        input_padding_mask: Bool[torch.Tensor, "batch variate time_steps"],
-        id_mask: Float[torch.Tensor, "batch #variate time_steps"],
+        inputs: torch.Tensor,
+        input_padding_mask: torch.Tensor,
+        id_mask: torch.Tensor,
         kv_cache: Optional[KVCache] = None,
         scaling_prefix_length: Optional[int] = None,
     ) -> TotoOutput:

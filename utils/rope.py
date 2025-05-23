@@ -43,7 +43,7 @@ class TimeAwareRotaryEmbedding(RotaryEmbedding):
         q: torch.Tensor,
         k: torch.Tensor,
         seq_dim: Optional[int] = None,
-        seq_pos: Optional[Int[torch.Tensor, "... seq_len"]] = None,
+        seq_pos: Optional[torch.Tensor] = None,
         seq_pos_offset: int = 0,
     ):
         """
