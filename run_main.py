@@ -1,4 +1,3 @@
-# curriculum learning
 import argparse
 import torch
 import accelerate
@@ -232,13 +231,6 @@ for ii in range(args.itr):
         config=args.__dict__,
         name=nowtime
         )
-    # args.content = load_content(args)
-
-    # load LoRA
-    # print the module name
-
-    # for n, m in model.named_modules():
-    #     accelerator.print(n, m)
 
 
     para_res = get_parameter_number(model)
@@ -313,8 +305,6 @@ for ii in range(args.itr):
         total_preds, total_references = [], []
         for i, (cycle_curve_data, curve_attn_mask,  labels, life_class, scaled_life_class, weights, seen_unseen_ids) in enumerate(train_loader):
             with accelerator.accumulate(model):
-                # batch_x_mark is the total_masks
-                # batch_y_mark is the total_used_cycles
                 model_optim.zero_grad()
                 iter_count += 1
                 
@@ -425,9 +415,6 @@ for ii in range(args.itr):
                 scheduler.step()
                 accelerator.print("lr = {:.10f}".format(model_optim.param_groups[0]['lr']))
             else:
-                # if epoch == 0:
-                #     args.learning_rate = model_optim.param_groups[0]['lr']
-                #     accelerator.print("lr = {:.10f}".format(model_optim.param_groups[0]['lr']))
                 adjust_learning_rate(accelerator, model_optim, scheduler, epoch + 1, args, printout=True)
 
         else:
