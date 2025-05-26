@@ -1,4 +1,4 @@
-args_path=/data/hwx/finetune_checkpoints/CPMLP_sl1_lr5e-05_dm128_nh4_el12_dl12_df256_lradjconstant_datasetMIX_large_lossMSE_wd0.0_wlFalse_bs16-CPMLP/
+args_path=/path/to/your/saving/folder/ # the model you want to evaluate
 batch_size=16
 num_process=2
 master_port=26949
@@ -7,7 +7,7 @@ eval_cycle_max=100
 eval_dataset=CALB
 model=CPMLP
 
-CUDA_VISIBLE_DEVICES=2,3 accelerate launch  --multi_gpu --num_processes $num_process --main_process_port $master_port evaluate_model.py \
+CUDA_VISIBLE_DEVICES=0,1 accelerate launch  --multi_gpu --num_processes $num_process --main_process_port $master_port evaluate_model.py \
   --args_path $args_path \
   --batch_size $batch_size \
   --eval_cycle_min $eval_cycle_min \

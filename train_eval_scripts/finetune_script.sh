@@ -1,9 +1,9 @@
-args_path=/home/hwx/python_project/test/BatteryLife/Li_baseline_checkpoints/HiMLP_sl1_lr5e-05_dm256_nh8_el6_dl2_df128_lradjconstant_datasetMIX_large_lossMSE_wd0.0_wlFalse_hyperFalse-HiMLP/ # the source checkpoints
+args_path=/path/to/your/model/checkpoints/ # the source checkpoints
 batch_size=8
-num_process=8
+num_process=2
 master_port=24988
-finetune_dataset=ZN-coin # the target dataset
-model_name=HiMLP
+finetune_dataset=MIX_large # the target dataset
+model_name=CPMLP
 train_epochs=100
 early_cycle_threshold=100
 learning_rate=0.0005
@@ -18,21 +18,21 @@ e_layers=2
 loss=MSE
 
 seq_len=1
-d_layers=2 # distilling layer number
+d_layers=2 
 dropout=0.1
 charge_discharge_length=300
 patience=5 # Eearly stopping patience
 lradj=constant
 n_heads=8
 
-checkpoints=/data/hwx/finetune_checkpoints # the save path of checkpoints
+checkpoints=/path/to/your/saving/folder # the save path of checkpoints
 data=Dataset_original
-root_path=/data/trf/python_works/Battery-LLM/dataset
+root_path=./dataset
 comment='CPMLP' 
 task_name=classification
 
 
-accelerate launch  --multi_gpu --num_processes $num_process --main_process_port $master_port finetune.py \
+CUDA_VISIBLE_DEVICES=0,1 accelerate launch  --multi_gpu --num_processes $num_process --main_process_port $master_port finetune.py \
   --args_path $args_path \
   --batch_size $batch_size \
   --finetune_dataset $finetune_dataset \

@@ -12,10 +12,8 @@ lstm_layers=2
 d_model=256
 d_ff=128
 loss=MSE
-
-# contrastive learning
 e_layers=3
-d_layers=2 # distilling layer number
+d_layers=2 
 dropout=0.1
 charge_discharge_length=300
 patience=5 # Eearly stopping patience
@@ -24,13 +22,13 @@ n_heads=8
 seed=2021
 
 
-checkpoints=/data/hwx/na_checkpoints # the save path of checkpoints
+checkpoints=/path/to/your/saving/folder # the save path of checkpoints
 data=Dataset_original
 root_path=./dataset
 comment='CPLSTM' 
 task_name=classification
 
-CUDA_VISIBLE_DEVICES=6,7 accelerate launch --multi_gpu  --num_processes $num_process --main_process_port $master_port run_main.py \
+CUDA_VISIBLE_DEVICES=0,1 accelerate launch --multi_gpu  --num_processes $num_process --main_process_port $master_port run_main.py \
   --task_name $task_name \
   --data $data \
   --is_training 1 \

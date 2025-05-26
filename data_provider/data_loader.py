@@ -244,9 +244,8 @@ class Dataset_original(Dataset):
             assert label_scaler is not None
             self.label_scaler = label_scaler
             self.life_class_scaler = life_class_scaler
-            if args.model != 'Toto':
-                self.total_labels = self.label_scaler.transform(np.array(self.total_labels).reshape(-1,1))
-                self.scaled_life_classes = np.array(self.class_labels) - 1
+            self.total_labels = self.label_scaler.transform(np.array(self.total_labels).reshape(-1,1))
+            self.scaled_life_classes = np.array(self.class_labels) - 1
             #self.scaled_life_classes = self.life_class_scaler.transform(np.array(self.class_labels).reshape(-1,1))
 
     def get_loss_weight(self, method='KDE'):

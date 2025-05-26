@@ -196,8 +196,6 @@ for ii in range(args.itr):
         model = CNN.Model(args).float()
     elif args.model == 'CPTransformer':
         model = CPTransformer.Model(args).float()
-    elif args.model == 'Toto':
-        model = Toto.Toto(args).float()
     else:
         raise Exception(f'The {args.model} is not an implemented baseline!')
         

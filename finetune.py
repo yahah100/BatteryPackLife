@@ -9,8 +9,9 @@ import evaluate
 from transformers import AutoTokenizer
 from transformers import AutoConfig, LlamaModel, LlamaTokenizer, LlamaForCausalLM
 from sklearn.metrics import root_mean_squared_error, mean_absolute_percentage_error, mean_absolute_error
-from models import CPGRU, CPLSTM, CPMLP, CPBiGRU, CPBiLSTM, HiTransformer, PatchTST, iTransformer, DLinear, \
-    MLP, MICN, CNN, Autoformer, HiPatchTransformer
+from models import CPGRU, CPLSTM, CPMLP, CPBiGRU, CPBiLSTM, CPTransformer, PatchTST, iTransformer, Transformer, \
+    DLinear, Autoformer, MLP, MICN, CNN,  \
+    BiLSTM, BiGRU, GRU, LSTM
 import wandb
 from peft import LoraConfig, PeftModel, get_peft_model, prepare_model_for_kbit_training
 from data_provider.data_factory import data_provider_evaluate
@@ -170,38 +171,49 @@ for ii in range(args.itr):
 
     data_provider_func = data_provider_baseline
     if args.model == 'Transformer':
-        model = HiTransformer.Model(args).float()
-    elif args.model == 'BiLSTM':
+        model = Transformer.Model(args).float()
+    elif args.model == 'CPBiLSTM':
         model = CPBiLSTM.Model(args).float()
-    elif args.model == 'BiGRU':
+    elif args.model == 'CPBiGRU':
         model = CPBiGRU.Model(args).float()
-    elif args.model == 'LSTM':
-        model = CPLSTM.Model(args).float()
-    elif args.model == 'GRU':
+    elif args.model == 'CPGRU':
         model = CPGRU.Model(args).float()
-        layer = 'projection'
+    elif args.model == 'CPLSTM':
+        model = CPLSTM.Model(args).float()
+    elif args.model == 'BiLSTM':
+        model = BiLSTM.Model(args).float()
+    elif args.model == 'BiGRU':
+        model = BiGRU.Model(args).float()
+    elif args.model == 'LSTM':
+        model = LSTM.Model(args).float()
+    elif args.model == 'GRU':
+        model = GRU.Model(args).float()
     elif args.model == 'PatchTST':
         model = PatchTST.Model(args).float()
     elif args.model == 'iTransformer':
         model = iTransformer.Model(args).float()
     elif args.model == 'DLinear':
         model = DLinear.Model(args).float()
-    elif args.model == 'HiMLP':
+    elif args.model == 'CPMLP':
         model = CPMLP.Model(args).float()
-        layer = 'flatten_head'
+    elif args.model == 'Autoformer':
+        model = Autoformer.Model(args).float()
     elif args.model == 'MLP':
         model = MLP.Model(args).float()
-        layer = 'pred_head'
     elif args.model == 'MICN':
         model = MICN.Model(args).float()
     elif args.model == 'CNN':
         model = CNN.Model(args).float()
-    elif args.model == 'Autoformer':
-        model = Autoformer.Model(args).float()
-    elif args.model == 'HiPatchTransformer':
-        model = HiPatchTransformer.Model(args).float()
+    elif args.model == 'MLP':
+        model = MLP.Model(args).float()
+    elif args.model == 'MICN':
+        model = MICN.Model(args).float()
+    elif args.model == 'CNN':
+        model = CNN.Model(args).float()
+    elif args.model == 'CPTransformer':
+        model = CPTransformer.Model(args).float()
     else:
-        print('The model is not an implemented baseline!')
+        raise Exception(f'The {args.model} is not an implemented baseline!')
     
     tokenizer = AutoTokenizer.from_pretrained(
             'deepset/sentence_bert',

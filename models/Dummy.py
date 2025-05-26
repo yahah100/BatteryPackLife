@@ -43,9 +43,9 @@ Stanford_train = ['Stanford_Nova_Regular_228.pkl', 'Stanford_Nova_Regular_203.pk
 Stanford_vali =['Stanford_Nova_Regular_217.pkl', 'Stanford_Nova_Regular_194.pkl', 'Stanford_Nova_Regular_214.pkl', 'Stanford_Nova_Regular_195.pkl', 'Stanford_Nova_Regular_191.pkl', 'Stanford_Nova_Regular_224.pkl', 'Stanford_Nova_Regular_206.pkl', 'Stanford_Nova_Regular_227.pkl']
 Stanford_test = ['Stanford_Nova_Regular_202.pkl', 'Stanford_Nova_Regular_223.pkl', 'Stanford_Nova_Regular_209.pkl', 'Stanford_Nova_Regular_204.pkl', 'Stanford_Nova_Regular_213.pkl', 'Stanford_Nova_Regular_207.pkl', 'Stanford_Nova_Regular_198.pkl', 'Stanford_Nova_Regular_Ref_100.pkl']
 
-Tongji_train =  ['Tongji1_CY35-05_1-#2.pkl', 'Tongji1_CY45-05_1-#21.pkl', 'Tongji1_CY45-05_1-#28.pkl', 'Tongji2_CY45-05_1-#11.pkl', 'Tongji1_CY25-1_1-#5.pkl', 'Tongji1_CY25-1_1-#9.pkl', 'Tongji1_CY45-05_1-#19.pkl', 'Tongji3_CY25-05_4-#1.pkl', 'Tongji1_CY25-05_1-#2.pkl', 'Tongji3_CY25-05_2-#1.pkl', 'Tongji1_CY45-05_1-#5.pkl', 'Tongji1_CY45-05_1-#13.pkl', 'Tongji1_CY45-05_1-#11.pkl', 'Tongji1_CY35-05_1-#1.pkl', 'Tongji1_CY45-05_1-#17.pkl', 'Tongji2_CY25-05_1-#13.pkl', 'Tongji1_CY25-1_1-#6.pkl', 'Tongji2_CY45-05_1-#22.pkl', 'Tongji1_CY45-05_1-#27.pkl', 'Tongji2_CY45-05_1-#27.pkl', 'Tongji1_CY25-05_1-#17.pkl', 'Tongji2_CY45-05_1-#9.pkl', 'Tongji3_CY25-05_2-#2.pkl', 'Tongji1_CY45-05_1-#18.pkl', 'Tongji3_CY25-05_4-#2.pkl', 'Tongji1_CY45-05_1-#20.pkl', 'Tongji1_CY45-05_1-#1.pkl', 'Tongji2_CY45-05_1-#23.pkl', 'Tongji2_CY25-05_1-#5.pkl', 'Tongji2_CY45-05_1-#25.pkl', 'Tongji1_CY25-05_1-#4.pkl', 'Tongji1_CY25-05_1-#12.pkl', 'Tongji1_CY25-05_1-#16.pkl', 'Tongji1_CY25-05_1-#13.pkl', 'Tongji2_CY25-05_1-#17.pkl', 'Tongji1_CY45-05_1-#7.pkl', 'Tongji1_CY25-025_1-#5.pkl', 'Tongji2_CY25-05_1-#12.pkl', 'Tongji1_CY45-05_1-#6.pkl', 'Tongji3_CY25-05_1-#2.pkl', 'Tongji3_CY25-05_2-#3.pkl', 'Tongji2_CY45-05_1-#16.pkl', 'Tongji1_CY25-05_1-#15.pkl', 'Tongji1_CY25-025_1-#3.pkl', 'Tongji2_CY45-05_1-#7.pkl', 'Tongji2_CY45-05_1-#20.pkl', 'Tongji1_CY45-05_1-#23.pkl', 'Tongji2_CY25-05_1-#15.pkl', 'Tongji2_CY35-05_1-#4.pkl', 'Tongji1_CY45-05_1-#12.pkl', 'Tongji2_CY45-05_1-#15.pkl', 'Tongji1_CY25-05_1-#5.pkl', 'Tongji2_CY35-05_1-#3.pkl', 'Tongji1_CY25-05_1-#14.pkl', 'Tongji1_CY45-05_1-#26.pkl', 'Tongji1_CY45-05_1-#22.pkl', 'Tongji2_CY45-05_1-#24.pkl', 'Tongji1_CY25-05_1-#18.pkl', 'Tongji1_CY45-05_1-#9.pkl', 'Tongji1_CY45-05_1-#24.pkl', 'Tongji1_CY25-1_1-#4.pkl', 'Tongji2_CY45-05_1-#26.pkl', 'Tongji3_CY25-05_1-#3.pkl', 'Tongji1_CY45-05_1-#15.pkl', 'Tongji1_CY25-025_1-#2.pkl', 'Tongji2_CY45-05_1-#14.pkl']
-Tongji_vali = ['Tongji1_CY25-1_1-#3.pkl', 'Tongji1_CY25-05_1-#3.pkl', 'Tongji1_CY45-05_1-#10.pkl', 'Tongji1_CY45-05_1-#14.pkl', 'Tongji2_CY45-05_1-#21.pkl', 'Tongji2_CY45-05_1-#8.pkl', 'Tongji2_CY25-05_1-#8.pkl', 'Tongji2_CY45-05_1-#18.pkl', 'Tongji1_CY25-1_1-#8.pkl', 'Tongji1_CY45-05_1-#8.pkl', 'Tongji2_CY45-05_1-#10.pkl', 'Tongji1_CY45-05_1-#16.pkl', 'Tongji2_CY45-05_1-#1.pkl', 'Tongji1_CY25-05_1-#10.pkl', 'Tongji1_CY25-025_1-#4.pkl', 'Tongji2_CY25-05_1-#16.pkl', 'Tongji1_CY25-05_1-#11.pkl', 'Tongji2_CY45-05_1-#12.pkl', 'Tongji2_CY25-05_1-#10.pkl', 'Tongji1_CY25-025_1-#1.pkl', 'Tongji1_CY25-05_1-#7.pkl']
-Tongji_test =['Tongji1_CY45-05_1-#2.pkl', 'Tongji1_CY45-05_1-#25.pkl', 'Tongji2_CY25-05_1-#9.pkl', 'Tongji1_CY25-1_1-#1.pkl', 'Tongji1_CY25-05_1-#19.pkl', 'Tongji1_CY25-1_1-#2.pkl', 'Tongji2_CY45-05_1-#17.pkl', 'Tongji1_CY25-025_1-#7.pkl', 'Tongji2_CY45-05_1-#19.pkl', 'Tongji2_CY45-05_1-#13.pkl', 'Tongji1_CY25-025_1-#6.pkl', 'Tongji2_CY35-05_1-#2.pkl', 'Tongji2_CY45-05_1-#2.pkl', 'Tongji1_CY25-05_1-#1.pkl', 'Tongji3_CY25-05_4-#3.pkl', 'Tongji3_CY25-05_1-#1.pkl', 'Tongji1_CY25-1_1-#7.pkl', 'Tongji2_CY45-05_1-#28.pkl', 'Tongji2_CY35-05_1-#1.pkl', 'Tongji2_CY25-05_1-#2.pkl', 'Tongji1_CY25-05_1-#6.pkl']
+Tongji_train =  ['Tongji1_CY35-05_1--2.pkl', 'Tongji1_CY45-05_1--21.pkl', 'Tongji1_CY45-05_1--28.pkl', 'Tongji2_CY45-05_1--11.pkl', 'Tongji1_CY25-1_1--5.pkl', 'Tongji1_CY25-1_1--9.pkl', 'Tongji1_CY45-05_1--19.pkl', 'Tongji3_CY25-05_4--1.pkl', 'Tongji1_CY25-05_1--2.pkl', 'Tongji3_CY25-05_2--1.pkl', 'Tongji1_CY45-05_1--5.pkl', 'Tongji1_CY45-05_1--13.pkl', 'Tongji1_CY45-05_1--11.pkl', 'Tongji1_CY35-05_1--1.pkl', 'Tongji1_CY45-05_1--17.pkl', 'Tongji2_CY25-05_1--13.pkl', 'Tongji1_CY25-1_1--6.pkl', 'Tongji2_CY45-05_1--22.pkl', 'Tongji1_CY45-05_1--27.pkl', 'Tongji2_CY45-05_1--27.pkl', 'Tongji1_CY25-05_1--17.pkl', 'Tongji2_CY45-05_1--9.pkl', 'Tongji3_CY25-05_2--2.pkl', 'Tongji1_CY45-05_1--18.pkl', 'Tongji3_CY25-05_4--2.pkl', 'Tongji1_CY45-05_1--20.pkl', 'Tongji1_CY45-05_1--1.pkl', 'Tongji2_CY45-05_1--23.pkl', 'Tongji2_CY25-05_1--5.pkl', 'Tongji2_CY45-05_1--25.pkl', 'Tongji1_CY25-05_1--4.pkl', 'Tongji1_CY25-05_1--12.pkl', 'Tongji1_CY25-05_1--16.pkl', 'Tongji1_CY25-05_1--13.pkl', 'Tongji2_CY25-05_1--17.pkl', 'Tongji1_CY45-05_1--7.pkl', 'Tongji1_CY25-025_1--5.pkl', 'Tongji2_CY25-05_1--12.pkl', 'Tongji1_CY45-05_1--6.pkl', 'Tongji3_CY25-05_1--2.pkl', 'Tongji3_CY25-05_2--3.pkl', 'Tongji2_CY45-05_1--16.pkl', 'Tongji1_CY25-05_1--15.pkl', 'Tongji1_CY25-025_1--3.pkl', 'Tongji2_CY45-05_1--7.pkl', 'Tongji2_CY45-05_1--20.pkl', 'Tongji1_CY45-05_1--23.pkl', 'Tongji2_CY25-05_1--15.pkl', 'Tongji2_CY35-05_1--4.pkl', 'Tongji1_CY45-05_1--12.pkl', 'Tongji2_CY45-05_1--15.pkl', 'Tongji1_CY25-05_1--5.pkl', 'Tongji2_CY35-05_1--3.pkl', 'Tongji1_CY25-05_1--14.pkl', 'Tongji1_CY45-05_1--26.pkl', 'Tongji1_CY45-05_1--22.pkl', 'Tongji2_CY45-05_1--24.pkl', 'Tongji1_CY25-05_1--18.pkl', 'Tongji1_CY45-05_1--9.pkl', 'Tongji1_CY45-05_1--24.pkl', 'Tongji1_CY25-1_1--4.pkl', 'Tongji2_CY45-05_1--26.pkl', 'Tongji3_CY25-05_1--3.pkl', 'Tongji1_CY45-05_1--15.pkl', 'Tongji1_CY25-025_1--2.pkl', 'Tongji2_CY45-05_1--14.pkl']
+Tongji_vali = ['Tongji1_CY25-1_1--3.pkl', 'Tongji1_CY25-05_1--3.pkl', 'Tongji1_CY45-05_1--10.pkl', 'Tongji1_CY45-05_1--14.pkl', 'Tongji2_CY45-05_1--21.pkl', 'Tongji2_CY45-05_1--8.pkl', 'Tongji2_CY25-05_1--8.pkl', 'Tongji2_CY45-05_1--18.pkl', 'Tongji1_CY25-1_1--8.pkl', 'Tongji1_CY45-05_1--8.pkl', 'Tongji2_CY45-05_1--10.pkl', 'Tongji1_CY45-05_1--16.pkl', 'Tongji2_CY45-05_1--1.pkl', 'Tongji1_CY25-05_1--10.pkl', 'Tongji1_CY25-025_1--4.pkl', 'Tongji2_CY25-05_1--16.pkl', 'Tongji1_CY25-05_1--11.pkl', 'Tongji2_CY45-05_1--12.pkl', 'Tongji2_CY25-05_1--10.pkl', 'Tongji1_CY25-025_1--1.pkl', 'Tongji1_CY25-05_1--7.pkl']
+Tongji_test =['Tongji1_CY45-05_1--2.pkl', 'Tongji1_CY45-05_1--25.pkl', 'Tongji2_CY25-05_1--9.pkl', 'Tongji1_CY25-1_1--1.pkl', 'Tongji1_CY25-05_1--19.pkl', 'Tongji1_CY25-1_1--2.pkl', 'Tongji2_CY45-05_1--17.pkl', 'Tongji1_CY25-025_1--7.pkl', 'Tongji2_CY45-05_1--19.pkl', 'Tongji2_CY45-05_1--13.pkl', 'Tongji1_CY25-025_1--6.pkl', 'Tongji2_CY35-05_1--2.pkl', 'Tongji2_CY45-05_1--2.pkl', 'Tongji1_CY25-05_1--1.pkl', 'Tongji3_CY25-05_4--3.pkl', 'Tongji3_CY25-05_1--1.pkl', 'Tongji1_CY25-1_1--7.pkl', 'Tongji2_CY45-05_1--28.pkl', 'Tongji2_CY35-05_1--1.pkl', 'Tongji2_CY25-05_1--2.pkl', 'Tongji1_CY25-05_1--6.pkl']
 
 UL_PUR_train = ['UL-PUR_N10-NA7_18650_NCA_23C_0-100_0.5-0.5C_g.pkl', 'UL-PUR_N15-NA10_18650_NCA_23C_0-100_0.5-0.5C_j.pkl']
 UL_PUR_vali = []
@@ -318,6 +318,7 @@ def cal_loss(dataset_name, random_seed):
     train_test_avg_list = []
     vali_data = []
     test_data = []
+    total_seen_unseen_label = []
     if file.startswith(f'{dataset_name}'):
         if 'ISU-ILCC' in dataset_name:
             dataset_name = 'ISU_ILCC'
@@ -328,12 +329,13 @@ def cal_loss(dataset_name, random_seed):
         vali_data_names = [i for i in find_dataset(dataset_name, random_seed, type='vali')]
         test_data_names = [i for i in find_dataset(dataset_name, random_seed, type='test')]
         label_data = pd.read_json(os.path.join(path, file), lines=True)
+
         if random_seed == 42 and dataset_name == 'ZN-coin':
             seen_unseen_label = pd.read_json('./dataset/seen_unseen_labels/cal_for_test_ZN42.json', lines=True)
         elif random_seed == 2024 and dataset_name == 'ZN-coin':
             seen_unseen_label = pd.read_json('./dataset/seen_unseen_labels/cal_for_test_ZN2024.json', lines=True)
         elif random_seed == 42 and dataset_name == 'CALB':
-            seen_unseen_label = pd.read_json('./dataset/seen_unseen_labels/cal_for_test_CALB422.json', lines=True)
+            seen_unseen_label = pd.read_json('./dataset/seen_unseen_labels/cal_for_test_CALB42.json', lines=True)
         elif random_seed == 2024 and dataset_name == 'CALB':
             seen_unseen_label = pd.read_json('./dataset/seen_unseen_labels/cal_for_test_CALB2024.json', lines=True)
         elif random_seed == 42 and dataset_name == 'NA-ion':
@@ -346,27 +348,38 @@ def cal_loss(dataset_name, random_seed):
             seen_unseen_label = pd.read_json('./dataset/seen_unseen_labels/cal_for_test.json', lines=True)
 
         train_data = []
-        total_seen_unseen_label = []
         for train_name in train_data_names:
+            if 'Tongji' in train_name:
+                train_name = train_name.replace('--', '-#')
+            
             if train_name not in label_data:
                 # print('Missing label for train file: ', train_name)
                 continue
             train_data.append(label_data[train_name].values[0])
         for vali_name in vali_data_names:
+            if 'Tongji' in vali_name:
+                vali_name = vali_name.replace('--', '-#')
+
             if vali_name not in label_data:
                 # print('Missing label for vali file: ', vali_name)
                 continue
             vali_data.append(label_data[vali_name].values[0])
         for test_name in test_data_names:
+            if 'Tongji' in test_name:
+                test_name = test_name.replace('--', '-#')
+
             if test_name not in label_data:
                 # print('Missing label for test file: ', test_name)
                 continue
 
+            test_name = test_name.replace('-#', '--')
             label = seen_unseen_label[test_name].values
             if label == 'seen':
                 total_seen_unseen_label.append(1)
             else:
                 total_seen_unseen_label.append(0)
+
+            test_name = test_name.replace('--', '-#')
             test_data.append(label_data[test_name].values[0])
 
         train_avg = np.average(train_data, axis=0)
@@ -405,8 +418,30 @@ if __name__ == '__main__' :
     random_seed = sys.argv[2]
 
     for file in tqdm(files):
-        if target_dataset in file:
+        if target_dataset == 'MIX_large':
+            if 'ZN-coin' in file:
+                continue
+            elif 'CALB' in file:
+                continue
+            elif 'NA-ion' in file:
+                continue
             dataset_name = file.split('_')[0]
+            if 'total' in file:
+                dataset_name = 'total_MICH'
+        elif target_dataset == 'MICH' or target_dataset == 'MICH_EXP':
+            print('Please use [total_MICH] to evaluate.')
+            break
+        elif target_dataset == 'total_MICH':
+            dataset_name = 'total_MICH'
+        elif target_dataset == 'UL_PUR':
+            print('UL_PUR has no enough samples to evaluate, try another dataset.')
+            break
+        elif target_dataset in file:
+            dataset_name = file.split('_')[0]
+        elif target_dataset == 'ISU-ILCC' or target_dataset == 'ISU_ILCC':
+            dataset_name = 'ISU_ILCC'
+        elif target_dataset == 'NAion':
+            dataset_name = 'NA-ion'
         else:
             continue
 
@@ -421,56 +456,71 @@ if __name__ == '__main__' :
         total_train_test_avg_list = total_train_test_avg_list + train_test_avg_list
         total_seen_unseen_labels = total_seen_unseen_labels + total_seen_unseen_label
 
-        print(f'Dataset {dataset_name}: Vali loss: {vali_loss} | Vali Sample: {vali_sample} | Test loss: {test_loss} | Test sample: {test_sample}')
+        # print(f'Dataset {dataset_name}: Vali loss: {vali_loss} | Vali Sample: {vali_sample} | Test loss: {test_loss} | Test sample: {test_sample}')
+    
+    if target_dataset != 'UL_PUR' and target_dataset != 'MICH' and target_dataset != 'MICH_EXP':
+        vali_mae = mean_absolute_error(total_vali_data, total_train_vali_avg_list)
+        test_mae = mean_absolute_error(total_test_data, total_train_test_avg_list)
+        vali_mape = mean_absolute_percentage_error(total_vali_data, total_train_vali_avg_list)
+        test_mape = mean_absolute_percentage_error(total_test_data, total_train_test_avg_list)
+        vali_mse = np.square(np.subtract(total_vali_data, total_train_vali_avg_list)).mean()
+        vali_rmse = math.sqrt(vali_mse)
+        test_mse = np.square(np.subtract(total_test_data, total_train_test_avg_list)).mean()
+        test_rmse = math.sqrt(test_mse)
 
-    vali_mae = mean_absolute_error(total_vali_data, total_train_vali_avg_list)
-    test_mae = mean_absolute_error(total_test_data, total_train_test_avg_list)
-    vali_mape = mean_absolute_percentage_error(total_vali_data, total_train_vali_avg_list)
-    test_mape = mean_absolute_percentage_error(total_test_data, total_train_test_avg_list)
-    vali_mse = np.square(np.subtract(total_vali_data, total_train_vali_avg_list)).mean()
-    vali_rmse = math.sqrt(vali_mse)
-    test_mse = np.square(np.subtract(total_test_data, total_train_test_avg_list)).mean()
-    test_rmse = math.sqrt(test_mse)
+        hit_num = 0
+        for pred, refer in zip(total_test_data, total_train_test_avg_list):
+            relative_error = abs(pred - refer) / refer
+            if relative_error <= 0.15:
+                hit_num += 1
+        alpha_acc1 = hit_num / len(total_train_test_avg_list) * 100
 
-    hit_num = 0
-    for pred, refer in zip(total_test_data, total_train_test_avg_list):
-        relative_error = abs(pred - refer) / refer
-        if relative_error <= 0.15:
-            hit_num += 1
-    alpha_acc1 = hit_num / len(total_train_test_avg_list) * 100
+        indices_seen = [index for index, value in enumerate(total_seen_unseen_labels) if value == 1]
+        indices_unseen = [index for index, value in enumerate(total_seen_unseen_labels) if value == 0]
+        seen_preds = [total_test_data[i] for i in indices_seen]
+        unseen_preds = [total_test_data[i] for i in indices_unseen]
+        seen_references = [total_train_test_avg_list[i] for i in indices_seen]
+        unseen_references = [total_train_test_avg_list[i] for i in indices_unseen]
+        # seen
+        hit_num = 0
+        for pred, refer in zip(seen_preds, seen_references):
+            relative_error = abs(pred - refer) / refer
+            if relative_error <= 0.15:
+                hit_num += 1
+        if len(seen_references) == 0:
+            seen_alpha_acc1 = 'No seen sample'
+        else:
+            seen_alpha_acc1 = hit_num / len(seen_references) * 100
 
-    indices_seen = [index for index, value in enumerate(total_seen_unseen_labels) if value == 1]
-    indices_unseen = [index for index, value in enumerate(total_seen_unseen_labels) if value == 0]
-    seen_preds = [total_test_data[i] for i in indices_seen]
-    unseen_preds = [total_test_data[i] for i in indices_unseen]
-    seen_references = [total_train_test_avg_list[i] for i in indices_seen]
-    unseen_references = [total_train_test_avg_list[i] for i in indices_unseen]
-    # seen
-    hit_num = 0
-    for pred, refer in zip(seen_preds, seen_references):
-        relative_error = abs(pred - refer) / refer
-        if relative_error <= 0.15:
-            hit_num += 1
-    seen_alpha_acc1 = hit_num / len(seen_references) * 100
 
-    for pred, refer in zip(seen_preds, seen_references):
-        relative_error = abs(pred - refer) / refer
-        if relative_error <= 0.1:
-            hit_num += 1
-    seen_alpha_acc2 = hit_num / len(seen_references) * 100
+        for pred, refer in zip(seen_preds, seen_references):
+            relative_error = abs(pred - refer) / refer
+            if relative_error <= 0.1:
+                hit_num += 1
+        if len(seen_references) == 0:
+            seen_alpha_acc2 = 'No seen sample'
+        else:
+            seen_alpha_acc2 = hit_num / len(seen_references) * 100
 
-    # unseen
-    hit_num = 0
-    for pred, refer in zip(unseen_preds, unseen_references):
-        relative_error = abs(pred - refer) / refer
-        if relative_error <= 0.15:
-            hit_num += 1
-    unseen_alpha_acc1 = hit_num / len(unseen_references) * 100
 
-    for pred, refer in zip(unseen_preds, unseen_references):
-        relative_error = abs(pred - refer) / refer
-        if relative_error <= 0.1:
-            hit_num += 1
-    unseen_alpha_acc2 = hit_num / len(unseen_references) * 100
+        # unseen
+        hit_num = 0
+        for pred, refer in zip(unseen_preds, unseen_references):
+            relative_error = abs(pred - refer) / refer
+            if relative_error <= 0.15:
+                hit_num += 1
+        if len(unseen_references) == 0:
+            unseen_alpha_acc1 = 'No unseen sample'
+        else:
+            unseen_alpha_acc1 = hit_num / len(unseen_references) * 100
 
-    print(f'Dummy Model : \nTest MAE: {test_mae} | Test MAPE: {test_mape} | Test RMSE: {test_rmse} | Vali MAE: {vali_mae} | Vali MAPE: {vali_mape} | Vali RMSE: {vali_rmse} | 0.15_acc: {alpha_acc1} | 0.15_acc_seen: {seen_alpha_acc1} | 0.1_acc_seen {seen_alpha_acc2} | 0.15_acc_unseen: {unseen_alpha_acc1} | 0.1_acc_unseen {unseen_alpha_acc2}')
+        for pred, refer in zip(unseen_preds, unseen_references):
+            relative_error = abs(pred - refer) / refer
+            if relative_error <= 0.1:
+                hit_num += 1
+        if len(unseen_references) == 0:
+            unseen_alpha_acc2 = 'No unseen sample'
+        else:
+            unseen_alpha_acc2 = hit_num / len(unseen_references) * 100
+
+        print(f'Dummy Model : \nTest MAE: {test_mae} | Test MAPE: {test_mape} | Test RMSE: {test_rmse} | Vali MAE: {vali_mae} | Vali MAPE: {vali_mape} | Vali RMSE: {vali_rmse} | 0.15_acc: {alpha_acc1} | 0.15_acc_seen: {seen_alpha_acc1} | 0.1_acc_seen {seen_alpha_acc2} | 0.15_acc_unseen: {unseen_alpha_acc1} | 0.1_acc_unseen {unseen_alpha_acc2}')

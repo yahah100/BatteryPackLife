@@ -13,9 +13,8 @@ d_model=64
 d_ff=256
 loss=MSE
 seed=2021
-# contrastive learning
 e_layers=6
-d_layers=2 # distilling layer number
+d_layers=2
 dropout=0.05
 charge_discharge_length=300
 patience=5 # Eearly stopping patience
@@ -23,13 +22,13 @@ lradj=constant
 n_heads=8
 
 
-checkpoints=/data/hwx/na_checkpoints # the save path of checkpoints
+checkpoints=/path/to/your/saving/folder # the save path of checkpoints
 data=Dataset_original
 root_path=./dataset
 comment='CPBiGRU'
 task_name=classification
 
-CUDA_VISIBLE_DEVICES=2,3 accelerate launch --multi_gpu  --num_processes $num_process --main_process_port $master_port run_main.py \
+CUDA_VISIBLE_DEVICES=0,1 accelerate launch --multi_gpu  --num_processes $num_process --main_process_port $master_port run_main.py \
   --task_name $task_name \
   --data $data \
   --is_training 1 \

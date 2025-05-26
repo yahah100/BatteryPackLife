@@ -1,34 +1,30 @@
 model_name=CPMLP
-dataset=CALB
+dataset=MIX_large
 train_epochs=100
 early_cycle_threshold=100
 learning_rate=0.00005
-master_port=20327
+master_port=20435
 num_process=2
 batch_size=16
 accumulation_steps=1
 lstm_layers=2
 d_model=128
 d_ff=256
-e_layers=4
+e_layers=12
 loss=MSE
-dropout=0.1
+dropout=0
 seed=2021
-
-
 seq_len=1
-d_layers=2 # distilling layer number
-
-
+d_layers=12
 charge_discharge_length=300
 patience=5 # Eearly stopping patience
 lradj=constant
 n_heads=8
 
 
-checkpoints=/data/hwx/mix_transfer # the save path of checkpoints
+checkpoints=/path/to/your/saving/folder # the save path of checkpoints
 data=Dataset_original
-root_path=/data/trf/python_works/BatteryLife/dataset
+root_path=./dataset
 comment='CPMLP' 
 task_name=classification
 
