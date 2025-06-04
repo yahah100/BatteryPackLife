@@ -1,6 +1,16 @@
 # (KDD 2025) BatteryLife
 This is the official repository for [BatteryLife: A Comprehensive Dataset and Benchmark for Battery Life Prediction](https://arxiv.org/abs/2502.18807)
 
+
+🔥**News** (2025.06) BatteryLife downloads exceed 4,000.
+
+:triangular_flag_on_post:**News** (2025.06) Add the complete Stanford dataset as "Stanford_2" (now including both releases of the Stanford dataset).
+
+:triangular_flag_on_post:**News** (2025.05) BatteryLife was accpeted by KDD 2025.
+
+🔥**News** (2025.05) BatteryLife downloads exceed 3,000. ​
+
+:triangular_flag_on_post:**News** (2025.02) BatteryLife was released!
 ## Highlights
 - **The largest battery life dataset:** BatteryLife is created by integrating 16 datasets, providing more than ninety thousand samples from 990 batteries with life labels. This is 2.5 times the size of BatteryML, which is the previous largest battery life resource.
 - **The most diverse battery life dataset:** BatteryLife contains 8 battery formats, 59 chemical systems, 9 operation temperatures, and 421 charge/discharge protocols. Compared with the previous largest battery life resource (BatteryML), BatteryLife furnishes 4 times format, 11.8 times chemical system, 1.8 times operating temperature, and 2.2 times charge/discharge protocol.
@@ -10,7 +20,7 @@ This is the official repository for [BatteryLife: A Comprehensive Dataset and Be
 
 The processed datasets can be accessed via multiple ways:
 1. You can download the datasets from [Huggingface](https://huggingface.co/datasets/Hongwxx/BatteryLife_processed/tree/main) [[tutorial]](./assets/Data_download.md).
-2. You can download the datasets from [Zenodo](https://zenodo.org/records/15300265).
+2. You can download the datasets from [Zenodo](https://zenodo.org/records/15531867).
    
 
 Note that brief introductions to each dataset are available under the directory of each dataset.
