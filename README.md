@@ -126,9 +126,17 @@ The data structure of the standardized data is described in [Data_structure_desc
 
 ## Welcome contributions
 
-To facilitate advances in battery life prediction, the community needs standardized datasets. However, the available battery life datasets are typically stored in different places and different formats. We have put great efforts in integrating 13 previously available datasets and 3 of our datasets. We warmly welcome contributions from the community to further enhance this collection by submitting datasets standardized according to the BatteryLife standards. 
+Advancing battery life prediction requires standardized datasets. However, the available battery life datasets are typically stored in different places and in different formats. We have put great efforts into integrating 13 previously available datasets and 3 of our datasets. We warmly welcome contributions from the community to further enhance this collection by providing datasets standardized according to the BatteryLife standards. 
 
-If you are interested in contributing, please either submit a pull request or contact us via email at rtan474@connect.hkust-gz.edu.cn and whong719@connect.hkust-gz.edu.cn. Kindly include a list of contributors in your pull request or email. We will acknowledge all contributors in the acknowledgement section of this repository.
+If you are interested in contributing, please either submit a pull request or contact us via email at rtan474@connect.hkust-gz.edu.cn and whong719@connect.hkust-gz.edu.cn. We offer two ways to share data:
+1. Share Standardized Dataset Links: We'd be happy to provide links to datasets already standardized using BatteryLife standards.
+2. Submit Datasets for Integration: To integrate your data into the BatteryLife repositories, please provide:
+   - Raw datasets
+   - Processed datasets
+   - Preprocessing scripts (for reproducibility)
+   - A list of contributors (for acknowledgment in the repo)
+   - Papers related to the data generation (we will prompt users to cite these in the repository's Citation section).
+
 
 ## Citation
 If you use the benchmark, processed datasets, or the raw datasets produced by this work, you should cite the BatteryLife paper:
