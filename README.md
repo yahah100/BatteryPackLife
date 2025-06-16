@@ -126,7 +126,7 @@ The data structure of the standardized data is described in [Data_structure_desc
 
 ## Welcome contributions
 
-Advancing battery life prediction requires standardized datasets. However, the available battery life datasets are typically stored in different places and in different formats. We have put great efforts into integrating 13 previously available datasets and 3 of our datasets. We warmly welcome contributions from the community to further enhance this collection by providing datasets standardized according to the BatteryLife standards. 
+Advancing AI4Battery requires standardized datasets. However, the available battery life datasets are typically stored in different places and in different formats. We have put great efforts into integrating 13 previously available datasets and 3 of our datasets. BatteryLife serves as a platform to share all kinds of standardized datasets. We warmly welcome contributions from the community to further enhance this collection by providing datasets standardized according to the BatteryLife standards.
 
 If you are interested in contributing, please either submit a pull request or contact us via email at rtan474@connect.hkust-gz.edu.cn and whong719@connect.hkust-gz.edu.cn. To integrate your data into the BatteryLife repositories, please provide:
 - Raw datasets
@@ -151,7 +151,9 @@ If you use the benchmark, processed datasets, or the raw datasets produced by th
 }
 ```
 
-Additionally, please cite the original papers that conducted experiments. Please cite [BatteryArchive](https://www.batteryarchive.org/index.html) as the data source for the HNEI, SNL, MICH, MICH_EXP, and UL_PUR datasets.
+- Additionally, please cite the original papers that conducted experiments. Please cite [BatteryArchive](https://www.batteryarchive.org/index.html) as the data source for the HNEI, SNL, MICH, MICH_EXP, and UL_PUR datasets.
+- Please cite [BatteryML](https://iclr.cc/virtual/2024/poster/17628) if you use the processed CALCE, MATR, HUST, HNEI, RWTH, SNL, and UL_PUR datasets. Our preprocessing for these 7 datasets relies heavily on BatteryML's preprocessing scripts.
+
 
 ## Acknowledgement
 This repo is constructed based on the following repos:
