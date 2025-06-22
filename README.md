@@ -1,6 +1,7 @@
 # (KDD 2025) BatteryLife
 This is the official repository for [BatteryLife: A Comprehensive Dataset and Benchmark for Battery Life Prediction](https://arxiv.org/abs/2502.18807)
 
+🔥**News** (2025.06) BatteryLife downloads exceed 5,000.
 
 🔥**News** (2025.06) BatteryLife downloads exceed 4,000.
 
