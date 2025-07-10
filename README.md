@@ -1,5 +1,7 @@
 # (KDD 2025) BatteryLife
-This is the official repository for [BatteryLife: A Comprehensive Dataset and Benchmark for Battery Life Prediction](https://arxiv.org/abs/2502.18807)
+This is the official repository for [BatteryLife: A Comprehensive Dataset and Benchmark for Battery Life Prediction](https://arxiv.org/abs/2502.18807). If you find this repository useful, we would appreciate citations to our paper and stars to this repository.
+
+🔥**News** (2025.07) BatteryLife downloads exceed 7,000.
 
 🔥**News** (2025.06) BatteryLife downloads exceed 5,000.
 
@@ -13,7 +15,7 @@ This is the official repository for [BatteryLife: A Comprehensive Dataset and Be
 
 :triangular_flag_on_post:**News** (2025.02) BatteryLife was released!
 ## Highlights
-- **The largest battery life dataset:** BatteryLife is created by integrating 16 datasets, providing more than ninety thousand samples from 990 batteries with life labels. This is 2.5 times the size of BatteryML, which is the previous largest battery life resource.
+- **The largest battery life dataset:** BatteryLife is created by integrating 16 datasets, providing 99,000 samples from 990 batteries with life labels. This is 2.5 times the size of BatteryML, which is the previous largest battery life resource.
 - **The most diverse battery life dataset:** BatteryLife contains 8 battery formats, 59 chemical systems, 9 operation temperatures, and 421 charge/discharge protocols. Compared with the previous largest battery life resource (BatteryML), BatteryLife furnishes 4 times format, 11.8 times chemical system, 1.8 times operating temperature, and 2.2 times charge/discharge protocol.
 - **A comprehensive benchmark for battery life prediction:** BatteryLife provides 18 benchmark methods with open-source codes in this repository. The 18 benchmark methods include popular methods for battery life prediction, popular baselines in time series analysis, and a series of baselines proposed by this work.
 
@@ -121,9 +123,9 @@ If you want to do the domain adaptation to another dataset. We have provided the
 sh ./train_eval_scripts/domain_adaptation_script.sh
 ```
 
-## Data Structure
+## Documention
 
-The data structure of the standardized data is described in [Data_structure_description.md](./assets/Data_structure_description.md).
+The main information is described in our [BatteryLife paper](https://arxiv.org/abs/2502.18807). The data structure of the standardized data is described in [Data_structure_description.md](./assets/Data_structure_description.md). Further details of data statistics are available at [Further_details_of_data_statistics.md](./assets/Further_details_of_data_statistics.md).
 
 ## Welcome contributions
 
