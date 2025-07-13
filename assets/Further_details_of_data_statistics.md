@@ -27,22 +27,22 @@
 
 ## From the aspect of some aging factors
 
-| Cathodes             | Anodes                                                       | Formats                   | Temperatures (degrees Celsius) |
-| -------------------- | ------------------------------------------------------------ | ------------------------- | ------------------------------ |
-| Graphite             | LiCoO2                                                       | Prismatic                 | -5                             |
-| Carbon               | Lithium Iron Phosphate (LiFePO4)                             | 18650                     | 0                              |
-| Graphite:PVDF (95:5) | LiCoO2 (LCO) and LiNi0.4Co0.4Mn0.2O2 (NCM442)                | Pouch                     | 15                             |
-| Artificial Graphite  | Lithium Nickel Manganese Cobalt Oxide (NCM)                  | Sealed Single Crystalline | 20                             |
-| Graphite+2 wt.% Si   | Li(Ni0.81Co0.14Al0.05)O2 (NCA811405)                         | 502030-size Pouch         | 23                             |
-| Zinc                 | LiNi(0.84Co0.1Mn0.06)O2 (NCM840610)                          | CR2032 Coin               | 25                             |
-| Unknown (Na dataset) | Li(Ni0.8Co0.15Al0.05)O2 (NCA801505)                          | CR2025 Coin               | 30                             |
-|                      | Li(Ni0.33Co0.33Mn0.33)O2 (NCM111)                            | CR2026 Coin               | 35                             |
-|                      | Li(Ni0.5Co0.2Mn0.3)O2 (NCM523)                               |                           | 40                             |
-|                      | Li0.86(Ni0.86Co0.11Al0.03)O2 (NCA861103)                     |                           | 45                             |
-|                      | Li0.84(Ni0.83Co0.11Mn0.07)O2 (NCM831107)                     |                           |                                |
-|                      | 42 wt.% Li(NiCoMn)O2 blended with 58 wt.% Li(NiCoAl)O2 (NCM+NCA) |                           |                                |
-|                      | MnO2                                                         |                           |                                |
-|                      | Unknown (Na dataset)                                         |                           |                                |
+| Cathodes             | Anodes                                                       | Formats            | Temperatures (degrees Celsius) |
+| -------------------- | ------------------------------------------------------------ | ------------------ | ------------------------------ |
+| Graphite             | LiCoO2                                                       | Prismatic          | -5                             |
+| Carbon               | Lithium Iron Phosphate (LiFePO4)                             | 18650              | 0                              |
+| Graphite:PVDF (95:5) | LiCoO2 (LCO) and LiNi0.4Co0.4Mn0.2O2 (NCM442)                | Pouch              | 15                             |
+| Artificial Graphite  | Lithium Nickel Manganese Cobalt Oxide (NCM)                  | 4090132-size Pouch | 20                             |
+| Graphite+2 wt.% Si   | Li(Ni0.81Co0.14Al0.05)O2 (NCA811405)                         | 502030-size Pouch  | 23                             |
+| Zinc                 | LiNi(0.84Co0.1Mn0.06)O2 (NCM840610)                          | CR2032 Coin        | 25                             |
+| Unknown (Na dataset) | Li(Ni0.8Co0.15Al0.05)O2 (NCA801505)                          | CR2025 Coin        | 30                             |
+|                      | Li(Ni0.33Co0.33Mn0.33)O2 (NCM111)                            | CR2026 Coin        | 35                             |
+|                      | Li(Ni0.5Co0.2Mn0.3)O2 (NCM523)                               |                    | 40                             |
+|                      | Li0.86(Ni0.86Co0.11Al0.03)O2 (NCA861103)                     |                    | 45                             |
+|                      | Li0.84(Ni0.83Co0.11Mn0.07)O2 (NCM831107)                     |                    |                                |
+|                      | 42 wt.% Li(NiCoMn)O2 blended with 58 wt.% Li(NiCoAl)O2 (NCM+NCA) |                    |                                |
+|                      | MnO2                                                         |                    |                                |
+|                      | Unknown (Na dataset)                                         |                    |                                |
 
 
 
