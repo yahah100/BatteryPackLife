@@ -16,8 +16,8 @@
 | SNL         | Lithium-ion battery | LiFePO4 / Li(Ni0.81Co0.14Al0.05)O2 (NCA811405) / LiNi(0.84Co0.1Mn0.06)O2 (NCM840610) | Graphite                      | Unknown                                                      | 18650                     | A123 Systems/Panasonic/LG Chem              | 1.1/3.2/3.0 Ah   | After formation | 15/25/35 degrees Celsius   | 2.0/2.5/2.0V          | 3.6/4.2/4.2V          | 0-1                     |
 | UL_PUR      | Lithium-ion battery | Li(Ni0.8Co0.15Al0.05)O2 (NCA801505)                          | Graphite                      | Unknown                                                      | 18650                     | Unknown                                     | 3.4Ah            | After formation | 23 degrees Celsius         | 2.7V                  | 4.2V                  | 0-1                     |
 | MICH        | Lithium-ion battery | Li(Ni0.33Co0.33Mn0.33)O2 (NCM111)                            | Graphite                      | 1.0MLiPF6 Salt, EC:EMC(3:7) Solvent and 2wt%VC,4g/Ah Additive | Pouch                     | Unknown                                     | 2.36Ah           | After formation | 25/45 degrees Celsius      | 3.0V                  | 4.2V                  | 0-1                     |
-| MICH_EXP    | Lithium-ion battery | Li(Ni0.33Co0.33Mn0.33)O2 (NCM111)                            | Graphite:PVDF (95:5)          | 1MLiPF6 Salt and 2%EC:EMC(3:7) Solven                        | Pouch                     | Unknown                                     | 5.0Ah            | After formation | -5/25/45 degrees Celsius   | 3.0V                  | 4.2V                  | 0-1                     |
-| Stanford    | Lithium-ion battery | Li(Ni0.5Co0.2Mn0.3)O2 (NCM523)                               | Artificial Graphite           | 1 M LiPF6 in EC/EMC/DMC (1 : 1 : 1 by volume) solvent with 2% VC (by weight) additive | Sealed Single Crystalline | Unknown                                     | 024Ah            | After formation | 30 degrees Celsius         | 3.0V                  | 4.2V                  | 0-1                     |
+| MICH_EXP    | Lithium-ion battery | Li(Ni0.33Co0.33Mn0.33)O2 (NCM111)                            | Graphite:PVDF (95:5)          | 1MLiPF6 Salt and 2%EC:EMC(3:7) Solven                        | 4090132-size Pouch        | Unknown                                     | 5.0Ah            | After formation | -5/25/45 degrees Celsius   | 3.0V                  | 4.2V                  | 0-1                     |
+| Stanford    | Lithium-ion battery | Li(Ni0.5Co0.2Mn0.3)O2 (NCM523)                               | Artificial Graphite           | 1 M LiPF6 in EC/EMC/DMC (1 : 1 : 1 by volume) solvent with 2% VC (by weight) additive | Pouch                     | Unknown                                     | 024Ah            | After formation | 30 degrees Celsius         | 3.0V                  | 4.2V                  | 0-1                     |
 | Tongji      | Lithium-ion battery | Li0.86(Ni0.86Co0.11Al0.03)O2 (NCA861103) / Li0.84(Ni0.83Co0.11Mn0.07)O2 (NCM831107) / 42 wt.% Li(NiCoMn)O2 blended with 58 wt.% Li(NiCoAl)O2 (NCM+NCA) | Graphite+2 wt.% Si / Graphite | non-aqueous solution with lithium hexafluorophosphate (LiPF6) | 18650                     | SAMSUNG                                     | 3.5Ah            | After formation | 25 degrees Celsius         | 2..65V                | 4.2V                  | 0-1                     |
 | XJTU        | Lithium-ion battery | Li(Ni0.5Co0.2Mn0.3)O2 (NCM523)                               | Graphite                      | Unknown                                                      | 18650                     | LISHEN                                      | 2Ah              | After formation | 20 degrees Celsius         | 2.5V                  | 4.2V                  | 0-1                     |
 | ISU_ILCC    | Lithium-ion battery | Lithium Nickel Manganese Cobalt Oxide (NCM)                  | Graphite                      | Unknown                                                      | 502030-size Pouch         | Shenzhen Honghaosheng Electronics Co., Ltd. | 0.25Ah           | After formation | 30 degrees Celsius         | 3.0V                  | 4.2V                  | various                 |
@@ -81,16 +81,16 @@
 
 ## Format Table
 
-| Formats                   | Datasets                                                  |
-| ------------------------- | --------------------------------------------------------- |
-| Prismatic                 | CALCE, CALB                                               |
-| 18650                     | MATR, HUST, HNEI, RWTH, SNL, UL_PUR, Tongji, XJTU, NA-ion |
-| Pouch                     | MICH, MICH_EXP                                            |
-| Sealed Single Crystalline | Stanford                                                  |
-| 502030-size Pouch         | ISU_ILCC                                                  |
-| CR2032 Coin               | ZN-coin                                                   |
-| CR2025 Coin               | ZN-coin                                                   |
-| CR2026 Coin               | ZN-coin                                                   |
+| Formats            | Datasets                                                  |
+| ------------------ | --------------------------------------------------------- |
+| Prismatic          | CALCE, CALB                                               |
+| 18650              | MATR, HUST, HNEI, RWTH, SNL, UL_PUR, Tongji, XJTU, NA-ion |
+| Pouch              | MICH, Stanford                                            |
+| 4090132-size Pouch | MICH_EXP                                                  |
+| 502030-size Pouch  | ISU_ILCC                                                  |
+| CR2032 Coin        | ZN-coin                                                   |
+| CR2025 Coin        | ZN-coin                                                   |
+| CR2026 Coin        | ZN-coin                                                   |
 
 ## Temperature Table
 
