@@ -47,7 +47,7 @@ parser.add_argument('--model', type=str, required=False, default='Autoformer',
 parser.add_argument('--seed', type=int, default=2021, help='random seed')
 
 # data loader
-parser.add_argument('--dataset', type=str, default='HUST', help='dataset description')
+parser.add_argument('--dataset', type=str, default='HUST', help='dataset used for pretrained model')
 parser.add_argument('--data', type=str, required=False, default='BatteryLifeLLM', help='dataset type')
 parser.add_argument('--root_path', type=str, default='./dataset/HUST_dataset/', help='root path of the data file')
 parser.add_argument('--data_path', type=str, default='ETTh1.csv', help='data file')
@@ -108,7 +108,7 @@ parser.add_argument('--pct_start', type=float, default=0.2, help='pct_start')
 parser.add_argument('--use_amp', action='store_true', help='use automatic mixed precision training', default=False)
 parser.add_argument('--llm_layers', type=int, default=6)
 parser.add_argument('--percent', type=int, default=100)
-parser.add_argument('--accumulation_steps', type=int, default=1)
+parser.add_argument('--accumulation_steps', type=int, default=1, help='gradient accumulation steps')
 parser.add_argument('--mlp', type=int, default=0)
 
 # Contrastive learning
@@ -129,8 +129,8 @@ parser.add_argument('--charge_discharge_length', type=int, default=100, help='Th
 
 # evaluate
 parser.add_argument('--save_evaluation_res', action='store_true', default=False, help='the True to save the results; Only effective when eval_cycle_min or eval_cycle_max is smaller than 0')
-parser.add_argument('--alpha1', type=float, default=0.15, help='the alpha for alpha-accuracy')
-parser.add_argument('--alpha2', type=float, default=0.1, help='the alpha for alpha-accuracy')
+parser.add_argument('--alpha1', type=float, default=0.15, help='the 10 percent alpha for alpha-accuracy')
+parser.add_argument('--alpha2', type=float, default=0.1, help='the 15 percent alpha for alpha-accuracy')
 parser.add_argument('--args_path', type=str, help='the path to the pretrained model parameters')
 
 # finetune 

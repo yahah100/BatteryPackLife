@@ -54,7 +54,7 @@ parser.add_argument('--seed', type=int, default=2021, help='random seed')
 
 # data loader
 parser.add_argument('--charge_discharge_length', type=int, default=100, help='The resampled length for charge and discharge curves')
-parser.add_argument('--dataset', type=str, default='HUST', help='dataset description')
+parser.add_argument('--dataset', type=str, default='HUST', help='dataset used for pretrained model')
 parser.add_argument('--data', type=str, required=False, default='BatteryLife', help='dataset type')
 parser.add_argument('--root_path', type=str, default='./dataset/HUST_dataset/', help='root path of the data file')
 parser.add_argument('--data_path', type=str, default='ETTh1.csv', help='data file')
@@ -71,7 +71,7 @@ parser.add_argument('--freq', type=str, default='h',
 parser.add_argument('--checkpoints', type=str, default='./checkpoints/', help='location of model checkpoints')
 
 # forecasting task
-parser.add_argument('--early_cycle_threshold', type=int, default=100, help='what is early life')
+parser.add_argument('--early_cycle_threshold', type=int, default=100, help='when to stop model training')
 parser.add_argument('--seq_len', type=int, default=5, help='input sequence length')
 parser.add_argument('--pred_len', type=int, default=5, help='prediction sequence length')
 parser.add_argument('--label_len', type=int, default=48, help='start token length')
@@ -84,14 +84,13 @@ parser.add_argument('--c_out', type=int, default=1, help='output size')
 parser.add_argument('--d_model', type=int, default=16, help='dimension of model')
 parser.add_argument('--n_heads', type=int, default=4, help='num of heads')
 parser.add_argument('--lstm_layers', type=int, default=1, help='num of LSTM layers')
-parser.add_argument('--e_layers', type=int, default=2, help='num of encoder layers')
-parser.add_argument('--d_layers', type=int, default=1, help='num of decoder layers')
+parser.add_argument('--e_layers', type=int, default=2, help='num of intra-cycle layers')
+parser.add_argument('--d_layers', type=int, default=1, help='num of inter-cycle layers')
 parser.add_argument('--d_ff', type=int, default=32, help='dimension of fcn')
 parser.add_argument('--moving_avg', type=int, default=25, help='window size of moving average')
 parser.add_argument('--factor', type=int, default=1, help='attn factor')
 parser.add_argument('--dropout', type=float, default=0.1, help='dropout')
-parser.add_argument('--embed', type=str, default='timeF',
-                    help='time features encoding, options:[timeF, fixed, learned]')
+parser.add_argument('--embed', type=str, default='timeF', help='time features encoding, options:[timeF, fixed, learned]')
 parser.add_argument('--activation', type=str, default='relu', help='activation')
 parser.add_argument('--output_attention', action='store_true', help='whether to output attention in encoder')
 parser.add_argument('--patch_len', type=int, default=10, help='patch length')
@@ -119,13 +118,12 @@ parser.add_argument('--lradj', type=str, default='constant', help='adjust learni
 parser.add_argument('--pct_start', type=float, default=0.2, help='pct_start')
 parser.add_argument('--use_amp', action='store_true', help='use automatic mixed precision training', default=False)
 parser.add_argument('--percent', type=int, default=100)
-parser.add_argument('--accumulation_steps', type=int, 
-                    default=1)
+parser.add_argument('--accumulation_steps', type=int, default=1, help='gradient accumulation steps')
 parser.add_argument('--mlp', type=int, default=0)
 
 # Evaluation alpha-accuracy
-parser.add_argument('--alpha1', type=float, default=0.15, help='the alpha for alpha-accuracy')
-parser.add_argument('--alpha2', type=float, default=0.1, help='the alpha for alpha-accuracy')
+parser.add_argument('--alpha1', type=float, default=0.15, help='the 10 percent alpha for alpha-accuracy')
+parser.add_argument('--alpha2', type=float, default=0.1, help='the 15 percent alpha for alpha-accuracy')
 
 
 
