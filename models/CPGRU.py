@@ -76,8 +76,8 @@ class Model(nn.Module):
             cycle_curve_data: [B, L, num_variables, fixed_length_of_curve]
             curve_attn_mask: [B, L]
         '''
-        tmp_curve_attn_mask = curve_attn_mask.unsqueeze(-1).unsqueeze(-1) * torch.ones_like(cycle_curve_data)
-        cycle_curve_data[tmp_curve_attn_mask==0] = 0 # set the unseen data as zeros
+        # tmp_curve_attn_mask = curve_attn_mask.unsqueeze(-1).unsqueeze(-1) * torch.ones_like(cycle_curve_data)
+        # cycle_curve_data[tmp_curve_attn_mask==0] = 0 # set the unseen data as zeros
         if return_embedding:
             dec_out, embedding = self.classification(cycle_curve_data, curve_attn_mask, return_embedding=return_embedding)
             return dec_out, embedding

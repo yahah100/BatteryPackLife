@@ -61,8 +61,8 @@ class Model(nn.Module):
         cycle_curve_data: [B, early_cycle, fixed_len, num_var]
         curve_attn_mask: [B, early_cycle]
         '''
-        tmp_curve_attn_mask = curve_attn_mask.unsqueeze(-1).unsqueeze(-1) * torch.ones_like(cycle_curve_data)
-        cycle_curve_data[tmp_curve_attn_mask==0] = 0 # set the unseen data as zeros
+        # tmp_curve_attn_mask = curve_attn_mask.unsqueeze(-1).unsqueeze(-1) * torch.ones_like(cycle_curve_data)
+        # cycle_curve_data[tmp_curve_attn_mask==0] = 0 # set the unseen data as zeros
 
         cycle_curve_data = self.intra_flatten(cycle_curve_data) # [B, early_cycle, fixed_len * num_var]
         cycle_curve_data = self.intra_embed(cycle_curve_data)

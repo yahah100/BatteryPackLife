@@ -61,6 +61,9 @@ def my_collate_fn_withId(samples):
     weights = torch.Tensor([i['weight'] for i in samples])
     dataset_ids = torch.Tensor([i['dataset_id'] for i in samples])
     seen_unseen_ids = torch.Tensor([i['seen_unseen_id'] for i in samples])
+
+    tmp_curve_attn_mask = curve_attn_mask.unsqueeze(-1).unsqueeze(-1) * torch.ones_like(cycle_curve_data)
+    cycle_curve_data[tmp_curve_attn_mask==0] = 0 # set the unseen data as zeros
     return cycle_curve_data, curve_attn_mask, labels, life_class, scaled_life_class, weights, dataset_ids, seen_unseen_ids
 
 def my_collate_fn_baseline(samples):
@@ -71,6 +74,9 @@ def my_collate_fn_baseline(samples):
     scaled_life_class = torch.Tensor([i['scaled_life_class'] for i in samples])
     weights = torch.Tensor([i['weight'] for i in samples])
     seen_unseen_ids = torch.Tensor([i['seen_unseen_id'] for i in samples])
+
+    tmp_curve_attn_mask = curve_attn_mask.unsqueeze(-1).unsqueeze(-1) * torch.ones_like(cycle_curve_data)
+    cycle_curve_data[tmp_curve_attn_mask==0] = 0 # set the unseen data as zeros
     return cycle_curve_data, curve_attn_mask,  labels, life_class, scaled_life_class, weights, seen_unseen_ids
 
 class Dataset_original(Dataset):

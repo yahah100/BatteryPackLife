@@ -1,11 +1,11 @@
 # (KDD 2025) BatteryLife
 This is the official repository for [BatteryLife: A Comprehensive Dataset and Benchmark for Battery Life Prediction](https://arxiv.org/abs/2502.18807). If you find this repository useful, we would appreciate citations to our paper and stars to this repository.
 
+🔥**News** (2025.08) BatteryLife downloads exceed 10,000.
+
 🔥**News** (2025.07) BatteryLife downloads exceed 7,000.
 
 🔥**News** (2025.06) BatteryLife downloads exceed 5,000.
-
-🔥**News** (2025.06) BatteryLife downloads exceed 4,000.
 
 :triangular_flag_on_post:**News** (2025.06) Add the complete Stanford dataset as "Stanford_2" (now including both releases of the Stanford dataset).
 
@@ -40,7 +40,7 @@ All the raw datasets are publicly available, interested users can download them 
 - Stanford: [link](https://data.matr.io/8/)
 - HNEI, SNL, MICH, MICH_EXP and UL_PUR datasets: [BatteryArchive](https://www.batteryarchive.org/index.html).
 
-## Benchmark results of Battery Life Prediction(BLP) task
+## Benchmark results of Battery Life Prediction (BLP) task
 
 The benchmark result for battery life prediction. The comparison methods are split into five types, including
 
@@ -143,14 +143,20 @@ If you are interested in contributing, please either submit a pull request or co
 If you use the benchmark, processed datasets, or the raw datasets produced by this work, you should cite the BatteryLife paper:
 
 ```
-@misc{tan2025batterylifecomprehensivedatasetbenchmark,
-      title={BatteryLife: A Comprehensive Dataset and Benchmark for Battery Life Prediction}, 
-      author={Ruifeng Tan and Weixiang Hong and Jiayue Tang and Xibin Lu and Ruijun Ma and Xiang Zheng and Jia Li and Jiaqiang Huang and Tong-Yi Zhang},
-      year={2025},
-      eprint={2502.18807},
-      archivePrefix={arXiv},
-      primaryClass={cs.LG},
-      url={https://arxiv.org/abs/2502.18807}, 
+@inproceedings{10.1145/3711896.3737372,
+author = {Tan, Ruifeng and Hong, Weixiang and Tang, Jiayue and Lu, Xibin and Ma, Ruijun and Zheng, Xiang and Li, Jia and Huang, Jiaqiang and Zhang, Tong-Yi},
+title = {BatteryLife: A Comprehensive Dataset and Benchmark for Battery Life Prediction},
+year = {2025},
+isbn = {9798400714542},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3711896.3737372},
+doi = {10.1145/3711896.3737372},
+booktitle = {Proceedings of the 31st ACM SIGKDD Conference on Knowledge Discovery and Data Mining V.2},
+pages = {5789–5800},
+numpages = {12},
+location = {Toronto ON, Canada},
+series = {KDD '25}
 }
 ```
 
