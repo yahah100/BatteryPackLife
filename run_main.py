@@ -301,7 +301,7 @@ for ii in range(args.itr):
         print_life_class_loss = 0
         std, mean_value = np.sqrt(train_data.label_scaler.var_[-1]), train_data.label_scaler.mean_[-1]
         total_preds, total_references = [], []
-        for i, (cycle_curve_data, curve_attn_mask,  labels, life_class, scaled_life_class, weights, seen_unseen_ids, features) in enumerate(train_loader):
+        for i, (cycle_curve_data, curve_attn_mask,  labels, life_class, scaled_life_class, weights, seen_unseen_ids) in enumerate(train_loader):
             with accelerator.accumulate(model):
                 model_optim.zero_grad()
                 iter_count += 1
