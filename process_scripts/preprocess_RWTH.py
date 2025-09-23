@@ -14,6 +14,7 @@ from pathlib import Path
 from batteryml import CycleData, BatteryData, CyclingProtocol
 from batteryml.builders import PREPROCESSORS
 from batteryml.preprocess.base import BasePreprocessor
+from .time_normalization_utils import normalize_cycle_times
 
 
 @PREPROCESSORS.register()
@@ -108,6 +109,9 @@ class RWTHPreprocessor(BasePreprocessor):
             # See https://publications.rwth-aachen.de/record/818642/files/Content_RWTH-2021-04545.pdf  # noqa
 
             soc_interval = [0.2, 0.8]
+
+            # Normalize time data across all cycles
+            cycles = normalize_cycle_times(cycles, name)
 
             battery = BatteryData(
                 cell_id=name,
