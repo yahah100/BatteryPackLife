@@ -13,6 +13,7 @@ from pathlib import Path
 from batteryml import BatteryData, CycleData, CyclingProtocol
 from batteryml.builders import PREPROCESSORS
 from batteryml.preprocess.base import BasePreprocessor
+from .time_normalization_utils import normalize_cycle_times
 
 
 @PREPROCESSORS.register()
@@ -156,6 +157,10 @@ def organize_cell(timeseries_df, name, C, filename):
     )]
 
     soc_interval = [0, 1]
+
+    # Normalize time data across all cycles
+    cycle_data = normalize_cycle_times(cycle_data, name)
+
     return BatteryData(
         cell_id=name,
         cycle_data=cycle_data,

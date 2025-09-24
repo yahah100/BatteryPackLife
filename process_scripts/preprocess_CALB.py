@@ -13,13 +13,14 @@ from pathlib import Path
 from batteryml import BatteryData, CycleData, CyclingProtocol
 from batteryml.builders import PREPROCESSORS
 from batteryml.preprocess.base import BasePreprocessor
+from .time_normalization_utils import normalize_cycle_times
 
 
 @PREPROCESSORS.register()
 class CALBPreprocessor(BasePreprocessor):
     def process(self, parent_dir, **kwargs) -> List[BatteryData]:
         path = Path(parent_dir)
-        files_path_list = ['0度', '25度', '35度', '45度']# drop the -10 batch for its capacity retention bigger than 0.925 SOH
+        files_path_list = ['0度', '25度', '35度', '45度']  # drop the -10 batch for its capacity retention bigger than 0.925 
         process_batteries_num = 0
         skip_batteries_num = 0
         for files_path in files_path_list:
@@ -130,6 +131,10 @@ def organize_cell(timeseries_df, name, C, temperature):
     )]
 
     soc_interval = [0, 1]
+
+    # Normalize time data across all cycles
+    cycle_data = normalize_cycle_times(cycle_data, name)
+
     return BatteryData(
         cell_id=name,
         cycle_data=cycle_data,

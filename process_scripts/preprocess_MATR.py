@@ -11,6 +11,7 @@ from scipy.io import loadmat
 from batteryml.builders import PREPROCESSORS
 from batteryml.preprocess.base import BasePreprocessor
 from batteryml import BatteryData, CycleData, CyclingProtocol
+from .time_normalization_utils import normalize_cycle_times
 
 
 @PREPROCESSORS.register()
@@ -233,6 +234,9 @@ def organize_cell(data, name):
         ]
 
     soc_interval = [0, 1]
+
+    # Normalize time data across all cycles
+    cycle_data = normalize_cycle_times(cycle_data, f'MATR_{name}')
 
     return BatteryData(
         cell_id=f'MATR_{name}',

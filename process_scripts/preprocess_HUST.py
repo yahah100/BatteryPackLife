@@ -14,6 +14,7 @@ from pathlib import Path
 from batteryml import CycleData, BatteryData, CyclingProtocol
 from batteryml.builders import PREPROCESSORS
 from batteryml.preprocess.base import BasePreprocessor
+from .time_normalization_utils import normalize_cycle_times
 
 
 @PREPROCESSORS.register()
@@ -72,6 +73,9 @@ class HUSTPreprocessor(BasePreprocessor):
             # Skip first problematic cycles
             if cell_name == 'HUST_7-5':
                 cycles = cycles[2:]
+
+            # Normalize time data across all cycles
+            cycles = normalize_cycle_times(cycles, cell_name)
 
             soc_interval = [0,1]
 
