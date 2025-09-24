@@ -181,7 +181,7 @@ This repo is constructed based on the following repos:
 - https://github.com/thuml/Time-Series-Library
 - https://github.com/microsoft/BatteryML
 
-## All Thanks To Our Contributors
+## All thanks to our contributors
 
 <a href="https://github.com/Ruifeng-Tan/BatteryLife/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=Ruifeng-Tan/BatteryLife" />
