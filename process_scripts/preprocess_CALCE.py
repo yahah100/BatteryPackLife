@@ -17,6 +17,7 @@ from scipy.signal import medfilt
 from batteryml import BatteryData, CycleData
 from batteryml.builders import PREPROCESSORS
 from batteryml.preprocess.base import BasePreprocessor
+from .time_normalization_utils import normalize_cycle_times
 import matplotlib.pyplot as plt
 
 
@@ -108,6 +109,9 @@ class CALCEPreprocessor(BasePreprocessor):
             # if 'CX2_16' == cell.upper():
             #     clean_cycles = clean_cycles[1:]
             soc_interval = [0, 1]
+
+            # Normalize time data across all cycles
+            clean_cycles = normalize_cycle_times(clean_cycles, f'CALCE_{cell}')
 
             battery = BatteryData(
                 cell_id=f'CALCE_{cell}',

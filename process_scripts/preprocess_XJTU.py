@@ -16,6 +16,7 @@ from scipy.io import loadmat
 from batteryml import BatteryData, CycleData, CyclingProtocol
 from batteryml.builders import PREPROCESSORS
 from batteryml.preprocess.base import BasePreprocessor
+from .time_normalization_utils import normalize_cycle_times
 
 
 @PREPROCESSORS.register()
@@ -108,6 +109,9 @@ def organize_cell(timeseries_df, name, path):
     discharge_protocol = [CyclingProtocol(
         rate_in_C=discharge_rate_in_C, start_soc=1.0, end_soc=1
     )]
+
+    # Normalize time data across all cycles
+    cycle_data = normalize_cycle_times(cycle_data, name)
 
     return BatteryData(
         cell_id=name,
