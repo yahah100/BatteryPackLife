@@ -8,3 +8,5 @@ outs/
 dev/
 .cache/
 datasets/
+.vscode/
+logs/
