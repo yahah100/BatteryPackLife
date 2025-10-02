@@ -3,7 +3,7 @@ from data_provider.data_loader import my_collate_fn_baseline, my_collate_fn_with
 from torch.utils.data import DataLoader, RandomSampler, Dataset
 
 data_dict = {
-    'Dataset_original': Dataset_original
+    'BatteryLife': Dataset_original
 }
 
 def data_provider_baseline_DA(args, flag, tokenizer=None, label_scaler=None, eval_cycle_min=None, eval_cycle_max=None, total_prompts=None, 
