@@ -27,8 +27,7 @@ from models import (
     GRU,
     LSTM,
 )
-from peft import LoraConfig, PeftModel, get_peft_model, prepare_model_for_kbit_training
-from data_provider.data_factory import data_provider_baseline
+from data_provider.data_factory import data_provider
 import time
 import json
 import random
@@ -302,7 +301,6 @@ for ii in range(args.itr):
         args.seed,
     )
 
-    data_provider_func = data_provider_baseline
     if args.model == "Transformer":
         model = Transformer.Model(args).float()
     elif args.model == "CPBiLSTM":
@@ -353,28 +351,24 @@ for ii in range(args.itr):
     )  # unique checkpoint saving path
 
     accelerator.print("Loading training samples......")
-    train_data, train_loader = data_provider_func(
-        args, "train", None, sample_weighted=args.weighted_sampling
+    train_data, train_loader = data_provider(
+        args, flag="train"
     )
     label_scaler = train_data.return_label_scaler()
     life_class_scaler = train_data.return_life_class_scaler()
     accelerator.print("Loading vali samples......")
-    vali_data, vali_loader = data_provider_func(
+    vali_data, vali_loader = data_provider(
         args,
-        "val",
-        None,
-        label_scaler,
+        flag="val",
+        label_scaler=label_scaler,
         life_class_scaler=life_class_scaler,
-        sample_weighted=args.weighted_sampling,
     )
     accelerator.print("Loading test samples......")
-    test_data, test_loader = data_provider_func(
+    test_data, test_loader = data_provider(
         args,
-        "test",
-        None,
-        label_scaler,
+        flag="test",
+        label_scaler=label_scaler,
         life_class_scaler=life_class_scaler,
-        sample_weighted=args.weighted_sampling,
     )
 
     if accelerator.is_local_main_process and os.path.exists(path):
@@ -500,6 +494,8 @@ for ii in range(args.itr):
                     tmp_labels = labels * std + mean_value
                     loss = criterion(tmp_outputs / tmp_labels, tmp_labels / tmp_labels)
                     loss = torch.mean(loss * weights)
+                else:
+                    raise Exception("Not implemented loss function")
 
                 label_loss = loss.detach().float()
 
@@ -556,8 +552,13 @@ for ii in range(args.itr):
             "Epoch: {} cost time: {}".format(epoch + 1, time.time() - epoch_time)
         )
 
-        vali_rmse, vali_mae_loss, vali_mape, vali_alpha_acc1, vali_alpha_acc2 = (
-            vali_baseline(
+        (
+            vali_rmse, 
+            vali_mae_loss, 
+            vali_mape, 
+            vali_alpha_acc1, 
+            vali_alpha_acc2
+        ) = vali_baseline(
                 args,
                 accelerator,
                 model,
@@ -565,8 +566,8 @@ for ii in range(args.itr):
                 vali_loader,
                 criterion,
                 compute_seen_unseen=False,
-            )
         )
+        
         (
             test_rmse,
             test_mae_loss,
