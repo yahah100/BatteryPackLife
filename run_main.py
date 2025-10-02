@@ -100,7 +100,7 @@ parser.add_argument(
     "--model",
     type=str,
     required=False,
-    default="Autoformer",
+    default="CPMLP",
     help="model name, options: [Autoformer, DLinear]",
 )
 parser.add_argument("--seed", type=int, default=2021, help="random seed")
@@ -109,11 +109,11 @@ parser.add_argument("--seed", type=int, default=2021, help="random seed")
 parser.add_argument(
     "--charge_discharge_length",
     type=int,
-    default=100,
+    default=300,
     help="The resampled length for charge and discharge curves",
 )
 parser.add_argument(
-    "--dataset", type=str, default="HUST", help="dataset used for pretrained model"
+    "--dataset", type=str, default="CALB", help="dataset used for pretrained model"
 )
 parser.add_argument(
     "--data", type=str, required=False, default="BatteryLife", help="dataset type"
@@ -156,7 +156,7 @@ parser.add_argument(
 parser.add_argument(
     "--early_cycle_threshold", type=int, default=100, help="when to stop model training"
 )
-parser.add_argument("--seq_len", type=int, default=5, help="input sequence length")
+parser.add_argument("--seq_len", type=int, default=1, help="input sequence length")
 parser.add_argument(
     "--pred_len", type=int, default=5, help="prediction sequence length"
 )
@@ -169,17 +169,17 @@ parser.add_argument(
 parser.add_argument("--enc_in", type=int, default=1, help="encoder input size")
 parser.add_argument("--dec_in", type=int, default=1, help="decoder input size")
 parser.add_argument("--c_out", type=int, default=1, help="output size")
-parser.add_argument("--d_model", type=int, default=16, help="dimension of model")
-parser.add_argument("--n_heads", type=int, default=4, help="num of heads")
-parser.add_argument("--lstm_layers", type=int, default=1, help="num of LSTM layers")
-parser.add_argument("--e_layers", type=int, default=2, help="num of intra-cycle layers")
-parser.add_argument("--d_layers", type=int, default=1, help="num of inter-cycle layers")
-parser.add_argument("--d_ff", type=int, default=32, help="dimension of fcn")
+parser.add_argument("--d_model", type=int, default=128, help="dimension of model")
+parser.add_argument("--n_heads", type=int, default=8, help="num of heads")
+parser.add_argument("--lstm_layers", type=int, default=2, help="num of LSTM layers")
+parser.add_argument("--e_layers", type=int, default=4, help="num of intra-cycle layers")
+parser.add_argument("--d_layers", type=int, default=2, help="num of inter-cycle layers")
+parser.add_argument("--d_ff", type=int, default=256, help="dimension of fcn")
 parser.add_argument(
     "--moving_avg", type=int, default=25, help="window size of moving average"
 )
 parser.add_argument("--factor", type=int, default=1, help="attn factor")
-parser.add_argument("--dropout", type=float, default=0.1, help="dropout")
+parser.add_argument("--dropout", type=float, default=0.0, help="dropout")
 parser.add_argument(
     "--embed",
     type=str,
@@ -222,7 +222,7 @@ parser.add_argument(
     "--num_workers", type=int, default=1, help="data loader num workers"
 )
 parser.add_argument("--itr", type=int, default=1, help="experiments times")
-parser.add_argument("--train_epochs", type=int, default=10, help="train epochs")
+parser.add_argument("--train_epochs", type=int, default=100, help="train epochs")
 parser.add_argument(
     "--least_epochs",
     type=int,
@@ -230,11 +230,11 @@ parser.add_argument(
     help="The model is trained at least some epoches before the early stopping is used",
 )
 parser.add_argument(
-    "--batch_size", type=int, default=32, help="batch size of train input data"
+    "--batch_size", type=int, default=16, help="batch size of train input data"
 )
-parser.add_argument("--patience", type=int, default=10, help="early stopping patience")
+parser.add_argument("--patience", type=int, default=5, help="early stopping patience")
 parser.add_argument(
-    "--learning_rate", type=float, default=0.0001, help="optimizer learning rate"
+    "--learning_rate", type=float, default=0.00005, help="optimizer learning rate"
 )
 parser.add_argument("--wd", type=float, default=0.0, help="weight decay")
 parser.add_argument("--des", type=str, default="test", help="exp description")

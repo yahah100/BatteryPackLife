@@ -7,7 +7,9 @@ wandb/
 outs/
 dev/
 .cache/
-dataset/processed/
 .vscode/
 logs/
 blobs/
+checkpoints/
+dataset/processed/*
+!dataset/processed/seen_unseen_labels/
