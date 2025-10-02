@@ -22,7 +22,7 @@ lradj=constant
 n_heads=8
 
 
-checkpoints=/path/to/your/saving/folder # the save path of checkpoints
+checkpoints=checkpoints # the save path of checkpoints
 data=Dataset_original
 root_path=./dataset
 comment='CPMLP' 
