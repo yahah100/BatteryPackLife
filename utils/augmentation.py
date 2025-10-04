@@ -63,18 +63,6 @@ class BatchAugmentation_battery_revised():
 
         freqmask_aug_x = torch.cat([freqmask_aug_voltage, freqmask_aug_current, capacity_records], dim=1)
 
-        # m = torch.ones((N,1,1), dtype=x.dtype, device=x.device)
-        # m = m.uniform_(0, 1) < self.cut_rate # set True to use cut_aug
-        # m = m.expand_as(aug_x)
-
-        # aug_x = torch.where(m, cut_aug_x, freqmask_aug_x) # randomly use frequency mask and cutoff_jitter
-
-        # m = torch.ones((N,1,1), dtype=x.dtype, device=x.device)
-        # m = m.uniform_(0, 1) < self.aug_rate # set True to use cut_aug
-        # m = m.expand_as(aug_x)
-
-        # aug_x = torch.where(m, aug_x, raw_x) # only a portion of cycles are replaced by augmented data.
-        # aug_x = aug_x.cpu().numpy()
         return cut_aug_x, freqmask_aug_x
     
 class BatchAugmentation_battery():
