@@ -46,10 +46,6 @@ from sklearn.metrics import (
 
 from logger import Logger
 
-def list_of_ints(arg):
-    return list(map(int, arg.split(",")))
-
-
 # os.environ["TOKENIZERS_PARALLELISM"] = "false"
 # os.environ["CUDA_VISIBLE_DEVICES"] = '4,5,6,7'
 
@@ -442,6 +438,8 @@ for ii in range(args.itr):
     best_vali_MAPE, best_test_MAPE = 0, 0
     best_seen_vali_MAPE, best_seen_test_MAPE = 0, 0
     best_unseen_vali_MAPE, best_unseen_test_MAPE = 0, 0
+
+    print(vars(args))
 
     for epoch in range(args.train_epochs):
         mae_metric = evaluate.load("./utils/mae")

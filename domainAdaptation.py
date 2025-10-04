@@ -10,9 +10,7 @@ import evaluate
 from utils.tools import get_parameter_number
 from models import CPGRU, CPLSTM, CPMLP, CPBiGRU, CPBiLSTM, CPTransformer, PatchTST, iTransformer, Transformer, \
     DLinear, Autoformer, MLP, MICN, CNN, BiLSTM, BiGRU, GRU, LSTM
-import wandb
-from peft import LoraConfig, PeftModel, get_peft_model, prepare_model_for_kbit_training
-from data_provider.data_factory import data_provider_baseline_DA
+from data_provider.data_factory import data_provider as data_provider_func
 import time
 import json
 import random
@@ -142,7 +140,6 @@ for ii in range(args.itr):
         args.lradj, args.dataset, args.loss, args.wd, args.weighted_loss, args.batch_size)
 
 
-    data_provider_func = data_provider_baseline_DA
     if args.model == 'Transformer':
         model = Transformer.Model(args).float()
     elif args.model == 'CPBiLSTM':
@@ -196,13 +193,13 @@ for ii in range(args.itr):
  
     
     accelerator.print("Loading training samples......")
-    train_data, train_loader, train_target_data, train_target_loader = data_provider_func(args, 'train', None, sample_weighted=args.weighted_sampling, target_dataset=args.target_dataset)
+    train_data, train_loader, train_target_data, train_target_loader = data_provider_func(args, flag='train', mode='da', target_dataset=args.target_dataset)
     label_scaler = train_data.return_label_scaler()  
     life_class_scaler = train_data.return_life_class_scaler()   
     accelerator.print("Loading vali samples......")
-    vali_data, vali_loader = data_provider_func(args, 'val', None, label_scaler, life_class_scaler=life_class_scaler, sample_weighted=args.weighted_sampling)
+    vali_data, vali_loader = data_provider_func(args, 'val', None, label_scaler, life_class_scaler=life_class_scaler)
     accelerator.print("Loading test samples......")
-    test_data, test_loader = data_provider_func(args, 'test', None, label_scaler, life_class_scaler=life_class_scaler, sample_weighted=args.weighted_sampling)
+    test_data, test_loader = data_provider_func(args, 'test', None, label_scaler, life_class_scaler=life_class_scaler)
     
     if accelerator.is_local_main_process and os.path.exists(path):
         del_files(path)  # delete checkpoint files
