@@ -152,7 +152,7 @@ def my_collate_fn_baseline(
     )
     curve_attn_mask = torch.vstack([i["curve_attn_mask"].unsqueeze(0) for i in samples])
     life_class = torch.Tensor([i["life_class"] for i in samples])
-    labels = torch.Tensor([i["labels"] for i in samples])
+    labels = torch.Tensor(np.array([i["labels"] for i in samples]))
     scaled_life_class = torch.Tensor([i["scaled_life_class"] for i in samples])
     weights = torch.Tensor([i["weight"] for i in samples])
     seen_unseen_ids = torch.Tensor([i["seen_unseen_id"] for i in samples])
