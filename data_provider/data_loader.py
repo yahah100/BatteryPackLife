@@ -1,4 +1,5 @@
 import os
+from typing import Callable, Any
 import numpy as np
 import shutil
 import pandas as pd
@@ -122,9 +123,7 @@ class Dataset_original(Dataset):
         self.args = args
         self.root_path = args.root_path
         self.seq_len = args.seq_len
-        self.charge_discharge_len = (
-            args.charge_discharge_length
-        )
+        self.charge_discharge_len = args.charge_discharge_length
         self.flag = flag
         self.dataset = args.target_dataset if use_target_dataset else args.dataset
         self.early_cycle_threshold = args.early_cycle_threshold
@@ -470,7 +469,9 @@ class Dataset_original(Dataset):
             total_seen_unseen_IDs,
         )
 
-    def read_cell_data_according_to_prefix(self, file_name):
+    def read_cell_data_according_to_prefix(
+        self, file_name
+    ) -> tuple[dict[str, Any], int | None]:
         """
         Read the battery data and eol according to the file_name
         The dataset is indicated by the prefix of the file_name
@@ -531,12 +532,18 @@ class Dataset_original(Dataset):
             eol = None
         return data, eol
 
-    def read_cell_df(self, file_name):
+    def read_cell_df(self, file_name) -> tuple[
+        pd.DataFrame | None,
+        np.ndarray | None,
+        int | None,
+        int | None,
+        np.ndarray | None,
+    ]:
         """
         read the dataframe of one cell, and drop its formation cycles.
         In addition, we will resample its charge and discharge curves
         :param file_name: which file needs to be read
-        :return: df, charge_discharge_curves, basic_prompt, eol
+        :return: df, charge_discharge_curves, eol, nominal_capacity, cj_aug_charge_discharge_curves
         """
         data, eol = self.read_cell_data_according_to_prefix(file_name)
         if eol is None:
@@ -578,7 +585,7 @@ class Dataset_original(Dataset):
         charge_discharge_curves = self.get_charge_discharge_curves(
             file_name, df, self.early_cycle_threshold, nominal_capacity
         )
-        cj_aug_charge_discharge_curves, fm_aug_charge_discharge_curves = (
+        cj_aug_charge_discharge_curves, _ = (
             self.aug_helper.batch_aug(charge_discharge_curves)
         )
 
@@ -601,7 +608,7 @@ class Dataset_original(Dataset):
             df,
             charge_discharge_curves_data,
             eol,
-            nominal_capacity,
+            _,
             cj_aug_charge_discharge_curves,
         ) = self.read_cell_df(file_name)
         if df is None or eol <= self.early_cycle_threshold:
@@ -744,12 +751,6 @@ class Dataset_original(Dataset):
                     charge_capacities = charge_capacity_records[:charge_end_index]
                     charge_currents = current_records[:charge_end_index]
                     charge_times = time_in_s_records[:charge_end_index]
-
-                # try:
-                #     discharge_voltages, discharge_currents, discharge_capacities = self.resample_charge_discharge_curvesv2(discharge_voltages, discharge_currents, discharge_capacities)
-                #     charge_voltages, charge_currents, charge_capacities = self.resample_charge_discharge_curvesv2(charge_voltages, charge_currents, charge_capacities)
-                # except:
-                #     print('file_name', file_name, cycle)
 
                 discharge_voltages, discharge_currents, discharge_capacities = (
                     self.resample_charge_discharge_curves(
